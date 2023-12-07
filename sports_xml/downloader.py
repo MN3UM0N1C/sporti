@@ -20,7 +20,6 @@ class FootballDataDownloader:
 
 
 if __name__ == "__main__":
-    # Example usage:
     league_id_mapping = {
         '1204': 'Premier_League',
         '1399': 'La_Liga',

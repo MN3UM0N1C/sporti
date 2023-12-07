@@ -45,7 +45,5 @@ class FootballDataParser:
         data = [(k.get('name'), k.get('value')) for i in file for k in i.find_all('odd')]
         return json.dumps(dict(data))
 
-
-# Example usage:
 football_parser = FootballDataParser()
 print(football_parser.koef(football_parser.team("1204", ["Everton", "Newcastle"], casino="10Bet")))

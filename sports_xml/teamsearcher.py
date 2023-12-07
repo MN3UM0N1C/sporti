@@ -37,7 +37,6 @@ class FootballDataParser:
         for i in matches:
             bundle = [i.find("localteam").get("name"), i.find("visitorteam").get("name")]
             if teams[0] in bundle and teams[1] in bundle:
-                print(matches[c].get("id"))
                 return self.search(league_id, matches[c].get("id"), casino=casino)
             c += 1
 
@@ -45,5 +44,7 @@ class FootballDataParser:
         data = [(k.get('name'), k.get('value')) for i in file for k in i.find_all('odd')]
         return json.dumps(dict(data))
 
-football_parser = FootballDataParser()
-print(football_parser.koef(football_parser.team("1204", ["Everton", "Newcastle"], casino="10Bet")))
+if __name__ == "__main__":
+    football_parser = FootballDataParser()
+    result = football_parser.koef(football_parser.team("1204", ["Everton", "Newcastle"], casino="10Bet"))
+    print(result)

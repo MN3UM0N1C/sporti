@@ -17,33 +17,45 @@ class FootballDataParser:
             print(f"Error downloading file: {e}")
 
     def load_data(self, league_id):
-        with open(f'data/{self.league_id_mapping[league_id]}.xml', 'r') as file:
-            xml_content = file.read()
-            return BeautifulSoup(xml_content, 'xml')
+        try:
+            with open(f'data/{self.league_id_mapping[league_id]}.xml', 'r') as file:
+                xml_content = file.read()
+                return BeautifulSoup(xml_content, 'xml')
+        except FileNotFoundError:
+            print(f"Error: File not found for league ID {league_id}. Make sure to download the file first.")
 
     def search(self, league_id, match, casino=None):
         result = []
-        soup = self.load_data(league_id)
-        for k in soup.find_all("match", {"id": match}):
-            if casino is not None:
-                result = k.find_all('bookmaker', {'name': casino})
-            else:
-                result = k.find_all('bookmaker')
-        return result
+        try:
+            soup = self.load_data(league_id)
+            for k in soup.find_all("match", {"id": match}):
+                if casino is not None:
+                    result = k.find_all('bookmaker', {'name': casino})
+                else:
+                    result = k.find_all('bookmaker')
+            return result
+        except AttributeError:
+            print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
 
     def team(self, league_id, teams, casino=None):
         c = 0
-        soup = self.load_data(league_id)
-        matches = soup.find_all("match")
-        for i in matches:
-            bundle = [i.find("localteam").get("name"), i.find("visitorteam").get("name")]
-            if teams[0] in bundle and teams[1] in bundle:
-                return self.search(league_id, matches[c].get("id"), casino=casino)
-            c += 1
+        try:
+            soup = self.load_data(league_id)
+            matches = soup.find_all("match")
+            for i in matches:
+                bundle = [i.find("localteam").get("name"), i.find("visitorteam").get("name")]
+                if teams[0] in bundle and teams[1] in bundle:
+                    return self.search(league_id, matches[c].get("id"), casino=casino)
+                c += 1
+        except AttributeError:
+            print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
 
     def koef(self, file):
-        data = [(k.get('name'), k.get('value')) for i in file for k in i.find_all('odd')]
-        return json.dumps(dict(data))
+        try:
+            data = [(k.get('name'), k.get('value')) for i in file for k in i.find_all('odd')]
+            return json.dumps(dict(data))
+        except (TypeError, AttributeError):
+            print("Coefficients not found.")
 
     def download_all_files(self):
         for league_id, league_name in self.league_id_mapping.items():
@@ -65,6 +77,10 @@ if __name__ == "__main__":
     }
 
     football_parser = FootballDataParser(league_id_mapping)
-    football_parser.download_all_files()
-    result = football_parser.koef(football_parser.team("1204", ["Everton", "Newcastle"], casino="10Bet"))
-    print(result)
+    #football_parser.download_all_files()
+
+    try:
+        result = football_parser.koef(football_parser.team("1204", ["Juventus", "FC napoli"], casino="10Bet"))
+        print(result)
+    except Exception as e:
+        print(f"An error occurred: {e}")

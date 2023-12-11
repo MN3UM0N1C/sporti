@@ -7,10 +7,11 @@ class FootballerScraper:
     def __init__(self, user_input):
         self.user_input = user_input
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36,gzip(gfe)'
+            'User-Agent': 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0',
         }
         self.url = f'https://www.transfermarkt.com/schnellsuche/ergebnis/schnellsuche?query={user_input}'
         self.data_list = []
+        self.div_block = None
 
     def dictifier(self, data):
         player_info = {}
@@ -45,9 +46,9 @@ class FootballerScraper:
         page = requests.get(url, headers=self.headers)
         info = BeautifulSoup(page.text, 'html.parser')
         try:
-            div_block = info.find("div", class_=classname).find_all("span")
+            self.div_block = info.find("div", class_=classname).find_all("span")
         except AttributeError:
-            div_block = info.find("div", class_=classname.replace(" min-height-audio", "")).find_all("span")
+            self.div_block = info.find("div", class_=classname.replace(" min-height-audio", "")).find_all("span")
         for i in div_block:
             self.data_list.append(i.text)
         return self.dictifier(self.data_list)
@@ -78,7 +79,7 @@ class FootballerScraper:
                 statistics[key] = nums.pop(0)  
             return json.dumps(statistics)  
         except AttributeError:
-            for i in div_block:
+            for i in self.div_block:
                 self.data_list.append(i.text)
             return self.dictifier(self.data_list)
 
@@ -101,6 +102,17 @@ class FootballerScraper:
             self.data_list.append(self.table_parser(t.get("id")))
         return self.data_list
 
+    def names(self):
+        info = BeautifulSoup(requests.get(f"https://fbref.com/en/search/seArch.fcgi?&sEarch={self.user_input}?", headers=self.headers).text, 'html.parser')
+        print(info)
+        print(info.find_all("div", {"id" : "inpage_nav"}))
+        for k in info.find("div", {"id" : "inpage_nav"}).find_all("li"):
+            self.data_list.append(k.text)
+        del self.data_list[-2:]
+        return json.dumps(dict(zip(self.data_list, self.parse_all())))
+        self.data_list = []
+
+
 
 if __name__ == "__main__":
     user_input = "cristiano+ronaldo"
@@ -108,4 +120,4 @@ if __name__ == "__main__":
     #print(scraper.search())
     #print(scraper.statistics())
     #print(scraper.rewards())
-    print(scraper.parse_all())
+    print(scraper.names())

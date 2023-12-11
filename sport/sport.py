@@ -7,11 +7,10 @@ class FootballerScraper:
     def __init__(self, user_input):
         self.user_input = user_input
         self.headers = {
-            'User-Agent': 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0',
+            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0',
         }
         self.url = f'https://www.transfermarkt.com/schnellsuche/ergebnis/schnellsuche?query={user_input}'
         self.data_list = []
-        self.div_block = None
 
     def dictifier(self, data):
         player_info = {}
@@ -46,20 +45,20 @@ class FootballerScraper:
         page = requests.get(url, headers=self.headers)
         info = BeautifulSoup(page.text, 'html.parser')
         try:
-            self.div_block = info.find("div", class_=classname).find_all("span")
+            div_block = info.find("div", class_=classname).find_all("span")
         except AttributeError:
-            self.div_block = info.find("div", class_=classname.replace(" min-height-audio", "")).find_all("span")
+            div_block = info.find("div", class_=("info-table info-table--right-space")).find_all("span")
         for i in div_block:
             self.data_list.append(i.text)
         return self.dictifier(self.data_list)
 
-    def search(self, url="https://www.transfermarkt.com"):
+    def search(self):
         response = requests.get(self.url, headers=self.headers)
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
             td_elements = soup.find_all('td', class_="hauptlink")
             try:
-                fb_url = url + td_elements[0].find("a").get("href")
+                fb_url = "https://www.transfermarkt.com" + td_elements[0].find("a").get("href")
                 return self.footballer_info(fb_url)
             except IndexError:
                 return "Footballer not found"
@@ -79,7 +78,7 @@ class FootballerScraper:
                 statistics[key] = nums.pop(0)  
             return json.dumps(statistics)  
         except AttributeError:
-            for i in self.div_block:
+            for i in div_block:
                 self.data_list.append(i.text)
             return self.dictifier(self.data_list)
 
@@ -118,6 +117,6 @@ if __name__ == "__main__":
     user_input = "cristiano+ronaldo"
     scraper = FootballerScraper(user_input)
     #print(scraper.search())
-    #print(scraper.statistics())
+    print(scraper.search())
     #print(scraper.rewards())
-    print(scraper.names())
+    #print(scraper.names())

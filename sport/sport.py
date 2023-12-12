@@ -12,15 +12,20 @@ class FootballerScraper:
         }
         self.url = f'https://www.transfermarkt.com/schnellsuche/ergebnis/schnellsuche?query={user_input}'
         self.data_list = []
-        self.proxy_list = requests.get("https://api.proxyscrape.com/v2/?request=displayproxies&protocol=https&timeout=10000&country=all&ssl=all&anonymity=all").text.strip().split('\r\n')
-        self.proxy_to_use = {'https': None}
-        for proxy_string in self.proxy_list:
-            parts = proxy_string.split(':')
-            if len(parts) == 2:
-                ip, port = parts
-                self.proxy_to_use['https'] = f'https://{ip}:{port}'
-            else:
-                print(f"Invalid proxy string: {proxy_string}")
+        self.proxy_list = []
+        self.proxy_to_use = {"http": "http://customer-Football:FootballPassword_123@pr.oxylabs.io:7777"}
+        self.auth = requests.auth.HTTPProxyAuth("customer-Football", "FootballPassword_123")
+        print(self.proxy_to_use)
+        # response = requests.get("https://proxy.webshare.io/api/v2/proxy/list/?mode=direct&page=1&page_size=50", headers={ "Authorization": "Token 81sfxwvvbh2w5hyrd3rsailx3c6g5waqkj1va0wc"})
+        # for i in json.loads(response.text)["results"]:
+        #   self.proxy_list.append(str(i["username"]) + ":" + str(i["password"] + "@"  + str(i["proxy_address"]) + ":"  + str(i["port"])))
+        # self.proxy_to_use = {'http': None}
+        # for proxy_string in self.proxy_list:
+        #     ip, port =  ":".join([proxy_string.split(":")[0], proxy_string.split(":")[1]]), proxy_string.split(":")[-1]
+        #     self.proxy_to_use['http'] = f'http://{ip}:{port}'
+        # print(self.proxy_to_use)
+        #         #print(f"Invalid proxy string: {proxy_string}")
+
 
     def dictifier(self, data):
         player_info = {}
@@ -51,13 +56,17 @@ class FootballerScraper:
             return f"Request failed with status code: {page.status_code}"
 
     def footballer_info(self, url):
+        div_block = []
         classname = "info-table info-table--right-space min-height-audio"
         page = requests.get(url, headers=self.headers, proxies=self.proxy_to_use)
         info = BeautifulSoup(page.text, 'html.parser')
         try:
             div_block = info.find("div", class_=classname).find_all("span")
         except AttributeError:
-            div_block = info.find("div", class_=("info-table info-table--right-space")).find_all("span")
+            try:
+                div_block = info.find("div", class_=("info-table info-table--right-space")).find_all("span")
+            except:
+                return "footbaler not found"
         for i in div_block:
             self.data_list.append(i.text)
         return self.dictifier(self.data_list)
@@ -106,8 +115,10 @@ class FootballerScraper:
         return json.dumps(result)
 
     def parse_all(self):
-        info = BeautifulSoup(requests.get(f"https://fbref.com/en/search/search.fcgi?&search={self.user_input}", headers=self.headers, proxies=self.proxy_to_use).text, 'html.parser')
+        info = BeautifulSoup(requests.get(f"http://fbref.com/en/search/search.fcgi?&search={self.user_input}", headers=self.headers, proxies=self.proxy_to_use, auth=self.auth).text, 'html.parser')
+        print(info)
         for t in info.find_all(class_="table_container tabbed current"):
+            print(t)
             self.data_list.append(self.table_parser(t.get("id")))
         return self.data_list
 
@@ -120,13 +131,16 @@ class FootballerScraper:
         del names[-2:]
         return json.dumps(dict(zip(names, self.parse_all())))
         names = []
+        self.refresh_proxy()
 
 
 
 if __name__ == "__main__":
-    user_input = "lionel+messi"
+    user_input = "cristiano+ronaldo"
     scraper = FootballerScraper(user_input)
     #print(scraper.search())
     #print(scraper.search())
     #print(scraper.rewards())
-    print(scraper.names())
+    #print(scraper.statistics()
+    #print(scraper.search())
+    print(scraper.parse_all())

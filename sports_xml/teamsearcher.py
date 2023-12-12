@@ -2,6 +2,8 @@ from bs4 import BeautifulSoup
 import json
 import requests
 import subprocess
+from itertools import product
+
 
 class FootballDataParser:
     def __init__(self, league_id_mapping):
@@ -37,24 +39,30 @@ class FootballDataParser:
         except AttributeError:
             print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
 
+    def is_match(self, team_name, match_name):
+        team_words = team_name.lower().split()
+        match_words = match_name.lower().split()
+        match_count = sum(word in match_words for word in team_words)
+        return match_count >= len(team_words) / 2
+
     def team(self, league_id, teams, casino=None):
-        c = 0
-        try:
-            soup = self.load_data(league_id)
-            matches = soup.find_all("match")
-            for i in matches:
-                bundle = [i.find("localteam").get("name"), i.find("visitorteam").get("name")]
-                if teams[0] in bundle and teams[1] in bundle:
-                    return self.search(league_id, matches[c].get("id"), casino=casino)
-                c += 1
-        except AttributeError:
-            print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
+        soup = self.load_data(league_id)
+        matches = soup.find_all("match")
+        for match in matches:
+            local_team = match.find("localteam").get("name")
+            visitor_team = match.find("visitorteam").get("name")
+
+            if self.is_match(teams[0], local_team) and self.is_match(teams[1], visitor_team):
+                return self.search(league_id, match.get("id"), casino=casino)
+
+
 
     def koef(self, file):
         try:
             data = [(k.get('name'), k.get('value')) for i in file for k in i.find_all('odd')]
             return json.dumps(dict(data))
         except (TypeError, AttributeError):
+
             print("Coefficients not found.")
 
     def download_all_files(self):
@@ -80,7 +88,7 @@ if __name__ == "__main__":
     #football_parser.download_all_files()
 
     try:
-        result = football_parser.koef(football_parser.team("1204", ["Juventus", "FC napoli"], casino="10Bet"))
+        result = football_parser.koef(football_parser.team("1005", ['Inter Milan', 'Real Sociedad'], casino="bwin"))
         print(result)
     except Exception as e:
         print(f"An error occurred: {e}")

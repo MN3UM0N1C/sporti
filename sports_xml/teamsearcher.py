@@ -38,12 +38,12 @@ class FootballDataParser:
             return result
         except AttributeError:
             print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
-
     def is_match(self, team_name, match_name):
         team_words = team_name.lower().split()
         match_words = match_name.lower().split()
-        match_count = sum(word in match_words for word in team_words)
-        return match_count >= len(team_words) / 2
+        return any(word in match_words for word in team_words)        
+
+
 
     def team(self, league_id, teams, casino=None):
         soup = self.load_data(league_id)
@@ -88,7 +88,7 @@ if __name__ == "__main__":
     #football_parser.download_all_files()
 
     try:
-        result = football_parser.koef(football_parser.team("1005", ['Inter Milan', 'Real Sociedad'], casino="bwin"))
+        result = football_parser.koef(football_parser.team("1007", ['Inter', 'Real'], casino="bwin"))
         print(result)
     except Exception as e:
         print(f"An error occurred: {e}")

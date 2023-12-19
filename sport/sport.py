@@ -8,7 +8,6 @@ import time
 class FootballerScraper:
     def __init__(self, user_input):
         self.user_input = user_input
-        self.proxy_list = []
         self.proxy_to_use = {"http": "http://customer-Football:FootballPassword_123@pr.oxylabs.io:7777"}
         self.headers = {
             'User-Agent': UserAgent().random,
@@ -17,25 +16,11 @@ class FootballerScraper:
             "DNT": "1",
             "X-Forwarded-For" : "127.0.0.1",
             "Cookie" : "aaaaaaaaaaaaa"
-
-
         }
-        self.content = requests.get(f"http://fbref.com/en/search/search.fcgi?random=0&search={self.user_input}", headers=self.headers, proxies = self.proxy_to_use).text
+        self.content = requests.get(f"http://fbref.com/en/search/search.fcgi?random=0&search={self.user_input}", headers=self.headers, proxies = self.proxy_to_use)
         self.url = f'https://www.transfermarkt.com/schnellsuche/ergebnis/schnellsuche?query={user_input}'
-        self.target = "https://www.whoscored.com/"
         self.data_list = []
         self.data_dict = {}
-
-        self.auth = requests.auth.HTTPProxyAuth("customer-Football", "FootballPassword_123")
-
-    def request_2(self, url):
-        try:
-            return requests.get(url, headers=self.headers)
-        except AttributeError:
-            return requests.get(url, headers=self.headers, proxies=self.proxy_to_use)
-
-
-
 
     def dictifier(self, data):
         player_info = {}
@@ -56,8 +41,7 @@ class FootballerScraper:
         try:
             rewards_list = []
             rewards_dict = {"rewards" : ""}
-            page = requests.get(f"https://fbref.com/en/search/search.fcgi?hint=neymar&search={self.user_input}", headers=self.headers, proxies=self.proxy_to_use)
-            soup = BeautifulSoup(page.text, 'html.parser')
+            soup = BeautifulSoup((self.content.text), 'html.parser')
             for j in soup.find_all("li", {"class" : "important poptip"}):
                 rewards_list.append(j.get_text())
             rewards_dict["rewards"] = rewards_list
@@ -79,7 +63,7 @@ class FootballerScraper:
                 return "footbaler not found"
         for i in div_block:
             self.data_list.append(i.text)
-        return self.dictifier(self.data_list)
+        return json.dumps(self.dictifier(self.data_list))
 
     def search(self):
         response = requests.get(self.url, headers=self.headers, proxies=self.proxy_to_use)
@@ -98,7 +82,7 @@ class FootballerScraper:
         statistics = {"MP": "", "min": "", "goals":"","assists": ""}
         nums = []
         classname = "tm-player-performance__stats-list-item-value svelte-xwa5ea"
-        page = requests.get(f"https://fbref.com/en/search/search.fcgi?hint=neymar&search={self.user_input}", headers=self.headers, proxies=self.proxy_to_use)
+        page = BeautifulSoup((self.content.text), 'html.parser')
         info = BeautifulSoup(page.text, 'html.parser')
         try:
             for stats in info.find('div', {'class': 'p1'}).find_all("p"):
@@ -111,65 +95,47 @@ class FootballerScraper:
                 self.data_list.append(i.text)
             return self.dictifier(self.data_list)
 
-    def table_parser(self, div_id):
-        info = BeautifulSoup(self.content, 'html.parser')
+    def table_parser(self, div_id, allc=False):
+        info = BeautifulSoup(self.content.text, 'html.parser')
+        date_id = "year_id"
+        if allc == True:
+            date_id = "date"
+            info = BeautifulSoup(requests.get(f'http://fbref.com{info.find("div", class_="filter").find("a", href=True).get("href")}' ,headers=self.headers, proxies = self.proxy_to_use).text, "html.parser")
         table_div = info.find("div", {"id": div_id})
-        date_elements = [element.text for element in table_div.find_all("th", {"class" : "left", "data-stat" : "year_id"})]
+        date_elements = [element.text for element in table_div.find_all("th", {"class" : "left", "data-stat" : date_id})]
         th_elements = [element.text for element in table_div.find_all("th", class_="poptip")]
         td_elements = [element.text for element in table_div.find_all("td")]
         th_elements.pop(0)
         chunked = [td_elements[i:i + len(th_elements)] for i in range(0, len(td_elements), len(th_elements))]
         result = {date: dict(zip(th_elements, data)) for date, data in zip(date_elements, chunked)}    
-        return json.dumps(result)
+        return result
 
     def parse_all(self):
-        print(self.proxy_to_use)
-        info = BeautifulSoup((self.content), 'html.parser')
-        #print(requests.get(f"http://api.ipify.org/", headers=self.headers, proxies={'http': 'http://customer-Football:FootballPassword_123@pr.oxylabs.io:7777'}).text)
+        info = BeautifulSoup((self.content.text), 'html.parser')
         for t in info.find_all(class_="table_container tabbed current"):
             self.data_list.append(self.table_parser(t.get("id")))
         return self.data_list
 
+    def parse_little(self):
+        kombali = []
+        info = BeautifulSoup((self.content.text), 'html.parser')
+        kombali.append(self.table_parser("div_stats_standard_dom_lg"))
+        kombali.append(self.table_parser("div_last_5_matchlogs", True))
+        return kombali
+
     def names(self):
         names = []
-        content = requests.get(f"https://fbref.com/en/search/search.fcgi?&search={self.user_input}", headers=self.headers, proxies=self.proxy_to_use)
-        info = BeautifulSoup(content.text, 'html.parser')
+        info = BeautifulSoup((self.content.text), 'html.parser')
         for k in info.find("div", {"id" : "inpage_nav"}).find_all("li"):
             names.append(k.text)
         del names[-2:]
-        return json.dumps(dict(zip(names, self.parse_all())))
+        return json.dumps(dict(zip(names, self.parse_little())))
         names = []
-        self.refresh_proxy()
-
-    def whoscored_player(self):
-        counter = 0
-        url = f"https://www.whoscored.com/Search/?t={self.user_input}"
-        info = BeautifulSoup(self.request_2(url).text, 'html.parser')
-        rows = BeautifulSoup(self.request_2(self.target + info.find("a", class_="iconize iconize-icon-left").get('href')).text, 'html.parser')
-        for elements in rows.find_all("div", class_="divtable-row row12-lg row12-m row12-s row12-xs alt"):
-            div_texts = [div.text for div in elements]
-            counter += 1 
-            self.data_dict[counter] = list(set([s.replace("\n", "").replace("\r", "") for s in div_texts]))
-        print(self.data_dict)
-        #print(self.data_list)
-
-
-        
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
     user_input = "cristiano+ronaldo"
     scraper = FootballerScraper(user_input)
-    #print(scraper.search())
-    #print(scraper.search())
-    #print(scraper.rewards())
-    #print(scraper.statistics()
-    print(scraper.parse_all())
-    print(scraper.whoscored_player())
+    print(scraper.rewards())
+    print(scraper.search())
+    print(scraper.names())

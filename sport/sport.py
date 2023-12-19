@@ -2,29 +2,39 @@ import requests
 from bs4 import BeautifulSoup
 import json
 from fake_useragent import UserAgent
+import time
 
 
 class FootballerScraper:
     def __init__(self, user_input):
         self.user_input = user_input
-        self.headers = {
-            'User-Agent': UserAgent().random
-        }
-        self.url = f'https://www.transfermarkt.com/schnellsuche/ergebnis/schnellsuche?query={user_input}'
-        self.data_list = []
         self.proxy_list = []
         self.proxy_to_use = {"http": "http://customer-Football:FootballPassword_123@pr.oxylabs.io:7777"}
+        self.headers = {
+            'User-Agent': UserAgent().random,
+            "Accept-Language": "en-US,en;q=0.5",
+            "Referer": "https://www.google.com/",
+            "DNT": "1",
+            "X-Forwarded-For" : "127.0.0.1",
+            "Cookie" : "aaaaaaaaaaaaa"
+
+
+        }
+        self.content = requests.get(f"http://fbref.com/en/search/search.fcgi?random=0&search={self.user_input}", headers=self.headers, proxies = self.proxy_to_use).text
+        self.url = f'https://www.transfermarkt.com/schnellsuche/ergebnis/schnellsuche?query={user_input}'
+        self.target = "https://www.whoscored.com/"
+        self.data_list = []
+        self.data_dict = {}
+
         self.auth = requests.auth.HTTPProxyAuth("customer-Football", "FootballPassword_123")
-        print(self.proxy_to_use)
-        # response = requests.get("https://proxy.webshare.io/api/v2/proxy/list/?mode=direct&page=1&page_size=50", headers={ "Authorization": "Token 81sfxwvvbh2w5hyrd3rsailx3c6g5waqkj1va0wc"})
-        # for i in json.loads(response.text)["results"]:
-        #   self.proxy_list.append(str(i["username"]) + ":" + str(i["password"] + "@"  + str(i["proxy_address"]) + ":"  + str(i["port"])))
-        # self.proxy_to_use = {'http': None}
-        # for proxy_string in self.proxy_list:
-        #     ip, port =  ":".join([proxy_string.split(":")[0], proxy_string.split(":")[1]]), proxy_string.split(":")[-1]
-        #     self.proxy_to_use['http'] = f'http://{ip}:{port}'
-        # print(self.proxy_to_use)
-        #         #print(f"Invalid proxy string: {proxy_string}")
+
+    def request_2(self, url):
+        try:
+            return requests.get(url, headers=self.headers)
+        except AttributeError:
+            return requests.get(url, headers=self.headers, proxies=self.proxy_to_use)
+
+
 
 
     def dictifier(self, data):
@@ -102,9 +112,7 @@ class FootballerScraper:
             return self.dictifier(self.data_list)
 
     def table_parser(self, div_id):
-        url = f"https://fbref.com/en/search/search.fcgi?&search={self.user_input}"
-        page = requests.get(url, headers=self.headers, proxies=self.proxy_to_use)
-        info = BeautifulSoup(page.text, 'html.parser')
+        info = BeautifulSoup(self.content, 'html.parser')
         table_div = info.find("div", {"id": div_id})
         date_elements = [element.text for element in table_div.find_all("th", {"class" : "left", "data-stat" : "year_id"})]
         th_elements = [element.text for element in table_div.find_all("th", class_="poptip")]
@@ -115,10 +123,10 @@ class FootballerScraper:
         return json.dumps(result)
 
     def parse_all(self):
-        info = BeautifulSoup(requests.get(f"http://fbref.com/en/search/search.fcgi?&search={self.user_input}", headers=self.headers, proxies=self.proxy_to_use, auth=self.auth).text, 'html.parser')
-        print(info)
+        print(self.proxy_to_use)
+        info = BeautifulSoup((self.content), 'html.parser')
+        #print(requests.get(f"http://api.ipify.org/", headers=self.headers, proxies={'http': 'http://customer-Football:FootballPassword_123@pr.oxylabs.io:7777'}).text)
         for t in info.find_all(class_="table_container tabbed current"):
-            print(t)
             self.data_list.append(self.table_parser(t.get("id")))
         return self.data_list
 
@@ -133,6 +141,27 @@ class FootballerScraper:
         names = []
         self.refresh_proxy()
 
+    def whoscored_player(self):
+        counter = 0
+        url = f"https://www.whoscored.com/Search/?t={self.user_input}"
+        info = BeautifulSoup(self.request_2(url).text, 'html.parser')
+        rows = BeautifulSoup(self.request_2(self.target + info.find("a", class_="iconize iconize-icon-left").get('href')).text, 'html.parser')
+        for elements in rows.find_all("div", class_="divtable-row row12-lg row12-m row12-s row12-xs alt"):
+            div_texts = [div.text for div in elements]
+            counter += 1 
+            self.data_dict[counter] = list(set([s.replace("\n", "").replace("\r", "") for s in div_texts]))
+        print(self.data_dict)
+        #print(self.data_list)
+
+
+        
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
@@ -142,5 +171,5 @@ if __name__ == "__main__":
     #print(scraper.search())
     #print(scraper.rewards())
     #print(scraper.statistics()
-    #print(scraper.search())
     print(scraper.parse_all())
+    print(scraper.whoscored_player())

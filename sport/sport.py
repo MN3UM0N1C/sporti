@@ -17,7 +17,7 @@ class FootballerScraper:
             "X-Forwarded-For" : "127.0.0.1",
             "Cookie" : "aaaaaaaaaaaaa"
         }
-        self.content = requests.get(f"http://fbref.com/en/search/search.fcgi?random=0&search={self.user_input}", headers=self.headers, proxies = self.proxy_to_use)
+        self.content = requests.get(f"http://fbref.com/en/search/search.fcgi?random=0&search={self.user_input}&amp;i=clubs", headers=self.headers, proxies = self.proxy_to_use)
         self.url = f'https://www.transfermarkt.com/schnellsuche/ergebnis/schnellsuche?query={user_input}'
         self.data_list = []
         self.data_dict = {}
@@ -116,7 +116,7 @@ class FootballerScraper:
     def team_table_parser(self, div_id, allc=False):
         info = BeautifulSoup(self.content.text, 'html.parser')
         if allc == True:
-            page = requests.get(f'http://fbref.com{teams_page.find("div", class_="filter").find("a", href=True).get("href")}' ,headers=self.headers, proxies = self.proxy_to_use).text.replace("<!--", " ")
+            page = requests.get(f'http://fbref.com/{teams_page.find("div", class_="filter").find("a", href=True).get("href")}' ,headers=self.headers, proxies = self.proxy_to_use).text.replace("<!--", " ")
             table_div = BeautifulSoup(page, "html.parser").find("div", {"id": div_id})
         else:
             table_div = teams_page.find("div", {"id": div_id})
@@ -127,11 +127,12 @@ class FootballerScraper:
         chunked = [td_elements[i:i + len(th_elements)] for i in range(0, len(td_elements), len(th_elements))]
         result = {date: dict(zip(th_elements, data)) for date, data in zip(date_elements, chunked)} 
         return result
+
     def team_info(self):
         self.data_list = []
         team_dict = {}
         info = info = BeautifulSoup(self.content.text, 'html.parser')
-        teams_page = BeautifulSoup(requests.get(f'http://fbref.com{info.find("div", class_="search-item-name").find("a", href=True).get("href")}' ,headers=self.headers, proxies = self.proxy_to_use).text, "lxml")
+        teams_page = BeautifulSoup(requests.get(f'http://fbref.com/{info.find("div", class_="search-item-name").find("a", href=True).get("href")}' ,headers=self.headers, proxies = self.proxy_to_use).text, "lxml")
         for uk in teams_page.find("div", {"data-template" : "Partials/Teams/Summary"}).get_text().split("\n"):
             self.data_list.append(uk)
         team_dict["Team Info"] = self.data_list
@@ -169,7 +170,8 @@ class FootballerScraper:
         info = BeautifulSoup(self.content.text, 'html.parser')
         names = []
         if teams:
-            teams_page = BeautifulSoup(requests.get(f'http://fbref.com{info.find("div", class_="search-item-name").find("a", href=True).get("href")}' ,headers=self.headers, proxies = self.proxy_to_use).text, "html.parser")
+            teams_page = BeautifulSoup(requests.get(f'http://fbref.com{info.find("div", id="clubs").find("div", class_="search-item-name").find("a", href=True).get("href")}' ,headers=self.headers, proxies = self.proxy_to_use).text.replace("<!--", " "), "html.parser")
+            print(requests.get(f'http://fbref.com{info.find("div", class_="search-item-name").find("a", href=True).get("href")}' ,headers=self.headers, proxies = self.proxy_to_use).url)
             names_list = teams_page.find('div', id="inpage_nav").find_all("li")
         else:
             names_list = info.find('div', id="inpage_nav").find_all("li")
@@ -183,7 +185,7 @@ class FootballerScraper:
 
 
 if __name__ == "__main__":
-    user_input = "real madrid cf"
+    user_input = "napoli"
     scraper = FootballerScraper(user_input)
     print(scraper.names(True, True))
     #print(scraper.team_info())

@@ -1,5 +1,5 @@
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
 import json
 from fake_useragent import UserAgent
 import time
@@ -7,7 +7,7 @@ import time
 
 class FootballerScraper:
     def __init__(self, user_input):
-        self.user_input = user_input
+        self.user_input = user_input.replace(" ", "+")
         self.proxy_to_use = {"http": "http://customer-Football:FootballPassword_123@pr.oxylabs.io:7777"}
         self.headers = {
             'User-Agent': UserAgent().random,
@@ -102,7 +102,10 @@ class FootballerScraper:
             date_id = "date"
             info = BeautifulSoup(requests.get(f'http://fbref.com{info.find("div", class_="filter").find("a", href=True).get("href")}' ,headers=self.headers, proxies = self.proxy_to_use).text, "html.parser")
         table_div = info.find("div", {"id": div_id})
-        date_elements = [element.text for element in table_div.find_all("th", {"class" : "left", "data-stat" : date_id})]
+        try:
+            date_elements = [element.text for element in table_div.find_all("th", {"class" : "left", "data-stat" : date_id})]
+        except AttributeError:
+            date_elements = []
         th_elements = [element.text for element in table_div.find_all("th", class_="poptip")]
         td_elements = [element.text for element in table_div.find_all("td")]
         th_elements.pop(0)
@@ -110,32 +113,77 @@ class FootballerScraper:
         result = {date: dict(zip(th_elements, data)) for date, data in zip(date_elements, chunked)}    
         return result
 
-    def parse_all(self):
-        info = BeautifulSoup((self.content.text), 'html.parser')
-        for t in info.find_all(class_="table_container tabbed current"):
-            self.data_list.append(self.table_parser(t.get("id")))
-        return self.data_list
+    def team_table_parser(self, div_id, allc=False):
+        info = BeautifulSoup(self.content.text, 'html.parser')
+        if allc == True:
+            page = requests.get(f'http://fbref.com{teams_page.find("div", class_="filter").find("a", href=True).get("href")}' ,headers=self.headers, proxies = self.proxy_to_use).text.replace("<!--", " ")
+            table_div = BeautifulSoup(page, "html.parser").find("div", {"id": div_id})
+        else:
+            table_div = teams_page.find("div", {"id": div_id})
+        date_elements = [element.text for element in table_div.find_all("th", {"scope" : "row"})]
+        th_elements = [element.text for element in table_div.find_all("th", {"class" : "poptip"})]
+        td_elements = [element.text for element in table_div.find_all("td")]
+        th_elements.pop(0)
+        chunked = [td_elements[i:i + len(th_elements)] for i in range(0, len(td_elements), len(th_elements))]
+        result = {date: dict(zip(th_elements, data)) for date, data in zip(date_elements, chunked)} 
+        return result
+    def team_info(self):
+        self.data_list = []
+        team_dict = {}
+        info = info = BeautifulSoup(self.content.text, 'html.parser')
+        teams_page = BeautifulSoup(requests.get(f'http://fbref.com{info.find("div", class_="search-item-name").find("a", href=True).get("href")}' ,headers=self.headers, proxies = self.proxy_to_use).text, "lxml")
+        for uk in teams_page.find("div", {"data-template" : "Partials/Teams/Summary"}).get_text().split("\n"):
+            self.data_list.append(uk)
+        team_dict["Team Info"] = self.data_list
+        return json.dumps(team_dict)
+        self.data_list = []
 
-    def parse_little(self):
-        kombali = []
+
+
+    def parse_all(self, teams=False):
+        if self.data_list != []:
+            self.data_list = []
         info = BeautifulSoup((self.content.text), 'html.parser')
-        kombali.append(self.table_parser("div_stats_standard_dom_lg"))
-        kombali.append(self.table_parser("div_last_5_matchlogs", True))
+        if teams == True:
+            for t in teams_page.find_all(class_="table_container tabbed current"):
+                self.data_list.append(self.team_table_parser(t.get("id")))
+            return self.data_list
+        else:
+            for t in info.find_all(class_="table_container tabbed current"):
+                self.data_list.append(self.table_parser(t.get("id")))         
+            return self.data_list
+
+
+    def parse_little(self, teams=False):
+        kombali = []
+        if teams:
+            kombali.append(self.team_table_parser("div_matchlogs_for"))
+            kombali.append(self.team_table_parser("all_stats_player_summary", True))
+        else:
+            kombali.append(self.table_parser("div_stats_standard_dom_lg"))
+            kombali.append(self.table_parser("div_last_5_matchlogs", True))
         return kombali
 
-    def names(self):
+    def names(self, teams=False, not_all=False):
+        global teams_page
+        info = BeautifulSoup(self.content.text, 'html.parser')
         names = []
-        info = BeautifulSoup((self.content.text), 'html.parser')
-        for k in info.find("div", {"id" : "inpage_nav"}).find_all("li"):
+        if teams:
+            teams_page = BeautifulSoup(requests.get(f'http://fbref.com{info.find("div", class_="search-item-name").find("a", href=True).get("href")}' ,headers=self.headers, proxies = self.proxy_to_use).text, "html.parser")
+            names_list = teams_page.find('div', id="inpage_nav").find_all("li")
+        else:
+            names_list = info.find('div', id="inpage_nav").find_all("li")
+        for k in names_list:
             names.append(k.text)
         del names[-2:]
-        return json.dumps(dict(zip(names, self.parse_little())))
+        if not_all:
+            return json.dumps(dict(zip(names, self.parse_little(teams))))
+        return json.dumps(dict(zip(names, self.parse_all(teams))))
         names = []
 
 
 if __name__ == "__main__":
-    user_input = "cristiano+ronaldo"
+    user_input = "real madrid cf"
     scraper = FootballerScraper(user_input)
-    print(scraper.rewards())
-    print(scraper.search())
-    print(scraper.names())
+    print(scraper.names(True, True))
+    #print(scraper.team_info())

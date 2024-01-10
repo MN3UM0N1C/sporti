@@ -83,11 +83,22 @@ class FootballerScraper:
 
     def statistics(self):
         try:
-            statistics = {"MP": "", "min": "", "goals": "", "assists": ""}
+            listi = {}
+            statistics = {}#{"MP": "", "min": "", "goals": "", "assists": ""}
             nums = []
-            classname = "tm-player-performance__stats-list-item-value svelte-xwa5ea"
+            classname = "stats_pullout"#"tm-player-performance__stats-list-item-value svelte-xwa5ea"
             info = BeautifulSoup(self.content.text, 'html.parser')
-            for stats in info.find('div', {'class': 'p1'}).find_all("p"):
+            for strongs in info.find('div', class_="stats_pullout").find_all("strong"):
+                if " " in strongs.get_text():
+                    statistics[strongs.get_text()] = ""
+                else:
+                    listi[strongs.get_text()] = ""
+                for tra in statistics:  
+                    statistics[tra] = listi
+            print(statistics)
+
+
+            for stats in info.find('div', class_="stats_pullout").find_all("p"):
                 nums.append(stats.get_text())
             for key in statistics:
                 statistics[key] = nums.pop(0)
@@ -142,6 +153,8 @@ class FootballerScraper:
                     requests.get(f'http://fbref.com{href_value}', headers=self.headers,
                                  proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser").find(
                     "div", {"id": div_id})
+                    if table_div == None:
+                        return self.team_table_parser(div_id)
             else:
                 table_div = info.find("div", {"id": div_id})
             date_elements = [element.text for element in table_div.find_all("th", {"scope": "row"})]
@@ -155,20 +168,20 @@ class FootballerScraper:
             return f"Error in team_table_parser(): {str(e)}"
 
     def team_info(self):
-        try:
-            self.data_list = []
-            team_dict = {}
-            info = info = BeautifulSoup(self.content.text, 'html.parser')
-            teams_page = BeautifulSoup(
-                requests.get(
-                    f'http://fbref.com/{info.find("div", class_="search-item-name").find("a", href=True).get("href")}',
-                    headers=self.headers, proxies=self.proxy_to_use).text, "lxml")
-            for uk in teams_page.find("div", {"data-template": "Partials/Teams/Summary"}).get_text().split("\n"):
-                self.data_list.append(uk)
-            team_dict["Team Info"] = self.data_list
-            return json.dumps(team_dict)
-        except Exception as e:
-            return f"Error in team_info(): {str(e)}"
+        #try:
+        self.data_list = []
+        team_dict = {}
+        info = info = BeautifulSoup(self.content.text, 'html.parser')
+        teams_page = BeautifulSoup(
+                    requests.get(
+                        f'http://fbref.com{info.find("div", id="clubs").find("div", class_="search-item-name").find("a", href=True).get("href")}',
+                        headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
+        for uk in teams_page.find("div", {"data-template": "Partials/Teams/Summary"}).get_text().split("\n"):
+            self.data_list.append(uk)
+        team_dict["Team Info"] = self.data_list
+        return json.dumps(team_dict)
+    #except Exception as e:
+        return f"Error in team_info(): {str(e)}"
 
     def parse_all(self, teams=False):
         try:
@@ -205,7 +218,7 @@ class FootballerScraper:
         try:
             global teams_page
             info = BeautifulSoup(self.content.text, 'html.parser')
-            print(info)
+            #print(info)
             names = []
             if teams:
                 self.global_page = BeautifulSoup(
@@ -226,7 +239,8 @@ class FootballerScraper:
                     names_list = info.find('div', id="inpage_nav").find_all("li")
                     broken_list.append(self.user_input)
             for k in names_list:
-                names.append(k.text)
+                #print(names)
+                names.append(k.text.replace("Scores & Fixtures", "Player Summary").replace("Standard Stats", "Fixtures & Results"))
             del names[-2:]
             if not_all:
                 return json.dumps(dict(zip(names, self.parse_little(teams))))
@@ -234,42 +248,33 @@ class FootballerScraper:
         except Exception as e:
             return [f"Error in names(): {str(e)}"]
 
-# List of soccer teams and players
-soccer_teams = [
-    "Real Madrid",
-    "Barcelona",
-    "Manchester United",
-    "Liverpool",
-    "Bayern Munich",
-    # ... (add more teams as needed)
-]
+# Football Players List
+soccer_players = ["Lionel Messi", "Cristiano Ronaldo", "Neymar Jr.", "Kylian Mbappé", "Robert Lewandowski"]
 
-soccer_players = [
-    'Cristiano Ronaldo',
-    'Lionel Messi',
-    'Neymar Jr.',
-    # ... (add more players as needed)
-]
+# Football Teams List
+soccer_teams = [""]
+
 
 if __name__ == "__main__":
     for hu in soccer_teams:
         retry_count = 0
         while retry_count < 4:
-            try:
-                scraper = FootballerScraper(hu)
-                results = scraper.names(True, True)
-                if isinstance(results, list):
-                    retry_count += 1
-                    print(f"Retrying {hu} - Retry count: {retry_count}")
-                    time.sleep(10)
-                    continue
-                else:
-                    print(f"{results} \n\n{hu}")
-            except Exception as e:
+            #try:
+            scraper = FootballerScraper(hu)
+            results = scraper.names(True,True)
+            if isinstance(results, list):
                 retry_count += 1
-                print(f"Retrying {hu} - Retry count: {retry_count}\n{e}")
+                print(f"Retrying {hu} - Retry count: {retry_count}")
                 time.sleep(10)
                 continue
+            else:
+                print(f"{results} \n\n\n\n{hu}")
+        #except Exception as e:
+            retry_count += 1
+            print(f"Retrying {hu} - Retry count: {retry_count}\n")
+            time.sleep(10)
+            continue
             break
         else:
             print(f"Not Found")
+

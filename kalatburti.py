@@ -29,6 +29,7 @@ class FootballerScraper:
         self.url = f'https://www.transfermarkt.com/schnellsuche/ergebnis/schnellsuche?query={user_input}'
         self.data_list = []
         self.global_page = None
+        self.international_team = False
 
     def dictifier(self, data):
         player_info = {}
@@ -77,32 +78,6 @@ class FootballerScraper:
         else:
             return f"Request failed with status code: {response.status_code}"
 
-    # def statistics(self):
-    #     listi = {}
-    #     statistics = {}#{"G": "", "PTS": "", "TRB": "", "AST": "", "FG" : "" , "FG3" : "" , "FT" : "", "EFG" : "", "PER": "", "WS" : ""}
-    #     nums = []
-    #     classname = "stats_pullout"  # "tm-player-performance__stats-list-item-value svelte-xwa5ea"
-    #     info = BeautifulSoup(self.content.text, 'html.parser') 
-
-    #     self.uri = info.find("div", id="players").find("div", class_="search-item-name").find("a", href=True).get("href")
-    #     self.global_page = BeautifulSoup(requests.get(f'http://www.basketball-reference.com{self.uri}',headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
-    #     eleements_list = self.global_page.find('div', class_="stats_pullout")
-    #     for strongs in eleements_list.find_all("strong"):
-    #         print(strongs)
-    #         if " " in strongs.get_text():
-    #             statistics[strongs.get_text()] = ""
-    #         else:
-    #             listi[strongs.get_text()] = ""
-    #         for tra in statistics:
-    #             statistics[tra] = listi
-
-    #     for stats in eleements_list.find_all("p"):
-    #         print(stats)
-    #         nums.append(stats.get_text())
-    #     for key in statistics:
-    #         print(key)
-    #         statistics[key] = nums.pop(0)
-    #     return json.dumps(statistics)
     def dict_parser(self, div):
         page_content = requests.get("http://www.basketball-reference.com", headers=self.headers, proxies=self.proxy_to_use).text
         main_page = BeautifulSoup(page_content, "html.parser").find("div", {"id": div}).find_all("a")
@@ -154,15 +129,13 @@ class FootballerScraper:
         return result
 
     def team_table_parser(self, div_id, allc=False):
-        info = self.global_page
         if allc:
-            href_value = info.find_all("div", class_="filter")[0].find("a", {"href": True}).get("href")
-            table_div = BeautifulSoup(
-                requests.get(f'http://www.basketball-reference.com{href_value}', headers=self.headers,
-                             proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser").find(
-                "div", {"id": div_id})
+            if self.international_team:
+                table_div = self.global_page.find("div", {"id": div_id})
+            else:
+                table_div = self.global_page.find("div", {"id" :div_id})
         else:
-            table_div = info.find("div", {"id": div_id})
+            table_div = self.global_page.find("div", {"id": div_id})
         date_elements = [element.text for element in table_div.find_all("th", {"scope": "row"})]
         th_elements = [element.text for element in table_div.find_all("th", {"class": "poptip"})]
         td_elements = [element.text for element in table_div.find_all("td")]
@@ -225,37 +198,97 @@ class FootballerScraper:
         kombali = []
         check = None
         if teams:
-            #print(self.global_page.find_all("div", id=True))
+            if self.international_team:
+                self.global_page = BeautifulSoup(requests.get(f'{self.international_url.replace("teams", "schedules")}.html', headers=self.headers, proxies=self.proxy_to_use).text, "html.parser")
+                for els in self.global_page.find_all("div", id=True):
+                    if "div_" in els.get("id"):
+                        check = els.get("id")
+                        kombali.append(self.team_table_parser(check))
+            else:
+                self.global_page = BeautifulSoup(requests.get(f"http://www.basketball-reference.com{self.uri}{datetime.now().year}_games.html", headers=self.headers, proxies=self.proxy_to_use).text, "html.parser")
+                for els in self.global_page.find_all("div", id="div_games"):
+                    check = els.get("id")
+                    kombali.append(self.team_table_parser(check))
+
             for els in self.global_page.find_all("div", id=True):
                 if "per_game" in els.get("id") or ("ELG" in els.get("id") or "ECP" in els.get("id")):
                     check = els.get("id")
-            #print(check)
             kombali.append(self.team_table_parser(check))
         else:
             kombali.append(self.table_parser("div_last5"))
             #kombali.append(self.table_parser("div_last5"))
         return kombali
 
+    def find_closest_match(self, user_input, output):
+        normalized_input = user_input.replace('+', ' ').lower()
+
+        closest_match = None
+        min_distance = float('inf')
+
+        # Iterate through the output dictionary
+        for key, value in output.items():
+            # Normalize the value
+            normalized_value = value.replace('+', ' ').lower()
+
+            # Check for exact match
+            if normalized_input == normalized_value:
+                return key
+
+            # Calculate the Levenshtein distance for partial matches
+            distance = self.levenshtein_distance(normalized_input, normalized_value)
+            if distance < min_distance:
+                min_distance = distance
+                closest_match = key
+
+        return closest_match
+
+    def levenshtein_distance(self, s1, s2):
+        if len(s1) < len(s2):
+            return self.levenshtein_distance(s2, s1)
+
+        # Initialize matrix of zeros
+        distance_matrix = [[0 for _ in range(len(s2) + 1)] for _ in range(len(s1) + 1)]
+
+        # Populate the matrix
+        for i in range(1, len(s1) + 1):
+            distance_matrix[i][0] = i
+        for j in range(1, len(s2) + 1):
+            distance_matrix[0][j] = j
+
+        for i in range(1, len(s1) + 1):
+            for j in range(1, len(s2) + 1):
+                cost = 0 if s1[i - 1] == s2[j - 1] else 1
+                distance_matrix[i][j] = min(distance_matrix[i - 1][j] + 1,
+                                            distance_matrix[i][j - 1] + 1,
+                                            distance_matrix[i - 1][j - 1] + cost)
+
+        return distance_matrix[len(s1)][len(s2)]
+
     def names(self, teams=False, not_all=False):
         global teams_page
         info = BeautifulSoup(self.content.text, 'html.parser')
         names = []
         output = self.dict_parser("div_elg_standings")
-        names = ["Per game"]
+        
+        names = ["Per game", "Regular season"]
         profile = ""
         if teams:
-            if self.user_input in output.values():
+            # Call find_closest_match with only user_input and output as arguments
+            closest_match_key = self.find_closest_match(self.user_input, output)
+            if closest_match_key:
+                self.international_url = f"http://www.basketball-reference.com/international/teams/{closest_match_key}/{datetime.now().year}"
                 self.global_page = BeautifulSoup(
-                requests.get(f"http://www.basketball-reference.com/international/teams/{next((key for key, value in output.items() if value == self.user_input), None)}/{datetime.now().year}.html",
+                requests.get(self.international_url,
                     headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
-                profile = self.team_info(True)
+                profile = ""#self.team_info(True)
                 if self.global_page == None:
-                    self.global_page = BeautifulSoup(requests.get(f"http://www.basketball-reference.com/international/teams/{next((key for key, value in output.items() if value == self.user_input), None)}/2024.html",headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
-                profile = self.team_info(True)    
+                    self.global_page = BeautifulSoup(requests.get(f"http://www.basketball-reference.com/international/teams/{closest_match_key}/2024.html", headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
+                profile = ""#self.team_info(True) 
+                self.international_team = True   
             else:    
                 self.uri = info.find("div", id="teams").find("div", class_="search-item-name").find("a", href=True).get("href")
                 self.global_page = BeautifulSoup(
-                    requests.get(f"http://www.basketball-reference.com{self.uri}{datetime.now().year}.html", #f'http://www.basketball-reference.com{self.uri}{datetime.now().year}.html',
+                    requests.get(f"http://www.basketball-reference.com{self.uri}{datetime.now().year}.html",
                         headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
         else:
             if info.find('div', id="LAL_sh") is None:
@@ -277,14 +310,14 @@ class FootballerScraper:
         return json.dumps(dict(zip(names, self.parse_all(teams))))
 
 basketball_teams = [
-    # NBA Teams
+    #NBA Teams
     "Boston Celtics",
     "Golden State Warriors",
     "Milwaukee Bucks",
     "Los Angeles Clippers",
     "Toronto Raptors",
 
-    # EuroLeague Teams (current season)
+    #EuroLeague Teams (current season)
     "Anadolu Efes Istanbul",
     "Olympiacos Piraeus",
     "ASVEL Lyon-Villeurbanne",
@@ -298,6 +331,7 @@ basketball_teams = [
     "Galatasaray Nef",
     "Unicaja Malaga",
 ]
+
 
 
 if __name__ == "__main__":

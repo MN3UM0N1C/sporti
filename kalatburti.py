@@ -4,11 +4,14 @@ import json
 from fake_useragent import UserAgent
 import time
 from unidecode import unidecode
+from datetime import datetime
+
 
 broken_list = []
 
 class FootballerScraper:
     def __init__(self, user_input):
+        self.leagues = {}
         # Clean and prepare the user input for search
         self.user_input = ''.join(char for char in unidecode(user_input.replace("-", " ")) if char.isalpha() or char.isspace()).replace(" ", "+")
         self.proxy_to_use = {"http": "http://customer-Football:FootballPassword_123@pr.oxylabs.io:7777"}
@@ -76,11 +79,16 @@ class FootballerScraper:
 
     # def statistics(self):
     #     listi = {}
-    #     statistics = {}  # {"MP": "", "min": "", "goals": "", "assists": ""}
+    #     statistics = {}#{"G": "", "PTS": "", "TRB": "", "AST": "", "FG" : "" , "FG3" : "" , "FT" : "", "EFG" : "", "PER": "", "WS" : ""}
     #     nums = []
     #     classname = "stats_pullout"  # "tm-player-performance__stats-list-item-value svelte-xwa5ea"
-    #     info = BeautifulSoup(self.content.text, 'html.parser')
-    #     for strongs in info.find('div', class_="stats_pullout").find_all("strong"):
+    #     info = BeautifulSoup(self.content.text, 'html.parser') 
+
+    #     self.uri = info.find("div", id="players").find("div", class_="search-item-name").find("a", href=True).get("href")
+    #     self.global_page = BeautifulSoup(requests.get(f'http://www.basketball-reference.com{self.uri}',headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
+    #     eleements_list = self.global_page.find('div', class_="stats_pullout")
+    #     for strongs in eleements_list.find_all("strong"):
+    #         print(strongs)
     #         if " " in strongs.get_text():
     #             statistics[strongs.get_text()] = ""
     #         else:
@@ -88,11 +96,22 @@ class FootballerScraper:
     #         for tra in statistics:
     #             statistics[tra] = listi
 
-    #     for stats in info.find('div', class_="stats_pullout").find_all("p"):
+    #     for stats in eleements_list.find_all("p"):
+    #         print(stats)
     #         nums.append(stats.get_text())
     #     for key in statistics:
+    #         print(key)
     #         statistics[key] = nums.pop(0)
     #     return json.dumps(statistics)
+    def dict_parser(self, div):
+        page_content = requests.get("http://www.basketball-reference.com", headers=self.headers, proxies=self.proxy_to_use).text
+        main_page = BeautifulSoup(page_content, "html.parser").find("div", {"id": div}).find_all("a")
+        for i in main_page:
+            self.leagues[i.get("href").split("/")[3]] = ''.join(char for char in unidecode(i.get_text().replace("-", " ")) if char.isalpha() or char.isspace()).replace(" ", "+")
+        if div == "div_ecp_standings":
+            return self.leagues 
+        else:          
+            return self.dict_parser("div_ecp_standings")
 
     def table_parser(self, div_id, allc=False):
         href_value = None
@@ -109,6 +128,8 @@ class FootballerScraper:
                                                        proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
             else:
                 table_div = info.find("div", {"id": div_id})
+                if table_div == None:
+                    table_div = info.find("div", {"id":"switcher_per_game-playoffs_per_game"})
         else:
             if allc:
                 for links in info.find_all("a", {"href": True}):
@@ -119,8 +140,12 @@ class FootballerScraper:
                                                        proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
             else:
                 table_div = info.find("div", {"id": div_id})
+                if table_div == None:
+                    table_div = info.find("div", class_="switcher_content")
         date_elements = [element.text for element in
                          table_div.find_all("th", {"class": "left", "data-stat": date_id})]
+        if date_elements == []:
+            date_elements = [element.text for element in table_div.find_all("th", {"class": "left", "data-stat": "season"})]
         th_elements = [element.text for element in table_div.find_all("th", class_="poptip")]
         td_elements = [element.text for element in table_div.find_all("td")]
         th_elements.pop(0)
@@ -129,7 +154,6 @@ class FootballerScraper:
         return result
 
     def team_table_parser(self, div_id, allc=False):
-        info = BeautifulSoup(self.content.text, 'html.parser')
         info = self.global_page
         if allc:
             href_value = info.find_all("div", class_="filter")[0].find("a", {"href": True}).get("href")
@@ -147,18 +171,40 @@ class FootballerScraper:
         result = {date: dict(zip(th_elements, data)) for date, data in zip(date_elements, chunked)}
         return result
 
-    def team_info(self):
+    def team_info(self, international=False):
         self.data_list = []
         team_dict = {}
-        info = info = BeautifulSoup(self.content.text, 'html.parser')
+        second= []
+        info = BeautifulSoup(self.content.text, 'html.parser')
+        if international:
+            teams_page = self.global_page
+            return ''.join(teams_page.find("div", {"data-template" :"Partials/Teams/Summary"}).find_all(text=True, recursive=True)).replace("\n", "")
+        else:
+            teams_page = BeautifulSoup(
+                requests.get(
+                    f'http://www.basketball-reference.com{info.find("div", id="teams").find("div", class_="search-item-name").find("a", href=True).get("href")}',
+                    headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
+        for uk in teams_page.find("div", {"id": "meta"}).find("div", class_=False).find_all("strong"):
+            self.data_list.append(uk.get_text().replace("\n", "").replace(":", ""))
+        for tk in teams_page.find("div", {"id": "meta"}).find("div", class_=False).find_all("p"):
+            second.append(''.join(tk.find_all(text=True, recursive=False)).replace("\n", ""))
+       #print(self.data_list, second)
+        return json.dumps(dict(zip(self.data_list, second)))
+
+    def player_info(self):
+        self.data_list = []
+        team_dict = {}
+        second= []
+        info = BeautifulSoup(self.content.text, 'html.parser')
         teams_page = BeautifulSoup(
             requests.get(
-                f'http://www.basketball-reference.com{info.find("div", id="clubs").find("div", class_="search-item-name").find("a", href=True).get("href")}',
+                f'http://www.basketball-reference.com{info.find("div", id="players").find("div", class_="search-item-name").find("a", href=True).get("href")}',
                 headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
-        for uk in teams_page.find("div", {"data-template": "Partials/Teams/Summary"}).get_text().split("\n"):
-            self.data_list.append(uk)
-        team_dict["Team Info"] = self.data_list
-        return json.dumps(team_dict)
+        for uk in teams_page.find("div", {"id": "meta"}).find("div", class_=False).find_all("strong"):
+            self.data_list.append(uk.get_text().replace("\n", "").replace(":", ""))
+        for tk in teams_page.find("div", {"id": "meta"}).find("div", class_=False).find_all("p"):
+            second.append(''.join(tk.find_all(text=True, recursive=False)).replace("\n", ""))
+        return json.dumps(dict(zip(self.data_list, second)))
 
     def parse_all(self, teams=False):
         info = BeautifulSoup((self.content.text), 'html.parser')
@@ -177,9 +223,14 @@ class FootballerScraper:
 
     def parse_little(self, teams=False):
         kombali = []
+        check = None
         if teams:
-            kombali.append(self.team_table_parser("div_" + self.uri.split("/")[2]))
-           #kombali.append(self.team_table_parser("all_stats_player_summary", True))
+            #print(self.global_page.find_all("div", id=True))
+            for els in self.global_page.find_all("div", id=True):
+                if "per_game" in els.get("id") or ("ELG" in els.get("id") or "ECP" in els.get("id")):
+                    check = els.get("id")
+            #print(check)
+            kombali.append(self.team_table_parser(check))
         else:
             kombali.append(self.table_parser("div_last5"))
             #kombali.append(self.table_parser("div_last5"))
@@ -188,16 +239,24 @@ class FootballerScraper:
     def names(self, teams=False, not_all=False):
         global teams_page
         info = BeautifulSoup(self.content.text, 'html.parser')
-        #print(info.find("div", id="players"))
         names = []
+        output = self.dict_parser("div_elg_standings")
+        names = ["Per game"]
+        profile = ""
         if teams:
-            names = "Last 78 matches"
-            self.uri = info.find("div", id="teams").find("div", class_="search-item-name").find("a", href=True).get("href")
-            self.global_page = BeautifulSoup(
-                requests.get(
-                    f'http://www.basketball-reference.com{self.uri}',
+            if self.user_input in output.values():
+                self.global_page = BeautifulSoup(
+                requests.get(f"http://www.basketball-reference.com/international/teams/{next((key for key, value in output.items() if value == self.user_input), None)}/{datetime.now().year}.html",
                     headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
-            names_list = self.global_page.find('div', id=self.uri.split("/")[2] + "_sh").find_all("h2")
+                profile = self.team_info(True)
+                if self.global_page == None:
+                    self.global_page = BeautifulSoup(requests.get(f"http://www.basketball-reference.com/international/teams/{next((key for key, value in output.items() if value == self.user_input), None)}/2024.html",headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
+                profile = self.team_info(True)    
+            else:    
+                self.uri = info.find("div", id="teams").find("div", class_="search-item-name").find("a", href=True).get("href")
+                self.global_page = BeautifulSoup(
+                    requests.get(f"http://www.basketball-reference.com{self.uri}{datetime.now().year}.html", #f'http://www.basketball-reference.com{self.uri}{datetime.now().year}.html',
+                        headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
         else:
             if info.find('div', id="LAL_sh") is None:
                 self.global_page = BeautifulSoup(
@@ -213,25 +272,41 @@ class FootballerScraper:
             for k in names_list:
                 names.append(
                     k.text)
-            del names[-2:]
         if not_all:
-            return json.dumps(dict(zip(names, self.parse_little(teams))))
+            return json.dumps({"Live information": dict(zip(names, self.parse_little(teams))), "Profile": (profile.replace('\\n', ""))})
         return json.dumps(dict(zip(names, self.parse_all(teams))))
 
-# List of basketball teams
-basketball_teams = ["Lakers", "Warriors", "Bulls", "Celtics", "Raptors", "Heat", "Clippers", "Mavericks", "Nets", "Bucks", "76ers", "Rockets", "Trail Blazers"]
+basketball_teams = [
+    # NBA Teams
+    "Boston Celtics",
+    "Golden State Warriors",
+    "Milwaukee Bucks",
+    "Los Angeles Clippers",
+    "Toronto Raptors",
 
-# List of basketball players
-basketball_players = ["LeBron james", "Stephen Curry", "Michael Jordan", "Kevin Durant", "Kawhi Leonard", "Giannis Antetokounmpo", "Luka Doncic", "James Harden", "Kyrie Irving", "Joel Embiid", "Chris Paul", "Damian Lillard", "Anthony Davis"]
+    # EuroLeague Teams (current season)
+    "Anadolu Efes Istanbul",
+    "Olympiacos Piraeus",
+    "ASVEL Lyon-Villeurbanne",
+    "ALBA Berlin",
+    "Real Madrid",
+
+    # EuroCup Teams (current season)
+    "Virtus Segafredo Bologna",
+    "Valencia Basket",
+    "Lietkabelis Panevezys",
+    "Galatasaray Nef",
+    "Unicaja Malaga",
+]
 
 
 if __name__ == "__main__":
-    for hu in basketball_players:
+    for hu in basketball_teams:
         retry_count = 0
         while retry_count < 4:
             try:
                 scraper = FootballerScraper(hu)
-                results = scraper.names(False,True)
+                results = scraper.names(True,True)
                 if isinstance(results, list):
                     retry_count += 1
                     print(f"Retrying {hu} - Retry count: {retry_count}")

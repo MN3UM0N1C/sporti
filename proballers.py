@@ -41,7 +41,6 @@ basketball_players= [
         'Giannis Antetokounmpo',
     ]
 
-
 headers = {
     'Host': 'www.proballers.com',
     'Sec-Ch-Ua-Mobile': '?0',
@@ -58,17 +57,6 @@ headers = {
     'Accept-Language': 'en-US,en;q=0.9',
     'Connection': 'close',
 }
-
-# for player in basketball_players:
-#     data = {'query': player,}
-#     response = requests.post('https://www.proballers.com/search_player', headers=headers, data=data, verify=False)
-#     try:
-#         if response.json()[0]['urlProballers']:
-#             print(f'{player} - {response.json()[0]["urlProballers"]}')
-#         else:
-#             print(f'{player} - Error')
-#     except Exception as e:
-#         pass
 
 class BasketballScraper:
 	def __init__(self, user_input, team=False):

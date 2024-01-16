@@ -153,8 +153,8 @@ class FootballerScraper:
                     requests.get(f'http://fbref.com{href_value}', headers=self.headers,
                                  proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser").find(
                     "div", {"id": div_id})
-                    if table_div == None:
-                        return self.team_table_parser(div_id)
+                if table_div == None:
+                    return self.team_table_parser(div_id)
             else:
                 table_div = info.find("div", {"id": div_id})
             date_elements = [element.text for element in table_div.find_all("th", {"scope": "row"})]
@@ -168,20 +168,20 @@ class FootballerScraper:
             return f"Error in team_table_parser(): {str(e)}"
 
     def team_info(self):
-        #try:
-        self.data_list = []
-        team_dict = {}
-        info = info = BeautifulSoup(self.content.text, 'html.parser')
-        teams_page = BeautifulSoup(
-                    requests.get(
-                        f'http://fbref.com{info.find("div", id="clubs").find("div", class_="search-item-name").find("a", href=True).get("href")}',
-                        headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
-        for uk in teams_page.find("div", {"data-template": "Partials/Teams/Summary"}).get_text().split("\n"):
-            self.data_list.append(uk)
-        team_dict["Team Info"] = self.data_list
-        return json.dumps(team_dict)
-    #except Exception as e:
-        return f"Error in team_info(): {str(e)}"
+        try:
+            self.data_list = []
+            team_dict = {}
+            info = info = BeautifulSoup(self.content.text, 'html.parser')
+            teams_page = BeautifulSoup(
+                        requests.get(
+                            f'http://fbref.com{info.find("div", id="clubs").find("div", class_="search-item-name").find("a", href=True).get("href")}',
+                            headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
+            for uk in teams_page.find("div", {"data-template": "Partials/Teams/Summary"}).get_text().split("\n"):
+                self.data_list.append(uk.replace("", ""))
+            team_dict["Team Info"] = self.data_list
+            return team_dict
+        except Exception as e:
+            return f"Error in team_info(): {str(e)}"
 
     def parse_all(self, teams=False):
         try:
@@ -221,11 +221,15 @@ class FootballerScraper:
             #print(info)
             names = []
             if teams:
-                self.global_page = BeautifulSoup(
-                    requests.get(
-                        f'http://fbref.com{info.find("div", id="clubs").find("div", class_="search-item-name").find("a", href=True).get("href")}',
-                        headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
-                names_list = self.global_page.find('div', id="inpage_nav").find_all("li")
+                try:
+                    self.global_page = BeautifulSoup(
+                        requests.get(
+                            f'http://fbref.com{info.find("div", id="clubs").find("div", class_="search-item-name").find("a", href=True).get("href")}',
+                            headers=self.headers, proxies=self.proxy_to_use).text.replace("<!--", " "), "html.parser")
+                    names_list = self.global_page.find('div', id="inpage_nav").find_all("li")
+                except AttributeError:
+                    names_list = info.find('div', id="inpage_nav").find_all("li")
+                    self.global_page = info
             else:
                 if info.find('div', id="inpage_nav") is None:
                     self.global_page = BeautifulSoup(
@@ -242,39 +246,11 @@ class FootballerScraper:
                 #print(names)
                 names.append(k.text.replace("Scores & Fixtures", "Player Summary").replace("Standard Stats", "Fixtures & Results"))
             del names[-2:]
-            if not_all:
-                return json.dumps(dict(zip(names, self.parse_little(teams))))
-            return json.dumps(dict(zip(names, self.parse_all(teams))))
-        except Exception as e:
-            return [f"Error in names(): {str(e)}"]
-
-# Football Players List
-soccer_players = ["Lionel Messi", "Cristiano Ronaldo", "Neymar Jr.", "Kylian Mbappé", "Robert Lewandowski"]
-
-# Football Teams List
-soccer_teams = [""]
-
-
-if __name__ == "__main__":
-    for hu in soccer_teams:
-        retry_count = 0
-        while retry_count < 4:
-            #try:
-            scraper = FootballerScraper(hu)
-            results = scraper.names(True,True)
-            if isinstance(results, list):
-                retry_count += 1
-                print(f"Retrying {hu} - Retry count: {retry_count}")
-                time.sleep(10)
-                continue
+            if teams and not_all:
+                return json.dumps([self.team_info(), dict(zip(names, self.parse_little(teams)))])
+            if teams == False and not_all:
+                return json.dumps([self.player_info(), dict(zip(names, self.parse_little(teams)))])
             else:
-                print(f"{results} \n\n\n\n{hu}")
-        #except Exception as e:
-            retry_count += 1
-            print(f"Retrying {hu} - Retry count: {retry_count}\n")
-            time.sleep(10)
-            continue
-            break
-        else:
-            print(f"Not Found")
-
+                return json.dumps(dict(zip(names, self.parse_all(teams))))
+        except Exception as e:
+           return [f"Error in names(): {str(e)}"]

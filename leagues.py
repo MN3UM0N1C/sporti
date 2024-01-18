@@ -1,6 +1,26 @@
 from bs4 import BeautifulSoup
 import json
 import requests
+import re
+
+def leaderboard_parser(html):
+    soup = html
+    table_data = []
+    headers = [th.text.strip() for th in soup.select('tr.row-head th')]
+    for row in soup.select('tr.row-body'):
+        team_data = {}
+        cells = row.find_all(['td', 'th'])
+        for header, cell in zip(headers, cells):
+            if header == 'PTS':
+                team_data[header] = cell.text.strip().replace("\n", " ")
+            elif header in ['MP', 'W', 'D', 'L', 'GF', 'GA']:
+                team_data[header] = cell.text.strip().split()[0].replace("\n", " ")
+            elif header == 'GD':
+                team_data[header] = cell.text.strip().replace("\n", " ")
+            else:
+                team_data[header] = cell.text.strip().replace("\n", " ")
+        table_data.append(team_data)
+    return table_data
 
 def html_table_to_json(html):
     soup = html
@@ -39,6 +59,13 @@ def league_highlights(league):
     names = ["goalscorers", "minutes per goal", "GOALS FROM THE PENALTY SPOT", "GOALS FROM THE PENALTY SPOT", "BEST GOALKEEPER", "PENALTIES SAVED", "YELLOW CARDS", "RED CARDS", "ASSISTS", "MATCHES PLAYED"]
     return json.dumps(dict(zip(names, data_list)))
 
+def leaderboard_table(league):
+    data_list = []
+    url = f"https://www.besoccer.com/competition/table/{league}"
+    parsed_page = BeautifulSoup(requests.get(url).text, 'html.parser')
+    data_list.append(leaderboard_parser(parsed_page.find("table", class_="table")))
+    return json.dumps(data_list).replace("\n", "")
+
 leagues = ["serie_a", "primera_division", "ligue_1", "bundesliga"]
-for i in leagues:
-    print(league_highlights(i))
+
+print(league_highlights('serie_a'))

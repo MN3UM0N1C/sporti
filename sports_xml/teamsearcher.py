@@ -63,6 +63,28 @@ class FootballDataParser:
     def download_all_files(self):
         for league_id, league_name in self.league_id_mapping.items():
             self.download_file(league_id, f"{league_name}.xml")
+    def parse_all_matches(self):
+        all_matches_data = []
+        for league_id, league_name in self.league_id_mapping.items():
+            try:
+                soup = self.load_data(league_id)
+                matches = soup.find_all("match")
+                for match in matches:
+                    match_data = {
+                        "league": league_name,
+                        "match_id": match.get("id"),
+                        "local_team": match.find("localteam").get("name"),
+                        "visitor_team": match.find("visitorteam").get("name"),
+                        "odds": []
+                    }
+                    for bookmaker in match.find_all('bookmaker'):
+                        bookmaker_name = bookmaker.get('name')
+                        odds = [(odd.get('name'), odd.get('value')) for odd in bookmaker.find_all('odd')]
+                        match_data["odds"].append({"bookmaker": bookmaker_name, "odds": dict(odds)})
+                    all_matches_data.append(match_data)
+            except Exception as e:
+                print(f"An error occurred while parsing matches for league {league_name}: {e}")
+        return json.dumps(all_matches_data, indent=2)
 
 
 class BasketballDataParser:
@@ -124,7 +146,28 @@ class BasketballDataParser:
     def download_all_files(self):
         for league_id, league_name in self.league_id_mapping.items():
             self.download_file(league_id, f"{league_name}.xml")
-
+    def parse_all_matches(self):
+        all_matches_data = []
+        for league_id, league_name in self.league_id_mapping.items():
+            try:
+                soup = self.load_data(league_id)
+                matches = soup.find_all("match")
+                for match in matches:
+                    match_data = {
+                        "league": league_name,
+                        "match_id": match.get("id"),
+                        "local_team": match.find("localteam").get("name"),
+                        "visitor_team": match.find("awayteam").get("name"),
+                        "odds": []
+                    }
+                    for bookmaker in match.find_all('bookmaker'):
+                        bookmaker_name = bookmaker.get('name')
+                        odds = [(odd.get('name'), odd.get('value')) for odd in bookmaker.find_all('odd')]
+                        match_data["odds"].append({"bookmaker": bookmaker_name, "odds": dict(odds)})
+                    all_matches_data.append(match_data)
+            except Exception as e:
+                print(f"An error occurred while parsing matches for league {league_name}: {e}")
+        return json.dumps(all_matches_data, indent=2)
 
 class TennisDataScraper:
     def __init__(self):
@@ -181,6 +224,26 @@ class TennisDataScraper:
 
     def download_all_files(self):
         self.download_file("tennis.xml")
+
+    def parse_all_matches(self):
+        all_matches_data = []
+        try:
+            soup = self.load_data()
+            matches = soup.find_all("match")
+            for match in matches:
+                match_data = {
+                    "match_id": match.get("id"),
+                    "players": [player.get("name") for player in match.find_all("player")],
+                    "odds": []
+                }
+                for bookmaker in match.find_all('bookmaker'):
+                    bookmaker_name = bookmaker.get('name')
+                    odds = [(odd.get('name'), odd.get('value')) for odd in bookmaker.find_all('odd')]
+                    match_data["odds"].append({"bookmaker": bookmaker_name, "odds": dict(odds)})
+                all_matches_data.append(match_data)
+        except Exception as e:
+            print(f"An error occurred while parsing tennis matches: {e}")
+        return json.dumps(all_matches_data, indent=2)
 
 class MMADataParser:
     def __init__(self):
@@ -239,6 +302,29 @@ class MMADataParser:
     def download_all_files(self):
         self.download_file("mma.xml")
 
+    def parse_all_matches(self):
+        all_matches_data = []
+        try:
+            soup = self.load_data()
+            matches = soup.find_all("match")
+            for match in matches:
+                match_data = {
+                    "match_id": match.get("id"),
+                    "local_team": match.find("localteam").get("name"),
+                    "away_team": match.find("awayteam").get("name"),
+                    "odds": []
+                }
+                for bookmaker in match.find_all('bookmaker'):
+                    bookmaker_name = bookmaker.get('name')
+                    odds = [(odd.get('name'), odd.get('value')) for odd in bookmaker.find_all('odd')]
+                    match_data["odds"].append({"bookmaker": bookmaker_name, "odds": dict(odds)})
+                all_matches_data.append(match_data)
+        except Exception as e:
+            print(f"An error occurred while parsing MMA matches: {e}")
+        return json.dumps(all_matches_data, indent=2)
+
+
+
 
 if __name__ == "__main__":
     # Example usage:
@@ -260,7 +346,8 @@ if __name__ == "__main__":
     mma_parser = MMADataParser()    
     #tennis_parser.download_all_files()
     try:
-        result = football_parser.koef(football_parser.team("1007", ['Bayer Leverkusen', 'Molde'], casino="bwin"))
+        result = mma_parser.parse_all_matches()
+        #result = football_parser.koef(football_parser.team("1007", ['Bayer Leverkusen', 'Molde'], casino="bwin"))
         #result = basketball_parser.koef(basketball_parser.team("1291", ["Cedevita Olimpija", "Venezia"], casino="Marathon"))
         #result = tennis_parser.koef(tennis_parser.team(["F. Auger-Aliassime", "D. Thiem"], casino="bwin"))
         #result = mma_parser.koef(mma_parser.team(["Sam Patterson", "Yohan Lainesse"], casino="bwin"))

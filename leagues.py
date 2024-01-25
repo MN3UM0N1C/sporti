@@ -66,6 +66,13 @@ def leaderboard_table(league):
     data_list.append(leaderboard_parser(parsed_page.find("table", class_="table")))
     return json.dumps(data_list).replace("\n", "")
 
-leagues = ["serie_a", "primera_division", "ligue_1", "bundesliga"]
+domestic_leagues = ["premier_league","serie_a", "primera_division", "ligue_1", "bundesliga"]
+international_competitions = ["champions_league", "europa_league"]
 
-print(league_highlights('serie_a'))
+
+for league in domestic_leagues:
+     print(league_highlights(league))
+     print(leaderboard_table(league))
+
+for international in international_competitions:
+    print(league_highlights(international))

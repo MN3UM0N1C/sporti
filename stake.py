@@ -12,7 +12,7 @@ class StakeScraper():
         self.match_name = ""
         self.user_input = ""
         self.league_id_mapping = {
-        'https://stake.com/sports/soccer/israel/premier-league': 'Premier League',
+        'https://stake.com/sports/soccer/england/premier-league': 'Premier League',
         'https://stake.com/sports/soccer/spain/la-liga': 'La Liga',
         'https://stake.com/sports/soccer/germany/bundesliga': 'Bundesliga',
         'https://stake.com/sports/soccer/italy/serie-a': 'Serie A',

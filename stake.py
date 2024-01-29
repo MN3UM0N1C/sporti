@@ -3,6 +3,9 @@ import json
 import requests
 from zenrows import ZenRowsClient
 import time
+from fuzzywuzzy import fuzz
+
+
 client = ZenRowsClient("c6301ed331b3e1626f37f9d806c6c5ea79c9642c")
 
 class StakeScraper():
@@ -66,11 +69,21 @@ class StakeScraper():
     def data_searcher(self, teams, league):
         with open('odds_data.json', 'r') as file:
             content = file.read()
+        best_match_score = 0
+        best_match = None
         for element in json.loads(content):
             try:
-                if teams[1] in list(list(list(element.values())[0].values())[0].keys()) and teams[0] in list(list(list(element.values())[0].values())[0].keys()) and league in list(element.keys())[0]:
-                    return json.dumps(element)
-                    break
+                element_teams = list(list(list(element.values())[0].values())[0].keys())
+                element_league = list(element.keys())[0]
+                if league.lower() == element_league.lower():
+                    for team in teams:
+                        for element_team in element_teams:
+                            match_score = fuzz.partial_ratio(team.lower(), element_team.lower())
+                            if match_score > best_match_score:
+                                best_match_score = match_score
+                                best_match = element
+                if best_match_score >= 90:  # Adjust the threshold as needed
+                    return json.dumps(best_match)
             except IndexError:
                 continue
 
@@ -80,12 +93,4 @@ scraper = StakeScraper()
 # result_json = scraper.parse_all_matches()
 # with open('odds_data.json', 'w') as file:
 #     file.write(result_json)
-print(scraper.data_searcher(["Luton Town", "Brighton & Hove Albion FC"], "Premier League"))
-
-
-
-
-
-# link variant-link size-md align-left svelte-14e5301
-# link variant-link size-md align-left svelte-14e5301
-# link variant-link size-md align-left svelte-14e5301
+print(scraper.data_searcher(["luton town", "Brighton & Hove Albion "], "Premier League"))

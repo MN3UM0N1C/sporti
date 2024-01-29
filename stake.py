@@ -2,13 +2,13 @@ from bs4 import BeautifulSoup
 import json
 import requests
 from zenrows import ZenRowsClient
-
+import time
 client = ZenRowsClient("c6301ed331b3e1626f37f9d806c6c5ea79c9642c")
 
 class StakeScraper():
     def __init__(self):
         self.base_url = "http://stake.com"
-        self.match_list_url = "http://stake.com/sports/soccer/all"
+        self.match_list_url = "http://stake.com/sports/soccer/"
         self.match_name = ""
         self.user_input = ""
         self.league_id_mapping = {
@@ -23,10 +23,11 @@ class StakeScraper():
     def get_matches(self):
         links = []
         for league in list(self.league_id_mapping.keys()):
-            match_page = BeautifulSoup(client.get(league).text, 'html.parser')
+            match_page = BeautifulSoup(client.get(league, params={"js_render": True}).text, 'html.parser')
             matches = match_page.find_all("a", {"class":"link variant-link size-md align-left svelte-14e5301", "data-sveltekit-preload-data": "off"})
             for match in matches:
                 links.append(f'{self.base_url}{match.get("href")}${self.league_id_mapping[league]}')
+            time.sleep(4)
         return set(links)
 
     def parse_all_matches(self):
@@ -34,10 +35,12 @@ class StakeScraper():
         link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
         for link, league in link_dict.items():
             if "sports/soccer"in link:
-                parser = BeautifulSoup(client.get(link).text, "html.parser")
+                print(link)
+                parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
                 results.append({league : self.html_to_json(parser)})
             else:
                 continue
+        print(results)
         return json.dumps(results)
 
     def extract_odds_data(self, html):
@@ -77,7 +80,7 @@ scraper = StakeScraper()
 # result_json = scraper.parse_all_matches()
 # with open('odds_data.json', 'w') as file:
 #     file.write(result_json)
-print(scraper.data_searcher(["RCD Mallorca", "Real Betis Balompie"], "La Liga"))
+print(scraper.data_searcher(["Luton Town", "Brighton & Hove Albion FC"], "Premier League"))
 
 
 

@@ -26,17 +26,15 @@ class FootballDataParser:
         self.old_folder = os.path.join(self.output_folder, "old")
 
     def backup_existing_files(self):
+        current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         try:
             if not os.path.exists(self.old_folder):
                 os.makedirs(self.old_folder)
-
             files = os.listdir(self.output_folder)
             xml_files = [f for f in files if f.endswith('.xml')]
-
             for xml_file in xml_files:
-                shutil.move(os.path.join(self.output_folder, xml_file), os.path.join(self.old_folder, xml_file))
+                shutil.move(os.path.join(self.output_folder, xml_file), os.path.join(self.old_folder, current_time + "-" + xml_file))
                 print(f"Moved {xml_file} to old folder.")
-
         except Exception as e:
             print(f"Error backing up existing files: {e}")
 
@@ -44,7 +42,7 @@ class FootballDataParser:
         try:
             url = f"{self.base_url}{league_id}"
             current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-            filename = f"{self.league_id_mapping[league_id]}_{current_time}.xml"
+            filename = f"{self.league_id_mapping[league_id]}.xml"
             subprocess.run(['curl', '-o', os.path.join(self.output_folder, filename), url], check=True)
             print(f"File downloaded successfully: {filename}")
         except subprocess.CalledProcessError as e:
@@ -102,16 +100,14 @@ class BasketballDataParser:
 
     def backup_existing_files(self):
         try:
+            current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
             if not os.path.exists(self.old_folder):
                 os.makedirs(self.old_folder)
-
             files = os.listdir(self.output_folder)
             xml_files = [f for f in files if f.endswith('.xml')]
-
             for xml_file in xml_files:
-                shutil.move(os.path.join(self.output_folder, xml_file), os.path.join(self.old_folder, xml_file))
+                shutil.move(os.path.join(self.output_folder, xml_file), os.path.join(self.old_folder, current_time + "-" + xml_file))
                 print(f"Moved {xml_file} to old folder.")
-
         except Exception as e:
             print(f"Error backing up existing files: {e}")
 
@@ -119,7 +115,7 @@ class BasketballDataParser:
         try:
             url = f"{self.base_url}{league_id}"
             current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-            filename = f"{self.league_id_mapping[league_id]}_{current_time}.xml"
+            filename = f"{self.league_id_mapping[league_id]}.xml"
             subprocess.run(['curl', '-o', os.path.join(self.output_folder, filename), url], check=True)
             print(f"File downloaded successfully: {filename}")
         except subprocess.CalledProcessError as e:
@@ -181,13 +177,14 @@ class TennisDataScraper:
         self.old_folder = os.path.join(self.output_folder, "old")
 
     def backup_existing_files(self):
+        current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         try:
             if not os.path.exists(self.old_folder):
                 os.makedirs(self.old_folder)
             files = os.listdir(self.output_folder)
             xml_files = [f for f in files if f.endswith('.xml')]
             for xml_file in xml_files:
-                shutil.move(os.path.join(self.output_folder, xml_file), os.path.join(self.old_folder, xml_file))
+                shutil.move(os.path.join(self.output_folder, xml_file), os.path.join(self.old_folder, current_time + "-"  + xml_file))
                 print(f"Moved {xml_file} to old folder.")
         except Exception as e:
             print(f"Error backing up existing files: {e}")
@@ -197,7 +194,7 @@ class TennisDataScraper:
             self.backup_existing_files()
             url = self.base_url
             current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-            filename = f"tennis_{current_time}.xml"
+            filename = f"tennis.xml"
             subprocess.run(['curl', '-o', os.path.join(self.output_folder, filename), url], check=True)
             print(f"File downloaded successfully: {filename}")
         except subprocess.CalledProcessError as e:
@@ -253,17 +250,15 @@ class MMADataParser:
         self.base_url = "http://www.goalserve.com/getfeed/401117231212497fb27a08db8de47c17/getodds/soccer?cat=mma_10"
         self.output_folder = "app/odds/mma/"
     def backup_existing_files(self):
+        current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         try:
             if not os.path.exists(f"{self.output_folder}old"):
                 os.makedirs(f"{self.output_folder}old")
-
             files = os.listdir(self.output_folder)
             xml_files = [f for f in files if f.endswith('.xml')]
-
             for xml_file in xml_files:
-                shutil.move(f"{self.output_folder}{xml_file}", f"{self.output_folder}old/{xml_file}")
+                shutil.move(f"{self.output_folder}{xml_file}", f"{self.output_folder}old/{current_time}-{xml_file}")
                 print(f"Moved {xml_file} to old folder.")
-
         except Exception as e:
             print(f"Error backing up existing files: {e}")
 
@@ -272,7 +267,7 @@ class MMADataParser:
             self.backup_existing_files()
             url = self.base_url
             current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-            filename = f"mma_{current_time}.xml"
+            filename = f"mma.xml"
             subprocess.run(['curl', '-o', f"{self.output_folder}{filename}", url], check=True)
             print(f"File downloaded successfully: {filename}")
         except subprocess.CalledProcessError as e:
@@ -323,3 +318,4 @@ class MMADataParser:
 
     def download_all_files(self):
         self.download_file("mma.xml")
+

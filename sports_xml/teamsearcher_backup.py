@@ -319,3 +319,10 @@ class MMADataParser:
     def download_all_files(self):
         self.download_file("mma.xml")
 
+if __name__ == "__main__":
+    mma_parser = MMADataParser()
+    basketball_parser = BasketballDataParser()
+    football_parser = FootballDataParser()
+    mma_parser.download_all_files()
+    basketball_parser.download_all_files()
+    football_parser.download_all_files()

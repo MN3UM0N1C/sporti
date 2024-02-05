@@ -40,12 +40,10 @@ class StakeScraper():
         link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
         for link, league in link_dict.items():
             if "sports/soccer"in link:
-                print(link)
                 parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
                 results.append({league : self.html_to_json(parser)})
             else:
                 continue
-        print(results)
         return json.dumps(results)
 
     def extract_odds_data(self, html):
@@ -69,25 +67,30 @@ class StakeScraper():
         return json_data
 
     def data_searcher(self, teams, league):
-        with open('odds_data.json', 'r') as file:
-            content = file.read()
-        best_match_score = 0
         best_match = None
-        for element in json.loads(content):
+        best_match_score = 0
+        with open('odds_data.json', 'r') as file:
+            data = json.load(file)
+        for element in data:
             try:
-                element_teams = list(list(list(element.values())[0].values())[0].keys())
                 element_league = list(element.keys())[0]
                 if league.lower() == element_league.lower():
+                    element_teams = list(list(element.values())[0].values())[0].keys()
+                    total_score = 0
                     for team in teams:
+                        max_score = 0
                         for element_team in element_teams:
                             match_score = fuzz.partial_ratio(team.lower(), element_team.lower())
-                            if match_score > best_match_score:
-                                best_match_score = match_score
-                                best_match = element
-                if best_match_score >= 90:  # Adjust the threshold as needed
-                    return json.dumps(best_match)
+                            max_score = max(max_score, match_score)
+                        total_score += max_score
+                    
+                    if total_score > best_match_score:
+                        best_match_score = total_score
+                        best_match = element
             except IndexError:
                 continue
+        return best_match
+
 
 
 class BasketballStakeScraper():
@@ -119,12 +122,10 @@ class BasketballStakeScraper():
         link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
         for link, league in link_dict.items():
             if "sports/basketball/"in link:
-                print(link)
                 parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
                 results.append({league : self.html_to_json(parser)})
             else:
                 continue
-        print(results)
         return json.dumps(results)
 
     def extract_odds_data(self, html):
@@ -167,6 +168,7 @@ class BasketballStakeScraper():
                     return json.dumps(best_match)
             except IndexError:
                 continue
+        return None
 
 class TennisScraper():
     def __init__(self):
@@ -198,12 +200,10 @@ class TennisScraper():
         link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
         for link, league in link_dict.items():
             if "sports/tennis/"in link:
-                print(link)
                 parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
                 results.append({league : self.html_to_json(parser)})
             else:
                 continue
-        print(results)
         return json.dumps(results)
 
     def extract_odds_data(self, html):
@@ -228,33 +228,37 @@ class TennisScraper():
         return json_data
 
     def data_searcher(self, teams, league):
-        with open('tennis_odds_data.json', 'r') as file:
-            content = file.read()
-        best_match_score = 0
         best_match = None
-        for element in json.loads(content):
+        best_match_score = 0
+        with open('tennis_odds_data.json', 'r') as file:
+            data = json.load(file)
+        for element in data:
             try:
-                element_teams = list(list(list(element.values())[0].values())[0].keys())
                 element_league = list(element.keys())[0]
                 if league.lower() == element_league.lower():
+                    element_teams = list(list(element.values())[0].values())[0].keys()
+                    total_score = 0
                     for team in teams:
+                        max_score = 0
                         for element_team in element_teams:
                             match_score = fuzz.partial_ratio(team.lower(), element_team.lower())
-                            if match_score > best_match_score:
-                                best_match_score = match_score
-                                best_match = element
-                if best_match_score >= 90:  # Adjust the threshold as needed
-                    return json.dumps(best_match)
+                            max_score = max(max_score, match_score)
+                        total_score += max_score
+                    
+                    if total_score > best_match_score:
+                        best_match_score = total_score
+                        best_match = element
             except IndexError:
                 continue
+        return best_match
 
 class MMAScraper():
     def __init__(self):
         self.base_url = "http://stake.com"
         self.match_name = ""
         self.user_input = ""
-        self.league_id_mapping = {'https://stake.com/sports/mma' : 'UFC'
-        }
+        self.league_id_mapping = {"https://stake.com/sports/mma/ufc/ufc-fight-night-hermansson-vs-pyfer": "UFC hermansson":
+        "https://stake.com/sports/mma/ufc/ufc-fight-night-moreno-vs-albazi": "UFC moreno", "https://stake.com/sports/mma/ufc/ufc-fight-night-ribas-vs-namajunas": "UFC ribas vs namajunas", "https://stake.com/sports/mma/ufc/ufc-fight-night-tuivasa-vs-tybura" : "UFC tuivasa vs tybura", "https://stake.com/sports/mma/ufc/ufc-298-volkanovski-vs-topuria" : "UFC volkanovski vs topuria", "https://stake.com/sports/mma/ufc/ufc-299-o-malley-vs-vera-2" : "UFC malley vs vera", "https://stake.com/sports/mma/ufc/ufc-300" : "UFC 300"}
     def get_matches(self):
         links = []
         matches = []
@@ -270,15 +274,12 @@ class MMAScraper():
     def parse_all_matches(self):
         results = []    
         link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
-        print(link_dict)
         for link, league in link_dict.items():
             if "sports/mma/"in link:
-                print(link)
                 parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
                 results.append({league : self.html_to_json(parser)})
             else:
                 continue
-        print(results)
         return json.dumps(results)
 
     def extract_odds_data(self, html):
@@ -303,38 +304,42 @@ class MMAScraper():
         return json_data
 
     def data_searcher(self, teams, league):
-        with open('mma_odds_data.json', 'r') as file:
-            content = file.read()
-        best_match_score = 0
         best_match = None
-        for element in json.loads(content):
+        best_match_score = 0
+        with open('mma_odds_data.json', 'r') as file:
+            data = json.load(file)
+        for element in data:
             try:
-                element_teams = list(list(list(element.values())[0].values())[0].keys())
                 element_league = list(element.keys())[0]
                 if league.lower() == element_league.lower():
+                    element_teams = list(list(element.values())[0].values())[0].keys()
+                    total_score = 0
                     for team in teams:
+                        max_score = 0
                         for element_team in element_teams:
                             match_score = fuzz.partial_ratio(team.lower(), element_team.lower())
-                            if match_score > best_match_score:
-                                best_match_score = match_score
-                                best_match = element
-                if best_match_score >= 90:  # Adjust the threshold as needed
-                    return json.dumps(best_match)
+                            max_score = max(max_score, match_score)
+                        total_score += max_score
+                    
+                    if total_score > best_match_score:
+                        best_match_score = total_score
+                        best_match = element
             except IndexError:
                 continue
+        return best_match
 
 
-#scraper = StakeScraper()
-# result_json = scraper.parse_all_matches()
-# with open('odds_data.json', 'w') as file:
-#     file.write(result_json)
-#print(scraper.data_searcher(["luton town", "Brighton & Hove Albion "], "Premier League"))
+scraper = StakeScraper()
+result_json = scraper.parse_all_matches()
+with open('odds_data.json', 'w') as file:
+    file.write(result_json)
+#print(scraper.data_searcher(["eipzig", "C Union Berlin"], "Bundesliga"))
 
-# basketball_scraper = BasketballScraper()
+#basketball_scraper = BasketballStakeScraper()
 # result_json = basketball_scraper.parse_all_matches()
 # with open('basketball_odds_data.json', 'w') as file:
 #     file.write(result_json)
-# print(basketball_scraper.data_searcher(["Cazaux, Arthur", "Marterer, Maximilian"], "ATP France Men Single"))
+#print(basketball_scraper.data_searcher(["Golden Flashes", "Bufalo Bul"], "NCAA"))
 
 # tennis_scraper = TennisScraper()
 # result_json = tennis_scraper.parse_all_matches()
@@ -346,7 +351,7 @@ class MMAScraper():
 # result_json = mma_scraper.parse_all_matches()
 # with open('mma_odds_data.json', 'w') as file:
 #     file.write(result_json)
-# print(mma_scraper.data_searcher(["Rodriguez, Pete", "Gorimbo, Themba"], "UFC"))
+#print(mma_scraper.data_searcher(["rodrigez Pete", "gorimbo Temba"], "UFC"))
 
 
 

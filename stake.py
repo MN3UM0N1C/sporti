@@ -257,7 +257,7 @@ class MMAScraper():
         self.base_url = "http://stake.com"
         self.match_name = ""
         self.user_input = ""
-        self.league_id_mapping = {"https://stake.com/sports/mma/ufc/ufc-fight-night-hermansson-vs-pyfer": "UFC hermansson":
+        self.league_id_mapping = {"https://stake.com/sports/mma/ufc/ufc-fight-night-hermansson-vs-pyfer": "UFC hermansson"
         "https://stake.com/sports/mma/ufc/ufc-fight-night-moreno-vs-albazi": "UFC moreno", "https://stake.com/sports/mma/ufc/ufc-fight-night-ribas-vs-namajunas": "UFC ribas vs namajunas", "https://stake.com/sports/mma/ufc/ufc-fight-night-tuivasa-vs-tybura" : "UFC tuivasa vs tybura", "https://stake.com/sports/mma/ufc/ufc-298-volkanovski-vs-topuria" : "UFC volkanovski vs topuria", "https://stake.com/sports/mma/ufc/ufc-299-o-malley-vs-vera-2" : "UFC malley vs vera", "https://stake.com/sports/mma/ufc/ufc-300" : "UFC 300"}
     def get_matches(self):
         links = []
@@ -329,7 +329,7 @@ class MMAScraper():
         return best_match
 
 
-scraper = StakeScraper()
+scraper = MMAScraper()
 result_json = scraper.parse_all_matches()
 with open('odds_data.json', 'w') as file:
     file.write(result_json)

@@ -329,7 +329,7 @@ class MMAScraper():
         return best_match
 
 
-scraper = MMAScraper()
+scraper = FootballerScraper()
 result_json = scraper.parse_all_matches()
 with open('odds_data.json', 'w') as file:
     file.write(result_json)

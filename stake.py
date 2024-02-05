@@ -308,27 +308,25 @@ class MMAScraper():
             json_data[f'market_{index + 1}_{market_name}'] = odds_data
         return json_data
 
-    def data_searcher(self, teams, league):
+    def data_searcher(self, teams):
         best_match = None
         best_match_score = 0
         with open('mma_odds_data.json', 'r') as file:
             data = json.load(file)
         for element in data:
             try:
-                element_league = list(element.keys())[0]
-                if league.lower() == element_league.lower():
-                    element_teams = list(list(element.values())[0].values())[0].keys()
-                    total_score = 0
-                    for team in teams:
-                        max_score = 0
-                        for element_team in element_teams:
-                            match_score = fuzz.partial_ratio(team.lower(), element_team.lower())
-                            max_score = max(max_score, match_score)
-                        total_score += max_score
-                    
-                    if total_score > best_match_score:
-                        best_match_score = total_score
-                        best_match = element
+                element_teams = list(list(element.values())[0].values())[0].keys()
+                total_score = 0
+                for team in teams:
+                    max_score = 0
+                    for element_team in element_teams:
+                        match_score = fuzz.partial_ratio(team.lower(), element_team.lower())
+                        max_score = max(max_score, match_score)
+                    total_score += max_score
+                
+                if total_score > best_match_score:
+                    best_match_score = total_score
+                    best_match = element
             except IndexError:
                 continue
         return best_match
@@ -340,11 +338,11 @@ class MMAScraper():
 #     file.write(result_json)
 #print(scraper.data_searcher(["eipzig", "C Union Berlin"], "Bundesliga"))
 
-basketball_scraper = BasketballStakeScraper()
+#basketball_scraper = BasketballStakeScraper()
 # result_json = basketball_scraper.parse_all_matches()
 # with open('basketball_odds_data.json', 'w') as file:
 #     file.write(result_json)
-print(basketball_scraper.data_searcher(["Cleveland Cavaliers", "Sacramento Kings"], "NBA"))
+#print(basketball_scraper.data_searcher(["Cleveland Cavaliers", "Sacramento Kings"], "NBA"))
 
 # tennis_scraper = TennisScraper()
 # result_json = tennis_scraper.parse_all_matches()
@@ -352,11 +350,11 @@ print(basketball_scraper.data_searcher(["Cleveland Cavaliers", "Sacramento Kings
 #     file.write(result_json)
 # print(tennis_scraper.data_searcher(["Cazaux, Arthur", "Marterer, Maximilian"], "ATP France Men Single"))
 
-# mma_scraper = MMAScraper()
+mma_scraper = MMAScraper()
 # result_json = mma_scraper.parse_all_matches()
 # with open('mma_odds_data.json', 'w') as file:
 #     file.write(result_json)
-#print(mma_scraper.data_searcher(["rodrigez Pete", "gorimbo Temba"], "UFC"))
+print(mma_scraper.data_searcher(["volkanovski", "topuria"]))
 
 
 

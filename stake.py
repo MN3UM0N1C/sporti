@@ -255,31 +255,36 @@ class TennisScraper():
 class MMAScraper():
     def __init__(self):
         self.base_url = "http://stake.com"
+        self.base_page_url = "http://stake.com/sports/mma/all"
         self.match_name = ""
         self.user_input = ""
-        self.league_id_mapping = {"https://stake.com/sports/mma/ufc/ufc-fight-night-hermansson-vs-pyfer": "UFC hermansson",
-        "https://stake.com/sports/mma/ufc/ufc-fight-night-moreno-vs-albazi": "UFC moreno", "https://stake.com/sports/mma/ufc/ufc-fight-night-ribas-vs-namajunas": "UFC ribas vs namajunas", "https://stake.com/sports/mma/ufc/ufc-fight-night-tuivasa-vs-tybura" : "UFC tuivasa vs tybura", "https://stake.com/sports/mma/ufc/ufc-298-volkanovski-vs-topuria" : "UFC volkanovski vs topuria", "https://stake.com/sports/mma/ufc/ufc-299-o-malley-vs-vera-2" : "UFC malley vs vera", "https://stake.com/sports/mma/ufc/ufc-300" : "UFC 300"}
+        self.league_id_mapping = {}#{"https://stake.com/sports/mma/ufc/ufc-fight-night-hermansson-vs-pyfer": "UFC hermansson",
+        #"https://stake.com/sports/mma/ufc/ufc-fight-night-moreno-vs-albazi": "UFC moreno", "https://stake.com/sports/mma/ufc/ufc-fight-night-ribas-vs-namajunas": "UFC ribas vs namajunas", "https://stake.com/sports/mma/ufc/ufc-fight-night-tuivasa-vs-tybura" : "UFC tuivasa vs tybura", "https://stake.com/sports/mma/ufc/ufc-298-volkanovski-vs-topuria" : "UFC volkanovski vs topuria", "https://stake.com/sports/mma/ufc/ufc-299-o-malley-vs-vera-2" : "UFC malley vs vera", "https://stake.com/sports/mma/ufc/ufc-300" : "UFC 300"}
     def get_matches(self):
         links = []
         matches = []
         for league in list(self.league_id_mapping.keys()):
-            match_page = BeautifulSoup(client.get(league, params={"js_render": True}).text, 'html.parser')
-            matches = match_page.find_all("a", {"class":"link variant-link size-md align-left svelte-14e5301", "data-sveltekit-preload-data": "off"})
-            for match in matches:
-                if re.match(r"http://stake.com/sports/mma/.+/.+/.+", f'{self.base_url}{match.get("href")}'):
-                    links.append(f'{self.base_url}{match.get("href")}${self.league_id_mapping[league]}')
-            time.sleep(4)
-        return set(links)
+        	match_page = BeautifulSoup(client.get(league, params={"js_render": True}).text, 'html.parser')
+        	matches = match_page.find_all("a", {"data-sveltekit-preload-data": "off"})
+        	for match in matches:
+        		if re.match(r"http://stake.com/sports/mma/.+/.+/.+", f'{self.base_url}{match.get("href")}'):
+        			links.append(f'{self.base_url}{match.get("href")}${self.league_id_mapping[league]}')
+        			time.sleep(4)
+        return set(links)	    
 
     def parse_all_matches(self):
-        results = []    
+        results = []
+        base_page_parser = BeautifulSoup(client.get(self.base_page_url, params={"js_render" : True}).text, "html.parser")
+        for event in base_page_parser.find_all("a"):
+        	if "sports/mma/ufc" in str(event).lower():
+        		self.league_id_mapping["http://stake.com" + event.get("href")] = event.get_text().split("\n")[0] 
         link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
         for link, league in link_dict.items():
-            if "sports/mma/"in link:
-                parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
-                results.append({league : self.html_to_json(parser)})
-            else:
-                continue
+        	if "sports/mma/"in link:
+        		parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
+        		results.append({league : self.html_to_json(parser)})
+        	else:
+        		continue
         return json.dumps(results)
 
     def extract_odds_data(self, html):
@@ -329,10 +334,10 @@ class MMAScraper():
         return best_match
 
 
-scraper = FootballerScraper()
-result_json = scraper.parse_all_matches()
-with open('odds_data.json', 'w') as file:
-    file.write(result_json)
+# scraper = StakeScraper()
+# result_json = scraper.parse_all_matches()
+# with open('odds_data.json', 'w') as file:
+#     file.write(result_json)
 #print(scraper.data_searcher(["eipzig", "C Union Berlin"], "Bundesliga"))
 
 #basketball_scraper = BasketballStakeScraper()
@@ -347,10 +352,10 @@ with open('odds_data.json', 'w') as file:
 #     file.write(result_json)
 # print(tennis_scraper.data_searcher(["Cazaux, Arthur", "Marterer, Maximilian"], "ATP France Men Single"))
 
-# mma_scraper = MMAScraper()
-# result_json = mma_scraper.parse_all_matches()
-# with open('mma_odds_data.json', 'w') as file:
-#     file.write(result_json)
+mma_scraper = MMAScraper()
+result_json = mma_scraper.parse_all_matches()
+with open('mma_odds_data.json', 'w') as file:
+    file.write(result_json)
 #print(mma_scraper.data_searcher(["rodrigez Pete", "gorimbo Temba"], "UFC"))
 
 

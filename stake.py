@@ -28,7 +28,7 @@ class StakeScraper():
         links = []
         for league in list(self.league_id_mapping.keys()):
             match_page = BeautifulSoup(client.get(league, params={"js_render": True}).text, 'html.parser')
-            matches = match_page.find_all("a", {"class":"link variant-link size-md align-left svelte-14e5301", "data-sveltekit-preload-data": "off"})
+            matches = match_page.find_all("a", {"data-sveltekit-preload-data": "off"})
             for match in matches:
                 if re.match(r"http://stake.com/sports/soccer/.+/.+/.+", f'{self.base_url}{match.get("href")}'):
                     links.append(f'{self.base_url}{match.get("href")}${self.league_id_mapping[league]}')
@@ -110,7 +110,7 @@ class BasketballStakeScraper():
         matches = []
         for league in list(self.league_id_mapping.keys()):
             match_page = BeautifulSoup(client.get(league, params={"js_render": True}).text, 'html.parser')
-            matches = match_page.find_all("a", {"class":"link variant-link size-md align-left svelte-14e5301", "data-sveltekit-preload-data": "off"})
+            matches = match_page.find_all("a", {"data-sveltekit-preload-data": "off"})
             for match in matches:
                 if re.match(r"http://stake.com/sports/basketball/.+/.+/.+", f'{self.base_url}{match.get("href")}'):
                     links.append(f'{self.base_url}{match.get("href")}${self.league_id_mapping[league]}')
@@ -188,7 +188,7 @@ class TennisScraper():
         matches = []
         for league in list(self.league_id_mapping.keys()):
             match_page = BeautifulSoup(client.get(league, params={"js_render": True}).text, 'html.parser')
-            matches = match_page.find_all("a", {"class":"link variant-link size-md align-left svelte-14e5301", "data-sveltekit-preload-data": "off"})
+            matches = match_page.find_all("a", {"data-sveltekit-preload-data": "off"})
             for match in matches:
                 if re.match(r"http://stake.com/sports/tennis/.+/.+/.+", f'{self.base_url}{match.get("href")}'):
                     links.append(f'{self.base_url}{match.get("href")}${self.league_id_mapping[league]}')
@@ -340,11 +340,11 @@ class MMAScraper():
 #     file.write(result_json)
 #print(scraper.data_searcher(["eipzig", "C Union Berlin"], "Bundesliga"))
 
-#basketball_scraper = BasketballStakeScraper()
+basketball_scraper = BasketballStakeScraper()
 # result_json = basketball_scraper.parse_all_matches()
 # with open('basketball_odds_data.json', 'w') as file:
 #     file.write(result_json)
-#print(basketball_scraper.data_searcher(["Golden Flashes", "Bufalo Bul"], "NCAA"))
+print(basketball_scraper.data_searcher(["Cleveland Cavaliers", "Sacramento Kings"], "NBA"))
 
 # tennis_scraper = TennisScraper()
 # result_json = tennis_scraper.parse_all_matches()
@@ -352,10 +352,10 @@ class MMAScraper():
 #     file.write(result_json)
 # print(tennis_scraper.data_searcher(["Cazaux, Arthur", "Marterer, Maximilian"], "ATP France Men Single"))
 
-mma_scraper = MMAScraper()
-result_json = mma_scraper.parse_all_matches()
-with open('mma_odds_data.json', 'w') as file:
-    file.write(result_json)
+# mma_scraper = MMAScraper()
+# result_json = mma_scraper.parse_all_matches()
+# with open('mma_odds_data.json', 'w') as file:
+#     file.write(result_json)
 #print(mma_scraper.data_searcher(["rodrigez Pete", "gorimbo Temba"], "UFC"))
 
 

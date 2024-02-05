@@ -59,12 +59,9 @@ class FootballDataParser:
         time.sleep(5)
 
     def load_data(self, league_id):
-        """
-        Load XML data from a file for a specific league ID.
-        """
-        with open(os.path.join(self.output_folder, f"{self.league_id_mapping[league_id]}.xml"), 'r') as file:
-            xml_content = file.read()
-            return BeautifulSoup(xml_content, 'xml')
+            with open(f'app/odds/football/{league_id}.xml', 'r') as file:
+                xml_content = file.read()
+                return BeautifulSoup(xml_content, 'xml')
 
     def search(self, league_id, match, casino=None):
         """
@@ -160,15 +157,9 @@ class BasketballDataParser:
             print(f"Error downloading file: {e}")
 
     def load_data(self, league_id):
-        """
-        Load XML data from a file for a specific league ID.
-        """
-        try:
-            with open(os.path.join(self.output_folder, f"{self.league_id_mapping[league_id]}.xml"), 'r') as file:
+            with open(f'app/odds/basketball/{league_id}.xml', 'r') as file:
                 xml_content = file.read()
-                return BeautifulSoup(xml_content, 'xml')
-        except FileNotFoundError:
-            print(f"Error: File not found for league ID {league_id}. Make sure to download the file first.")
+            return BeautifulSoup(xml_content, 'xml')
 
     def search(self, league_id, match, casino=None):
         """
@@ -431,8 +422,8 @@ class MMADataParser:
         self.download_file("mma.xml")
 
 if __name__ == "__main__":
-    #basketball_parser = FootballDataParser()
-    #print(basketball_parser.koef(basketball_parser.team("1204", ["Everton", "Tottenham"], casino="bwin")))
+    basketball_parser = BasketballDataParser()
+    print(basketball_parser.koef(basketball_parser.team("Premier_League", ["Brentford", "Manchester City"], casino="bwin")))
     #basketball_parser.download_all_files()
-    mma_parser = MMADataParser()
-    mma_parser.download_all_files()
+    # mma_parser = MMADataParser()
+    # mma_parser.download_all_files()

@@ -5,6 +5,9 @@ from zenrows import ZenRowsClient
 import time
 from fuzzywuzzy import fuzz
 import re
+import os
+from datetime import datetime
+import shutil
 
 
 client = ZenRowsClient("c6301ed331b3e1626f37f9d806c6c5ea79c9642c")
@@ -24,6 +27,9 @@ class StakeScraper():
         'https://stake.com/sports/soccer/international-clubs/uefa-champions-league': 'UEFA Champions League',
         'https://stake.com/sports/soccer/international-clubs/uefa-europa-league': 'UEFA Europa League',
         }
+        self.output_folder = "app/stake/football/"
+        self.old_folder = os.path.join(self.output_folder, "old")
+
     def get_matches(self):
         links = []
         for league in list(self.league_id_mapping.keys()):
@@ -35,16 +41,54 @@ class StakeScraper():
             time.sleep(4)
         return set(links)
 
+    def backup_existing_files(self):
+        """
+        Backup existing HTML files to the 'old' folder with a timestamp.
+        """
+        try:
+            current_time = datetime.now().strftime("%Y-%m-%d")
+            if not os.path.exists(self.old_folder):
+                os.makedirs(self.old_folder)
+            files = os.listdir(self.output_folder)
+            html_files = [f for f in files if f.endswith('.json')]
+            for html_file in html_files:
+                if os.path.exists(os.path.join(self.old_folder, current_time + "-" + html_file)):
+                    print("No need for backing up yet.")
+                else:
+                    shutil.move(os.path.join(self.output_folder, html_file), os.path.join(self.old_folder, current_time + "-" + html_file))
+                    print(f"Moved {html_file} to old folder.")
+        except Exception as e:
+            print(f"Error backing up existing files: {e}")
+
+
+    # def parse_all_matches(self):
+    #     results = []     
+    #     link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
+    #     for link, league in link_dict.items():
+    #         if "sports/soccer"in link:
+    #             parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
+    #             results.append({league : self.html_to_json(parser)})
+    #         else:
+    #             continue
+    #     return json.dumps(results)
+
     def parse_all_matches(self):
-        results = []     
-        link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
-        for link, league in link_dict.items():
-            if "sports/soccer"in link:
-                parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
-                results.append({league : self.html_to_json(parser)})
-            else:
-                continue
-        return json.dumps(results)
+        """
+        Parse all tennis matches and save them in JSON format.
+        """
+        try:
+            self.backup_existing_files()
+            results = []
+            link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
+            for link, league in link_dict.items():
+                if "sports/soccer/" in link:
+                    parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
+                    results.append({league: self.html_to_json(parser)})
+                else:
+                    continue
+            return json.dumps(results)
+        except Exception as e:
+            print(f"Error parsing matches: {e}")
 
     def extract_odds_data(self, html):
         soup = BeautifulSoup(html, 'html.parser')
@@ -69,7 +113,7 @@ class StakeScraper():
     def data_searcher(self, teams, league):
         best_match = None
         best_match_score = 0
-        with open('odds_data.json', 'r') as file:
+        with open('app/stake/football/odds_data.json', 'r') as file:
             data = json.load(file)
         for element in data:
             try:
@@ -103,8 +147,11 @@ class BasketballStakeScraper():
         'https://stake.com/sports/basketball/usa/nba': 'NBA',
         'https://stake.com/sports/basketball/usa/ncaa-regular': 'NCAA',
         'https://stake.com/sports/basketball/international/euroleague': 'Euroleague',
-        'https://stake.com/sports/basketball/international/eurocup': 'Eurocup',
+        'https://stake.com/sports/basketball/international/eurocup': 'Eurocup'
         }
+        self.output_folder = "app/stake/basketball/"
+        self.old_folder = os.path.join(self.output_folder, "old")
+
     def get_matches(self):
         links = []
         matches = []
@@ -117,16 +164,52 @@ class BasketballStakeScraper():
             time.sleep(4)
         return set(links)
 
+    def backup_existing_files(self):
+        """
+        Backup existing HTML files to the 'old' folder with a timestamp.
+        """
+        try:
+            current_time = datetime.now().strftime("%Y-%m-%d")
+            if not os.path.exists(self.old_folder):
+                os.makedirs(self.old_folder)
+            files = os.listdir(self.output_folder)
+            html_files = [f for f in files if f.endswith('.json')]
+            for html_file in html_files:
+                if os.path.exists(os.path.join(self.old_folder, current_time + "-" + html_file)):
+                    print("No need for backing up yet.")
+                else:
+                    shutil.move(os.path.join(self.output_folder, html_file), os.path.join(self.old_folder, current_time + "-" + html_file))
+                    print(f"Moved {html_file} to old folder.")
+        except Exception as e:
+            print(f"Error backing up existing files: {e}")
+
+    # def parse_all_matches(self):
+    #     results = []    
+    #     link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
+    #     for link, league in link_dict.items():
+    #         if "sports/basketball/"in link:
+    #             parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
+    #             results.append({league : self.html_to_json(parser)})
+    #         else:
+    #             continue
+    #     return json.dumps(results)
     def parse_all_matches(self):
-        results = []    
-        link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
-        for link, league in link_dict.items():
-            if "sports/basketball/"in link:
-                parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
-                results.append({league : self.html_to_json(parser)})
-            else:
-                continue
-        return json.dumps(results)
+        """
+        Parse all basketball matches and save them in JSON format.
+        """
+        try:
+            self.backup_existing_files()
+            results = []
+            link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
+            for link, league in link_dict.items():
+                if "sports/basketball/" in link:
+                    parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
+                    results.append({league: self.html_to_json(parser)})
+                else:
+                    continue
+            return json.dumps(results)
+        except Exception as e:
+            print(f"Error parsing matches: {e}")
 
     def extract_odds_data(self, html):
         soup = BeautifulSoup(html, 'html.parser')
@@ -149,7 +232,7 @@ class BasketballStakeScraper():
         return json_data
 
     def data_searcher(self, teams, league):
-        with open('basketball_odds_data.json', 'r') as file:
+        with open('app/stake/basketball/basketball_odds_data.json', 'r') as file:
             content = file.read()
         best_match_score = 0
         best_match = None
@@ -176,13 +259,16 @@ class TennisScraper():
         self.match_name = ""
         self.user_input = ""
         self.league_id_mapping = {
-        'https://stake.com/sports/tennis/atp/atp-montpellier-france-men-singles': 'ATP France Men Single',
-        'https://stake.com/sports/tennis/atp/atp-montpellier-france-men-double': 'ATP France Men double',
-        'https://stake.com/sports/tennis/wta/wta-linz-austria-women-singles': 'WTA Austria Women Single',
-        'https://stake.com/sports/tennis/wta/wta-hua-hin-thailand-women-singles': 'WTA Thailand Women Single',
-        'https://stake.com/sports/tennis/wta/wta-hua-hin-thailand-women-double' : 'WTA Thailand Women Double',
-        'https://stake.com/sports/tennis/wta/wta-linz-austria-women-doubles' : 'WTA Austria Women Double',
+            'https://stake.com/sports/tennis/atp/atp-montpellier-france-men-singles': 'ATP France Men Single',
+            'https://stake.com/sports/tennis/atp/atp-montpellier-france-men-double': 'ATP France Men double',
+            'https://stake.com/sports/tennis/wta/wta-linz-austria-women-singles': 'WTA Austria Women Single',
+            'https://stake.com/sports/tennis/wta/wta-hua-hin-thailand-women-singles': 'WTA Thailand Women Single',
+            'https://stake.com/sports/tennis/wta/wta-hua-hin-thailand-women-double': 'WTA Thailand Women Double',
+            'https://stake.com/sports/tennis/wta/wta-linz-austria-women-doubles': 'WTA Austria Women Double',
         }
+        self.output_folder = "app/stake/tennis/"
+        self.old_folder = os.path.join(self.output_folder, "old")
+
     def get_matches(self):
         links = []
         matches = []
@@ -195,16 +281,43 @@ class TennisScraper():
             time.sleep(4)
         return set(links)
 
+
+    def backup_existing_files(self):
+        """
+        Backup existing HTML files to the 'old' folder with a timestamp.
+        """
+        try:
+            current_time = datetime.now().strftime("%Y-%m-%d")
+            if not os.path.exists(self.old_folder):
+                os.makedirs(self.old_folder)
+            files = os.listdir(self.output_folder)
+            html_files = [f for f in files if f.endswith('.json')]
+            for html_file in html_files:
+                if os.path.exists(os.path.join(self.old_folder, current_time + "-" + html_file)):
+                    print("No need for backing up yet.")
+                else:
+                    shutil.move(os.path.join(self.output_folder, html_file), os.path.join(self.old_folder, current_time + "-" + html_file))
+                    print(f"Moved {html_file} to old folder.")
+        except Exception as e:
+            print(f"Error backing up existing files: {e}")
+
     def parse_all_matches(self):
-        results = []    
-        link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
-        for link, league in link_dict.items():
-            if "sports/tennis/"in link:
-                parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
-                results.append({league : self.html_to_json(parser)})
-            else:
-                continue
-        return json.dumps(results)
+        """
+        Parse all tennis matches and save them in JSON format.
+        """
+        try:
+            self.backup_existing_files()
+            results = []
+            link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
+            for link, league in link_dict.items():
+                if "sports/tennis/" in link:
+                    parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
+                    results.append({league: self.html_to_json(parser)})
+                else:
+                    continue
+            return json.dumps(results)
+        except Exception as e:
+            print(f"Error parsing matches: {e}")
 
     def extract_odds_data(self, html):
         soup = BeautifulSoup(html, 'html.parser')
@@ -230,7 +343,7 @@ class TennisScraper():
     def data_searcher(self, teams, league):
         best_match = None
         best_match_score = 0
-        with open('tennis_odds_data.json', 'r') as file:
+        with open('app/stake/tennis/tennis_odds_data.json', 'r') as file:
             data = json.load(file)
         for element in data:
             try:
@@ -258,8 +371,11 @@ class MMAScraper():
         self.base_page_url = "http://stake.com/sports/mma/all"
         self.match_name = ""
         self.user_input = ""
-        self.league_id_mapping = {}#{"https://stake.com/sports/mma/ufc/ufc-fight-night-hermansson-vs-pyfer": "UFC hermansson",
-        #"https://stake.com/sports/mma/ufc/ufc-fight-night-moreno-vs-albazi": "UFC moreno", "https://stake.com/sports/mma/ufc/ufc-fight-night-ribas-vs-namajunas": "UFC ribas vs namajunas", "https://stake.com/sports/mma/ufc/ufc-fight-night-tuivasa-vs-tybura" : "UFC tuivasa vs tybura", "https://stake.com/sports/mma/ufc/ufc-298-volkanovski-vs-topuria" : "UFC volkanovski vs topuria", "https://stake.com/sports/mma/ufc/ufc-299-o-malley-vs-vera-2" : "UFC malley vs vera", "https://stake.com/sports/mma/ufc/ufc-300" : "UFC 300"}
+        self.league_id_mapping = {}
+        self.output_folder = "app/stake/mma/"
+        self.old_folder = os.path.join(self.output_folder, "old")
+
+
     def get_matches(self):
         links = []
         matches = []
@@ -272,20 +388,61 @@ class MMAScraper():
         			time.sleep(4)
         return set(links)	    
 
+    # def parse_all_matches(self):
+    #     results = []
+    #     base_page_parser = BeautifulSoup(client.get(self.base_page_url, params={"js_render" : True}).text, "html.parser")
+    #     for event in base_page_parser.find_all("a"):
+    #     	if "sports/mma/ufc" in str(event).lower():
+    #     		self.league_id_mapping["http://stake.com" + event.get("href")] = event.get_text().split("\n")[0] 
+    #     link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
+    #     for link, league in link_dict.items():
+    #     	if "sports/mma/"in link:
+    #     		parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
+    #     		results.append({league : self.html_to_json(parser)})
+    #     	else:
+    #     		continue
+    #     return json.dumps(results)
+    def backup_existing_files(self):
+        """
+        Backup existing HTML files to the 'old' folder with a timestamp.
+        """
+        try:
+            current_time = datetime.now().strftime("%Y-%m-%d")
+            if not os.path.exists(self.old_folder):
+                os.makedirs(self.old_folder)
+            files = os.listdir(self.output_folder)
+            html_files = [f for f in files if f.endswith('.json')]
+            for html_file in html_files:
+                if os.path.exists(os.path.join(self.old_folder, current_time + "-" + html_file)):
+                    print("No need for backing up yet.")
+                else:
+                    shutil.move(os.path.join(self.output_folder, html_file), os.path.join(self.old_folder, current_time + "-" + html_file))
+                    print(f"Moved {html_file} to old folder.")
+        except Exception as e:
+            print(f"Error backing up existing files: {e}")
+
+
     def parse_all_matches(self):
-        results = []
-        base_page_parser = BeautifulSoup(client.get(self.base_page_url, params={"js_render" : True}).text, "html.parser")
-        for event in base_page_parser.find_all("a"):
-        	if "sports/mma/ufc" in str(event).lower():
-        		self.league_id_mapping["http://stake.com" + event.get("href")] = event.get_text().split("\n")[0] 
-        link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
-        for link, league in link_dict.items():
-        	if "sports/mma/"in link:
-        		parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
-        		results.append({league : self.html_to_json(parser)})
-        	else:
-        		continue
-        return json.dumps(results)
+        """
+        Parse all tennis matches and save them in JSON format.
+        """
+        try:
+            self.backup_existing_files()
+            results = []
+            base_page_parser = BeautifulSoup(client.get(self.base_page_url, params={"js_render" : True}).text, "html.parser")
+            for event in base_page_parser.find_all("a"):
+                if "sports/mma/ufc" in str(event).lower():
+                    self.league_id_mapping["http://stake.com" + event.get("href")] = event.get_text().split("\n")[0] 
+            link_dict = {key: value for pair in self.get_matches() for key, value in [pair.split('$')]}
+            for link, league in link_dict.items():
+                if "sports/mma/" in link:
+                    parser = BeautifulSoup(client.get(link, params={"js_render": True}).text, "html.parser")
+                    results.append({league: self.html_to_json(parser)})
+                else:
+                    continue
+            return json.dumps(results)
+        except Exception as e:
+            print(f"Error parsing matches: {e}")
 
     def extract_odds_data(self, html):
         soup = BeautifulSoup(html, 'html.parser')
@@ -311,7 +468,7 @@ class MMAScraper():
     def data_searcher(self, teams):
         best_match = None
         best_match_score = 0
-        with open('mma_odds_data.json', 'r') as file:
+        with open('app/stake//mma/mma_odds_data.json', 'r') as file:
             data = json.load(file)
         for element in data:
             try:
@@ -334,27 +491,27 @@ class MMAScraper():
 
 # scraper = StakeScraper()
 # result_json = scraper.parse_all_matches()
-# with open('odds_data.json', 'w') as file:
+# with open('app/stake/football/odds_data.json', 'w') as file:
 #     file.write(result_json)
-#print(scraper.data_searcher(["eipzig", "C Union Berlin"], "Bundesliga"))
+# print(scraper.data_searcher(["eipzig", "C Union Berlin"], "Bundesliga"))
 
-#basketball_scraper = BasketballStakeScraper()
+# basketball_scraper = BasketballStakeScraper()
 # result_json = basketball_scraper.parse_all_matches()
-# with open('basketball_odds_data.json', 'w') as file:
+# with open('app/stake/basketball/basketball_odds_data.json', 'w') as file:
 #     file.write(result_json)
 #print(basketball_scraper.data_searcher(["Cleveland Cavaliers", "Sacramento Kings"], "NBA"))
 
 # tennis_scraper = TennisScraper()
 # result_json = tennis_scraper.parse_all_matches()
-# with open('tennis_odds_data.json', 'w') as file:
+# with open('app/stake/tennis/tennis_odds_data.json', 'w') as file:
 #     file.write(result_json)
 # print(tennis_scraper.data_searcher(["Cazaux, Arthur", "Marterer, Maximilian"], "ATP France Men Single"))
 
-mma_scraper = MMAScraper()
+# mma_scraper = MMAScraper()
 # result_json = mma_scraper.parse_all_matches()
-# with open('mma_odds_data.json', 'w') as file:
+# with open('app/stake/mma/mma_odds_data.json', 'w') as file:
 #     file.write(result_json)
-print(mma_scraper.data_searcher(["volkanovski", "topuria"]))
+# print(mma_scraper.data_searcher(["volkanovski", "topuria"]))
 
 
 

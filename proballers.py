@@ -5,41 +5,39 @@ import json
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-basketball_players= [
-		"Payton Pritchard",
-		"Sam Hauser",
-		"Jaylen Brown",
-		"Jayson Tatum",
-		"Derrick White",
-		"Jrue Holiday",
-		"Al Horford",
-		"Kristaps Porzingis",
-		"Luke Kornet",
-		"Oshae Brissett",
-		"Daniel Hackett",
-		"Devontae Cacok",
-		"Iffe Lunderberg",
-		"Isaïa Cordinier",
-		"Jaleen Smith",
-		"Jordan Mickey",
-		"Marco Belinelli",
-		"Ognjen Dobric",
-		"Rihards Lomazs",
-		"Tornike Shengelia",
-		"Gabe Olaseni",
-		"Jordan Taylor",
-		"Joshua Sharma",
-		"Kareem Queeley",
-		"Luke Nelson",
-		"Matt Morgan",
-		"Morayo Soluade",
-		"Rokas Gustys",
-		"Sam Dekker",
-		"Tarik Phillip",
-		'Kevin Durant',
-		'lebron james',
-		'Giannis Antetokounmpo',
-	]
+nba_teams = [
+    "Atlanta Hawks",
+    "Boston Celtics",
+    "Brooklyn Nets",
+    "Charlotte Hornets",
+    "Chicago Bulls",
+    "Cleveland Cavaliers",
+    "Dallas Mavericks",
+    "Denver Nuggets",
+    "Detroit Pistons",
+    "Golden State Warriors",
+    "Houston Rockets",
+    "Indiana Pacers",
+    "LA Clippers",
+    "Los Angeles Lakers",
+    "Memphis Grizzlies",
+    "Miami Heat",
+    "Milwaukee Bucks",
+    "Minnesota Timberwolves",
+    "New Orleans Pelicans",
+    "New York Knicks",
+    "Oklahoma City Thunder",
+    "Orlando Magic",
+    "Philadelphia 76ers",
+    "Phoenix Suns",
+    "Portland Trail Blazers",
+    "Sacramento Kings",
+    "San Antonio Spurs",
+    "Toronto Raptors",
+    "Utah Jazz",
+    "Washington Wizards"
+]
+
 
 headers = {
 	'Host': 'www.proballers.com',
@@ -76,7 +74,10 @@ class BasketballScraper:
 		'Accept-Language': 'en-US,en;q=0.9',
 		'Connection': 'close',
 		}
-		self.user_input = user_input
+		if "los angeles clippers" in user_input or "Clippers" in user_input or "clippers" in user_input:
+			self.user_input = "LA Clippers"
+		else:
+			self.user_input = user_input
 		self.data = {'query': self.user_input} 
 		try:
 			if team:
@@ -201,14 +202,13 @@ class BasketballScraper:
 
 
 
-for i in basketball_players:	
-	scraper = BasketballScraper("alba berlin", True)
-	# print(scraper.parse_games_table())
-	# print(scraper.parse_html_table())
-	# print(scraper.averages())
+for i in nba_teams:	
+	scraper = BasketballScraper("la clippers", True)
+	#print(scraper.parse_games_table())
+	#print(scraper.parse_html_table())
+	#print(scraper.averages())
 	print(scraper.parse_euroleague())
-	print(scraper.leaders())
-	break
+	#print(scraper.leaders())
 
 
 

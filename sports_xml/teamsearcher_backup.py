@@ -117,12 +117,12 @@ class FootballDataParser:
         """
         try:
             data = {}
-            list_data = []
+            second_dict = {}
             for p, i in file.items():
                 for k in i.find_all('odd'):
-                    list_data.append((k.get('name'), k.get('value')))
-                data[p] = list_data
-                list_data = []
+                    second_dict[k.get('name')] = k.get('value')
+                data[p] = second_dict
+                second_dict = {}
             return json.dumps(data)
         except (TypeError, AttributeError):
             print("Coefficients not found.")
@@ -232,12 +232,12 @@ class BasketballDataParser:
         """
         try:
             data = {}
-            list_data = []
+            second_dict = {}
             for p, i in file.items():
                 for k in i.find_all('odd'):
-                    list_data.append((k.get('name'), k.get('value')))
-                data[p] = list_data
-                list_data = []
+                    second_dict[k.get('name')] = k.get('value')
+                data[p] = second_dict
+                second_dict = {}
             return json.dumps(data)
         except (TypeError, AttributeError):
             print("Coefficients not found.")
@@ -354,12 +354,12 @@ class TennisDataScraper:
         """
         try:
             data = {}
-            list_data = []
+            second_dict = {}
             for p, i in file.items():
                 for k in i.find_all('odd'):
-                    list_data.append((k.get('name'), k.get('value')))
-                data[p] = list_data
-                list_data = []
+                    second_dict[k.get('name')] = k.get('value')
+                data[p] = second_dict
+                second_dict = {}
             return json.dumps(data)
         except (TypeError, AttributeError):
             print("Coefficients not found.")
@@ -471,12 +471,12 @@ class MMADataParser:
         """
         try:
             data = {}
-            list_data = []
+            second_dict = {}
             for p, i in file.items():
                 for k in i.find_all('odd'):
-                    list_data.append((k.get('name'), k.get('value')))
-                data[p] = list_data
-                list_data = []
+                    second_dict[k.get('name')] = k.get('value')
+                data[p] = second_dict
+                second_dict = {}
             return json.dumps(data)
         except (TypeError, AttributeError):
             print("Coefficients not found.")
@@ -487,9 +487,36 @@ class MMADataParser:
         """
         self.download_file("mma.xml")
 
+class Searcher():
+    def __init__(self, sport, team1, team2, casino=None, league=None):
+        self.league = league
+        self.sport = sport
+        self.team1 = team1
+        self.team2 = team2
+        self.casino = casino
+
+    def search(self):
+        if self.sport == "football":
+            if self.league == None:
+                return f"Please specify league when searching {self.sport}"
+            scraper = FootballDataParser()
+            return scraper.koef(scraper.team(self.league,[self.team1, self.team2], self.casino))
+        if self.sport == "basketball":
+            if self.league == None:
+                return f"Please specify league when searching {self.sport}"
+            scraper = BasketballDataParser()
+            return scraper.koef(scraper.team(self.league,[self.team1, self.team2], self.casino))
+        if self.sport == "tennis":
+            scraper = TennisDataScraper([self.team1, self.team2], self.casino)
+            return scraper.koef(scraper.team([self.team1, self.team2], self.casino))
+        if self.sport == "mma":
+            scraper = MMADataParser()
+            return scraper.koef(scraper.team([self.team1, self.team2], self.casino))
 
 
 if __name__ == "__main__":
-    mma_parser = MMADataParser()
-    #mma_parser.download_all_files()
-    print(mma_parser.koef(mma_parser.team(['Diana Belbita', 'Molly McCann'], casino="bwin")))
+    searcher = Searcher("mma", 'Diana Belbita', 'Molly McCann', "bwin")
+    print(searcher.search())
+
+
+

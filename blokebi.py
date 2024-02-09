@@ -23,8 +23,8 @@ class Parser():
         else:
             return "Unknown"
 
-    def last_five(self, html):
-        soup = BeautifulSoup(html, 'html.parser')
+    def last_five(self):
+        soup = BeautifulSoup(self.source, 'html.parser')
         matches = []
         win_loss = {}
         for match in soup.select('.spree-box'):
@@ -192,7 +192,10 @@ class Parser():
         return matchday_info
 
 ###### Matchday ######
-
-parser = Parser("Borussia dortmund")
-matches_json = parser.get_matchday_info()
-print(json.dumps(matches_json, indent=4))
+if name == main:
+    parser = Parser("Borussia dortmund")
+    print(json.dumps(parser.last_five(), indent=4))
+    print(json.dumps(parser.get_standout_players(), indent=4))
+    print(json.dumps(parser.get_injuries_and_suspensions(), indent=4))
+    print(json.dumps(parser.get_season_info(), indent=4))
+    print(json.dumps(parser.get_matchday_info(), indent=4))

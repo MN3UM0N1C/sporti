@@ -63,18 +63,30 @@ class FootballDataParser:
                 xml_content = file.read()
                 return BeautifulSoup(xml_content, 'xml')
 
-    def search(self, league_id, match, casino=None):
+    def search(self,league_id, match, casino=None):
         """
         Search for match data within the XML file for a specific league ID.
         """
-        result = []
-        soup = self.load_data(league_id)
-        for k in soup.find_all("match", {"id": match}):
-            if casino is not None:
-                result = k.find_all('bookmaker', {'name': casino})
-            else:
-                result = k.find_all('bookmaker')
-        return result
+        result = {}
+        all_casino = []
+        try:
+            soup = self.load_data(league_id)
+            for k in soup.find_all("match", {"id": match}):
+                if casino is not None:
+                    for bookmakers in k.find_all('type'):
+                        if "Handicap" not in bookmakers["value"]:
+                            for one_casino in bookmakers.find_all("bookmaker"):
+                                if one_casino["name"] == casino:
+                                    result[bookmakers["value"]] = one_casino    
+                else:   
+                    for bookmakers in k.find_all('type'):
+                        if "Handicap" not in bookmakers["value"]:
+                            for one_casino in bookmakers.find_all("bookmaker"):
+                                result[bookmakers["value"]] = one_casino    
+            return result
+        except AttributeError:
+            print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
+
 
     def is_match(self, team_name, match_name):
         """
@@ -99,12 +111,21 @@ class FootballDataParser:
             (self.is_match(teams[0], visitor_team) and self.is_match(teams[1], local_team)):
                 return self.search(league_id, match.get("id"), casino=casino)
                 
-    def koef(self, file):        
+    def koef(self, file):
         """
         Extract odds data from the XML file and return as JSON.
         """
-        data = [(k.get('name'), k.get('value')) for i in file for k in i.find_all('odd')]
-        return json.dumps(dict(data))
+        try:
+            data = {}
+            list_data = []
+            for p, i in file.items():
+                for k in i.find_all('odd'):
+                    list_data.append((k.get('name'), k.get('value')))
+                data[p] = list_data
+                list_data = []
+            return json.dumps(data)
+        except (TypeError, AttributeError):
+            print("Coefficients not found.")
 
     def download_all_files(self):
         """
@@ -161,18 +182,26 @@ class BasketballDataParser:
                 xml_content = file.read()
             return BeautifulSoup(xml_content, 'xml')
 
-    def search(self, league_id, match, casino=None):
+    def search(self,league_id, match, casino=None):
         """
         Search for match data within the XML file for a specific league ID.
         """
-        result = []
+        result = {}
+        all_casino = []
         try:
             soup = self.load_data(league_id)
             for k in soup.find_all("match", {"id": match}):
                 if casino is not None:
-                    result = k.find_all('bookmaker', {'name': casino})
-                else:
-                    result = k.find_all('bookmaker')
+                    for bookmakers in k.find_all('type'):
+                        if "Handicap" not in bookmakers["value"]:
+                            for one_casino in bookmakers.find_all("bookmaker"):
+                                if one_casino["name"] == casino:
+                                    result[bookmakers["value"]] = one_casino    
+                else:   
+                    for bookmakers in k.find_all('type'):
+                        if "Handicap" not in bookmakers["value"]:
+                            for one_casino in bookmakers.find_all("bookmaker"):
+                                result[bookmakers["value"]] = one_casino    
             return result
         except AttributeError:
             print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
@@ -202,8 +231,14 @@ class BasketballDataParser:
         Extract odds data from the XML file and return as JSON.
         """
         try:
-            data = [(k.get('name'), k.get('value')) for i in file for k in i.find_all('odd')]
-            return json.dumps(dict(data))
+            data = {}
+            list_data = []
+            for p, i in file.items():
+                for k in i.find_all('odd'):
+                    list_data.append((k.get('name'), k.get('value')))
+                data[p] = list_data
+                list_data = []
+            return json.dumps(data)
         except (TypeError, AttributeError):
             print("Coefficients not found.")
 
@@ -268,18 +303,28 @@ class TennisDataScraper:
         except FileNotFoundError:
             print(f"Error: File not found for tennis matches. Make sure to download the file first.")
 
+
+
     def search(self, match, casino=None):
         """
-        Search for match data within the tennis XML file.
+        Search for match data within the XML file for a specific league ID.
         """
-        result = []
+        result = {}
+        all_casino = []
         try:
             soup = self.load_data()
             for k in soup.find_all("match", {"id": match}):
                 if casino is not None:
-                    result = k.find_all('bookmaker', {'name': casino})
-                else:
-                    result = k.find_all('bookmaker')
+                    for bookmakers in k.find_all('type'):
+                        if "Handicap" not in bookmakers["value"]:
+                            for one_casino in bookmakers.find_all("bookmaker"):
+                                if one_casino["name"] == casino:
+                                    result[bookmakers["value"]] = one_casino    
+                else:   
+                    for bookmakers in k.find_all('type'):
+                        if "Handicap" not in bookmakers["value"]:
+                            for one_casino in bookmakers.find_all("bookmaker"):
+                                result[bookmakers["value"]] = one_casino    
             return result
         except AttributeError:
             print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
@@ -305,11 +350,17 @@ class TennisDataScraper:
 
     def koef(self, file):
         """
-        Extract odds data from the tennis XML file and return as JSON.
+        Extract odds data from the XML file and return as JSON.
         """
         try:
-            data = [(k.get('name'), k.get('value')) for i in file for k in i.find_all('odd')]
-            return json.dumps(dict(data))
+            data = {}
+            list_data = []
+            for p, i in file.items():
+                for k in i.find_all('odd'):
+                    list_data.append((k.get('name'), k.get('value')))
+                data[p] = list_data
+                list_data = []
+            return json.dumps(data)
         except (TypeError, AttributeError):
             print("Coefficients not found.")
 
@@ -372,16 +423,24 @@ class MMADataParser:
 
     def search(self, match, casino=None):
         """
-        Search for match data within the MMA XML file.
+        Search for match data within the XML file for a specific league ID.
         """
-        result = []
+        result = {}
+        all_casino = []
         try:
             soup = self.load_data()
             for k in soup.find_all("match", {"id": match}):
                 if casino is not None:
-                    result = k.find_all('bookmaker', {'name': casino})
-                else:
-                    result = k.find_all('bookmaker')
+                    for bookmakers in k.find_all('type'):
+                        if "Handicap" not in bookmakers["value"]:
+                            for one_casino in bookmakers.find_all("bookmaker"):
+                                if one_casino["name"] == casino:
+                                    result[bookmakers["value"]] = one_casino    
+                else:   
+                    for bookmakers in k.find_all('type'):
+                        if "Handicap" not in bookmakers["value"]:
+                            for one_casino in bookmakers.find_all("bookmaker"):
+                                result[bookmakers["value"]] = one_casino    
             return result
         except AttributeError:
             print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
@@ -408,22 +467,29 @@ class MMADataParser:
 
     def koef(self, file):
         """
-        Extract odds data from the MMA XML file and return as JSON.
+        Extract odds data from the XML file and return as JSON.
         """
         try:
-            data = [(k.get('name'), k.get('value')) for i in file for k in i.find_all('odd')]
-            return json.dumps(dict(data))
+            data = {}
+            list_data = []
+            for p, i in file.items():
+                for k in i.find_all('odd'):
+                    list_data.append((k.get('name'), k.get('value')))
+                data[p] = list_data
+                list_data = []
+            return json.dumps(data)
         except (TypeError, AttributeError):
             print("Coefficients not found.")
+
     def download_all_files(self):
         """
         Download the MMA XML file.
         """
         self.download_file("mma.xml")
 
+
+
 if __name__ == "__main__":
-    basketball_parser = BasketballDataParser()
-    print(basketball_parser.koef(basketball_parser.team("Premier_League", ["Brentford", "Manchester City"], casino="bwin")))
-    #basketball_parser.download_all_files()
-    # mma_parser = MMADataParser()
-    # mma_parser.download_all_files()
+    mma_parser = MMADataParser()
+    #mma_parser.download_all_files()
+    print(mma_parser.koef(mma_parser.team(['Diana Belbita', 'Molly McCann'], casino="bwin")))

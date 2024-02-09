@@ -1,14 +1,27 @@
 from bs4 import BeautifulSoup
 import json
 import requests
+from fuzzywuzzy import process
+from fake_useragent import UserAgent
 
-class Parser():
+class Parser:
     def __init__(self, user_input):
-        self.user_input = user_input
-        self.user_input_for_url = user_input.lower().replace(" ", "-")
-        self.url = f"https://www.besoccer.com/team/{self.user_input_for_url}"
-        self.source = requests.get(self.url).text
-        self.last_matches_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_streakResume")
+        self.user_input = user_input.lower()
+        self.headers = {
+            'User-Agent': UserAgent().random,
+            "Accept-Language": "en-US,en;q=0.5",
+            "Referer": "https://www.google.com/",
+            "DNT": "1",
+            "X-Forwarded-For": "127.0.0.1",
+        }
+        self.initial_url = f'https://www.besoccer.com/ajax/autocomplete?q={self.user_input}'
+        self.soup = BeautifulSoup(requests.get(self.initial_url, headers=self.headers).text, "html.parser")
+        if len(self.soup.find_all("li")) >= 2:
+            self.url = self.soup.find_all("li")[1].a['href']
+            self.source = requests.get(self.url).text
+        else:
+            self.source = ""
+
 
 ###### Last 5 ######
 
@@ -24,7 +37,10 @@ class Parser():
             return "Unknown"
 
     def last_five(self):
-        soup = BeautifulSoup(self.source, 'html.parser')
+        if self.source != "":
+            soup = BeautifulSoup(self.source, 'html.parser')
+        else:
+            return("not found")
         matches = []
         win_loss = {}
         for match in soup.select('.spree-box'):
@@ -49,7 +65,10 @@ class Parser():
 ###### Stand Out ######
 
     def get_standout_players(self):
-        standout_players_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_featuredPlayers")
+        if self.source != "":
+            standout_players_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_featuredPlayers")
+        else:
+            return("not found")
         standout_players = []
 
         if standout_players_div:
@@ -99,7 +118,10 @@ class Parser():
 ###### Injuries ######
 
     def get_injuries_and_suspensions(self):
-        injuries_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_injuriesResume")
+        if self.source != "":
+            injuries_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_injuriesResume")
+        else:
+            return("not found")
         injuries = []
 
         if injuries_div:
@@ -139,7 +161,10 @@ class Parser():
 ###### Season ######
 
     def get_season_info(self):
-        season_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_season")
+        if self.source != "":
+            season_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_season")
+        else:
+            return("not found")
         season_info = {}
 
         if season_div:
@@ -167,9 +192,11 @@ class Parser():
 ###### Matchday ######
 
     def get_matchday_info(self):
-        matchday_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_leaguePerfomance").find("div", "panel-body")
+        if self.source != "":
+            matchday_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_leaguePerfomance").find("div", "panel-body")
+        else:
+            return("not found")
         matchday_info = []
-
         if matchday_div:
             table = matchday_div.find("table", class_="table")
             if table:
@@ -192,10 +219,36 @@ class Parser():
         return matchday_info
 
 ###### Matchday ######
-if name == main:
-    parser = Parser("Borussia dortmund")
-    print(json.dumps(parser.last_five(), indent=4))
-    print(json.dumps(parser.get_standout_players(), indent=4))
-    print(json.dumps(parser.get_injuries_and_suspensions(), indent=4))
-    print(json.dumps(parser.get_season_info(), indent=4))
-    print(json.dumps(parser.get_matchday_info(), indent=4))
+
+
+teams = [
+    "Las Palmas",
+    "Valencia",
+    "Barcelona",
+    "Granada CF",
+    "Real Madrid",
+    "Girona",
+    "Sevilla",
+    "Atl. Madrid",
+    "Real Sociedad",
+    "Osasuna",
+    "Almeria",
+    "Ath Bilbao",
+    "Getafe",
+    "Celta Vigo",
+    "Mallorca",
+    "Rayo Vallecano",
+    "Alaves",
+    "Villarreal",
+    "Cadiz CF",
+    "Betis"
+]
+
+if __name__ == "__main__":
+    for search in teams:
+        parser = Parser(search)
+        print(json.dumps(parser.last_five(), indent=4))
+        print(json.dumps(parser.get_standout_players(), indent=4))
+        print(json.dumps(parser.get_injuries_and_suspensions(), indent=4))
+        print(json.dumps(parser.get_season_info(), indent=4))
+        print(json.dumps(parser.get_matchday_info(), indent=4))

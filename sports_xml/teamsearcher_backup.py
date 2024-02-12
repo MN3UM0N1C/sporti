@@ -83,7 +83,7 @@ class FootballDataParser:
                                     result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino  
                     if result == {}:
                         alternate_casino = random.choice(alternate_casino_list)
-                        return self.search(match, alternate_casino)                                      
+                        return self.search(league_id, match, alternate_casino)                                      
                 else:   
                     for bookmakers in k.find_all('type'):
                         if "Handicap" not in bookmakers["value"]:
@@ -205,7 +205,7 @@ class BasketballDataParser:
                                     result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino 
                     if result == {}:
                         alternate_casino = random.choice(alternate_casino_list)
-                        return self.search(match, alternate_casino)                                       
+                        return self.search(league_id, match, alternate_casino)                                       
                 else:   
                     for bookmakers in k.find_all('type'):
                         if "Handicap" not in bookmakers["value"]:

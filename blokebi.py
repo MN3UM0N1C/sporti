@@ -44,14 +44,26 @@ class Parser:
         matches = []
         win_loss = {}
         for match in soup.select('.spree-box'):
+            if match.find(class_='result').find_all("span")[0].find("b"):
+                bold_index = 0
+            else:
+                bold_index = 1
             match_data = {
-                'home_team': match.find(class_='shield')['alt'],
+                'home_score': match.find(class_='result').get_text().replace("\n" ,"").replace(" ", "").split("-")[0],
+                'away_score': match.find(class_='result').get_text().replace("\n" ,"").replace(" ", "").split("-")[1],
+                'home_team': match.find_all(class_='shield')[0]['alt'],
                 'away_team': match.find(class_='shield').find_next_sibling()['alt'],
-                'home_score': int(match.find(class_='result').find('span').text.strip()),
-                'away_score': int(match.find(class_='result').find('b').text.strip()),
                 'date': match.find(class_='date').text.strip(),
-                'result': self.get_match_result(match)
+                'result': self.get_match_result(match),
+                "league" : match.find(class_='shield').find_next_sibling()['alt']
             }
+            if bold_index == 0:
+                match_data['home_team'] =  self.user_input
+                match_data['away_team'] = match.find_all(class_='shield')[0]['alt']
+            elif bold_index == 1:
+                match_data['home_team'] =  match.find_all(class_='shield')[0]['alt']
+                match_data['away_team'] = self.user_input
+            bold_index = None
             matches.append(match_data)
         win_loss["Wins / Loss"] = self.get_results_string(matches) 
         return [matches, win_loss]
@@ -65,53 +77,39 @@ class Parser:
 ###### Stand Out ######
 
     def get_standout_players(self):
-        if self.source != "":
-            standout_players_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_featuredPlayers")
-        else:
-            return("not found")
+        standout_players_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_featuredPlayers")
         standout_players = []
 
         if standout_players_div:
-            players_links = standout_players_div.select('.pv10')
-            if players_links:
-                # Extract photo URL for all players
-                photo_urls = [player_link.find('img')['src'] for player_link in players_links]
-                
-                # Find the player with the highest stats
-                max_stat_player_index = self.find_max_stat_player_index(players_links)
+            # Check if there's a div with more statistics
+            main_featured_player_div = standout_players_div.find("div", class_="team-squad panel-body br-bottom ph0")
+            if main_featured_player_div:
+                player_data = self.parse_main_featured_player(main_featured_player_div)
+                player_data['featured'] = True
+                standout_players.append(player_data)
 
-                for i, player_link in enumerate(players_links):
-                    main_line = player_link.find(class_='main-line')
+            # Parse the rest of the players
+            for player_link in standout_players_div.select('.pv10'):
+                if "mainFeaturedPlayer" not in player_link.get("data-cy", ""):
                     player_data = {
                         'name': player_link.find(class_='person-name').text.strip(),
                         'number': player_link.find(class_='info-box').find('span', class_='number').text.strip(),
                         'position': player_link.find(class_='info-box').find('span', class_='bg-role').text.strip(),
-                        'elo': player_link.find(class_='row jc-ce').find('div').text.strip() if player_link.find(class_='row jc-ce') else None,
-                        'photo_url': photo_urls[i],
-                        'is_first_place': i == max_stat_player_index
+                        'photo_url': player_link.find('img')['src'],
+                        'featured': False
                     }
-                    if main_line:
-                        player_data['main_line'] = main_line.text.strip()
-                    else:
-                        player_data['main_line'] = None
-
                     standout_players.append(player_data)
 
         return standout_players
 
-    def find_max_stat_player_index(self, players_links):
-        max_stat_player_index = 0
-        max_stat = float(players_links[0].find(class_='main-line').text.strip()) if players_links[0].find(class_='main-line') else float('-inf')
-
-        for i, player_link in enumerate(players_links):
-            main_line = player_link.find(class_='main-line')
-            if main_line:
-                stat = float(main_line.text.strip())
-                if stat > max_stat:
-                    max_stat = stat
-                    max_stat_player_index = i
-
-        return max_stat_player_index
+    def parse_main_featured_player(self, player_div):
+        player_data = {
+            'name': player_div.find(class_='person-name').text.strip(),
+            'number': player_div.find(class_='info-box').find('span', class_='number').text.strip(),
+            'position': player_div.find(class_='info-box').find('span', class_='bg-role').text.strip(),
+            'photo_url': player_div.find('img')['src']
+        }
+        return player_data
 
 ###### Stand Out ######
 
@@ -146,12 +144,12 @@ class Parser:
                     else:
                         injury_reason = None
                         recovery_info = None
-
+                    injury_info_list = injury_reason.split("\n")                        
                     injuries.append({
                         'player_name': main_text,
                         'player_img_src': player_img_src,
-                        'injury_reason': injury_reason.replace("\n", " | "),
-                        'recovery_info': recovery_info
+                        'injury_or_suspension_reason': injury_info_list[1],
+                        'recovery_info': injury_info_list[2]
                     })
 
         return injuries
@@ -191,7 +189,7 @@ class Parser:
 
 ###### Matchday ######
 
-    def get_matchday_info(self):
+    def get_league_info(self):
         if self.source != "":
             matchday_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_leaguePerfomance").find("div", "panel-body")
         else:
@@ -204,7 +202,7 @@ class Parser:
                 for row in rows:
                     matchday_data = {}
                     cells = row.find_all("td")
-                    matchday_data['Matchday'] = cells[0].text.strip()
+                    matchday_data['Standing'] = cells[0].text.strip()
                     matchday_data['Team'] = cells[2].text.strip()
                     matchday_data['PTS'] = cells[3].text.strip()
                     matchday_data['MP'] = cells[4].text.strip()
@@ -222,6 +220,7 @@ class Parser:
 
 
 teams = [
+    "borussia dortmund",
     "Las Palmas",
     "Valencia",
     "Barcelona",
@@ -247,8 +246,8 @@ teams = [
 if __name__ == "__main__":
     for search in teams:
         parser = Parser(search)
-        print(json.dumps(parser.last_five(), indent=4))
-        print(json.dumps(parser.get_standout_players(), indent=4))
-        print(json.dumps(parser.get_injuries_and_suspensions(), indent=4))
-        print(json.dumps(parser.get_season_info(), indent=4))
-        print(json.dumps(parser.get_matchday_info(), indent=4))
+        # print(json.dumps(parser.last_five(), indent=4))
+        # print(json.dumps(parser.get_standout_players(), indent=4))
+        # print(json.dumps(parser.get_injuries_and_suspensions(), indent=4))
+        # print(json.dumps(parser.get_season_info(), indent=4))
+        # print(json.dumps(parser.get_league_info(), indent=4))

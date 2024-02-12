@@ -7,6 +7,8 @@ import shutil
 import time
 import os 
 
+alternate_casino_list = ["bwin", "Marathon", "1xbet", "10bet", "Unibet", "888Sport", "Betway", "Bet365", "188Bet", "Betsson"]
+
 class FootballDataParser:
     def __init__(self):
         # Initialize class variables
@@ -82,7 +84,7 @@ class FootballDataParser:
                     for bookmakers in k.find_all('type'):
                         if "Handicap" not in bookmakers["value"]:
                             for one_casino in bookmakers.find_all("bookmaker"):
-                                result[bookmakers["value"]] = one_casino    
+                                result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino  
             return result
         except AttributeError:
             print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
@@ -201,7 +203,7 @@ class BasketballDataParser:
                     for bookmakers in k.find_all('type'):
                         if "Handicap" not in bookmakers["value"]:
                             for one_casino in bookmakers.find_all("bookmaker"):
-                                result[bookmakers["value"]] = one_casino    
+                                result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino 
             return result
         except AttributeError:
             print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
@@ -324,7 +326,7 @@ class TennisDataScraper:
                     for bookmakers in k.find_all('type'):
                         if "Handicap" not in bookmakers["value"]:
                             for one_casino in bookmakers.find_all("bookmaker"):
-                                result[bookmakers["value"]] = one_casino    
+                                result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino  
             return result
         except AttributeError:
             print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
@@ -440,7 +442,7 @@ class MMADataParser:
                     for bookmakers in k.find_all('type'):
                         if "Handicap" not in bookmakers["value"]:
                             for one_casino in bookmakers.find_all("bookmaker"):
-                                result[bookmakers["value"]] = one_casino    
+                                result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino    
             return result
         except AttributeError:
             print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
@@ -487,6 +489,34 @@ class MMADataParser:
         """
         self.download_file("mma.xml")
 
+# class Searcher():
+#     def __init__(self, sport, team1, team2, casino=None, league=None):
+#         self.league = league
+#         self.sport = sport
+#         self.team1 = team1
+#         self.team2 = team2
+#         self.casino = casino
+
+#     def search(self):
+#         if self.sport == "football":
+#             if self.league == None:
+#                 return f"Please specify league when searching {self.sport}"
+#             scraper = FootballDataParser()
+#             return scraper.koef(scraper.team(self.league,[self.team1, self.team2], self.casino))
+#         if self.sport == "basketball":
+#             if self.league == None:
+#                 return f"Please specify league when searching {self.sport}"
+#             scraper = BasketballDataParser()
+#             return scraper.koef(scraper.team(self.league,[self.team1, self.team2], self.casino))
+#         if self.sport == "tennis":
+#             scraper = TennisDataScraper([self.team1, self.team2], self.casino)
+#             return scraper.koef(scraper.team([self.team1, self.team2], self.casino))
+#         if self.sport == "mma":
+#             scraper = MMADataParser()
+#             return scraper.koef(scraper.team([self.team1, self.team2], self.casino))
+
+
+
 class Searcher():
     def __init__(self, sport, team1, team2, casino=None, league=None):
         self.league = league
@@ -497,26 +527,45 @@ class Searcher():
 
     def search(self):
         if self.sport == "football":
-            if self.league == None:
+            if self.league is None:
                 return f"Please specify league when searching {self.sport}"
             scraper = FootballDataParser()
-            return scraper.koef(scraper.team(self.league,[self.team1, self.team2], self.casino))
-        if self.sport == "basketball":
-            if self.league == None:
+        elif self.sport == "basketball":
+            if self.league is None:
                 return f"Please specify league when searching {self.sport}"
             scraper = BasketballDataParser()
-            return scraper.koef(scraper.team(self.league,[self.team1, self.team2], self.casino))
-        if self.sport == "tennis":
-            scraper = TennisDataScraper([self.team1, self.team2], self.casino)
-            return scraper.koef(scraper.team([self.team1, self.team2], self.casino))
-        if self.sport == "mma":
+        elif self.sport == "tennis":
+            scraper = TennisDataScraper()
+        elif self.sport == "mma":
             scraper = MMADataParser()
-            return scraper.koef(scraper.team([self.team1, self.team2], self.casino))
+        else:
+            return "Unsupported sport"
+
+        for alternate_casino in alternate_casino_list:
+            result = self._search_with_casino(scraper, alternate_casino)
+            if result is not None:
+                return result
+
+        return None
+
+    def _search_with_casino(self, scraper, casino):
+        if self.sport in ["football", "basketball"]:
+            result = scraper.koef(scraper.team(self.league, [self.team1, self.team2], casino))
+            if result:
+                return result, casino
+        elif self.sport == "tennis":
+            result = scraper.koef(scraper.team([self.team1, self.team2], casino))
+            if result:
+                return result, casino
+        elif self.sport == "mma":
+            result = scraper.koef(scraper.team([self.team1, self.team2], casino))
+            if result:
+                return result, casino
+
 
 
 if __name__ == "__main__":
+    # downloader = FootballDataParser().download_all_files()
     searcher = Searcher("mma", 'Diana Belbita', 'Molly McCann', "bwin")
-    print(searcher.search())
-
-
+    print(searcher.search()[0])
 

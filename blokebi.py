@@ -159,10 +159,7 @@ class Parser:
 ###### Season ######
 
     def get_season_info(self):
-        if self.source != "":
-            season_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_season")
-        else:
-            return("not found")
+        season_div = BeautifulSoup(self.source, 'html.parser').find("div", id="mod_season")
         season_info = {}
 
         if season_div:
@@ -174,20 +171,23 @@ class Parser:
             item_columns = season_div.find_all("div", class_="item-col")
             if item_columns:
                 for column in item_columns:
-                    main_line = column.find("div", class_="main-line").text.strip().replace(" ", "").replace("\n", "")
+                    main_line = column.find("div", class_="main-line").text.strip()
                     other_lines = column.find_all("div", class_="other-line")
                     if other_lines:
-                        other_line_texts = [line.text.strip() for line in other_lines]
-                    else:
-                        other_line_texts = []
-
-                    season_info[main_line] = other_line_texts
+                        label = other_lines[-1].text.strip()
+                        value = main_line
+                        if label == "Cards / match":
+                            value = value.replace("\n", "").replace(" ", "").replace("/", "/")
+                        season_info[label] = [value]
+                        for line in other_lines[:-1]:
+                            value = line.text.strip()
+                            season_info[label].append(value)
 
         return season_info
 
 ###### Season ######
 
-###### Matchday ######
+###### League ######
 
     def get_league_info(self):
         if self.source != "":
@@ -216,7 +216,7 @@ class Parser:
 
         return matchday_info
 
-###### Matchday ######
+###### League ######
 
 
 teams = [
@@ -249,5 +249,5 @@ if __name__ == "__main__":
         # print(json.dumps(parser.last_five(), indent=4))
         # print(json.dumps(parser.get_standout_players(), indent=4))
         # print(json.dumps(parser.get_injuries_and_suspensions(), indent=4))
-        # print(json.dumps(parser.get_season_info(), indent=4))
+        print(json.dumps(parser.get_season_info(), indent=4))
         # print(json.dumps(parser.get_league_info(), indent=4))

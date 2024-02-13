@@ -99,6 +99,7 @@ class NBA():
         return json.dumps(data)
 
     def team_offensive_stats(self):
+        offensive = {}
         table = self.nba_request(self.statistics_url).find_all("div", {"class" : "covers-CoversMatchups-responsiveTableContainer"})[2]
         # Find all table rows in the table body
         rows = table.find('tbody').find_all('tr')
@@ -119,9 +120,11 @@ class NBA():
                 "Season Stats": row[1],
                 "Rank": row[2]
             }
+        offensive["offensive"] = result
         return result
 
     def team_defensive_stats(self):
+        defensive = {}
         table = self.nba_request(self.statistics_url).find_all("div", {"class" : "covers-CoversMatchups-responsiveTableContainer"})[3]
         # Find all table rows in the table body
         rows = table.find('tbody').find_all('tr')
@@ -142,6 +145,7 @@ class NBA():
                 "Season Stats": row[1],
                 "Rank": row[2]
             }
+        defensive["defensive"] = result
         return result
 
     def team_leader_stats(self):

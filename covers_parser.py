@@ -17,24 +17,11 @@ class NBA():
 
     def parser(self):
         page = self.nba_request(self.past_game_url)
-        table = page.find("table", {"class" : True})
         record_block =  page.find('div', class_='record-block')
         # Create a dictionary to store the data
         win_loss = {
             "Win / Loss": record_block.find('div', class_='record-value').text}
-        header_row = table.find('thead').find_all('tr')[1]
-        keys = [th.text.strip() for th in header_row.find_all('th')]
-        # Initializing list to hold parsed data
-        data = []
         data.append(win_loss)
-        # Parsing table rows
-        for row in table.find('tbody').find_all('tr'):
-            cells = row.find_all('td')
-            if len(cells) == len(keys):
-                row_data = {}
-                for i in range(len(keys)):
-                    row_data[keys[i]] = cells[i].text.strip().replace("\n", "").replace("  ", "")
-                data.append(row_data)
         return json.dumps(data)
 
     def statistics_parser(self):

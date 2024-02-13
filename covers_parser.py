@@ -98,13 +98,86 @@ class NBA():
                 data.append(row_data)
         return json.dumps(data)
 
+    def team_offensive_stats(self):
+        table = self.nba_request(self.statistics_url).find_all("div", {"class" : "covers-CoversMatchups-responsiveTableContainer"})[2]
+        # Find all table rows in the table body
+        rows = table.find('tbody').find_all('tr')
+        # Initialize an empty list to store the data
+        data = []
+        # Loop through each row
+        for row in rows:
+            # Extract the cells in the row
+            cells = row.find_all('td')
+            # Extract the text content from each cell
+            row_data = [cell.get_text(strip=True) for cell in cells]
+            # Append the row data to the list
+            data.append(row_data)
+        # Convert the list of data to a dictionary
+        result = {}
+        for row in data:
+            result[row[0]] = {
+                "Season Stats": row[1],
+                "Rank": row[2]
+            }
+        return result
+
+    def team_defensive_stats(self):
+        table = self.nba_request(self.statistics_url).find_all("div", {"class" : "covers-CoversMatchups-responsiveTableContainer"})[3]
+        # Find all table rows in the table body
+        rows = table.find('tbody').find_all('tr')
+        # Initialize an empty list to store the data
+        data = []
+        # Loop through each row
+        for row in rows:
+            # Extract the cells in the row
+            cells = row.find_all('td')
+            # Extract the text content from each cell
+            row_data = [cell.get_text(strip=True) for cell in cells]
+            # Append the row data to the list
+            data.append(row_data)
+        # Convert the list of data to a dictionary
+        result = {}
+        for row in data:
+            result[row[0]] = {
+                "Season Stats": row[1],
+                "Rank": row[2]
+            }
+        return result
+
+    def team_leader_stats(self):
+        table = self.nba_request(self.statistics_url).find_all("div", {"class" : "covers-CoversMatchups-responsiveTableContainer"})[5]
+        # Find all table rows in the table body
+        rows = table.find('tbody').find_all('tr')
+        # Initialize an empty list to store the data
+        data = []
+        # Loop through each row
+        for row in rows:
+            # Extract the cells in the row
+            cells = row.find_all('td')
+            # Extract the text content from each cell
+            row_data = [cell.get_text(strip=True) for cell in cells]
+            # Append the row data to the list
+            data.append(row_data)
+        # Convert the list of data to a dictionary
+        result = {}
+        for row in data:
+            result[row[0]] = {
+                "Season Stats": row[1],
+                "Rank": row[2]
+            }
+        return result
 
 
-# Converting data to JSON
-scraper = NBA("denver-nuggets")
-print(scraper.team_stats())
-print(scraper.statistics_parser())
-print(scraper.injuries())
-print(scraper.parser())
+
+
+if __name__ == "__main__":
+    scraper = NBA("denver-nuggets")
+    print(scraper.team_leader_stats())
+    print(scraper.statistics_parser())
+    print(scraper.injuries())
+    print(scraper.parser())
+    print(scraper.team_offensive_stats())
+    print(scraper.team_defensive_stats())
+    print(scraper.team_leader_stats())
 
 

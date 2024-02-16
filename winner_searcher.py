@@ -1,5 +1,6 @@
-import subprocess
 import os
+import json
+import subprocess
 from bs4 import BeautifulSoup
 
 class FootballMatchAnalyzer:
@@ -46,49 +47,62 @@ class FootballMatchAnalyzer:
             print(f"File {file_path} not found.")
             return None
 
-    def find_winner(self, team1, team2, league_name):
-        if league_name not in self.league_id_mapping.values():
-            print("Invalid league name.")
-            return None
-        
-        file_name = f"{league_name.replace(' ', '_')}.xml"
-        file_path = os.path.join("winner", "football", file_name)
-        xml_data = self.load_xml_file(file_path)
-        if not xml_data:
-            print(f"No data available for {league_name}.")
-            return None
+    def find_winner(self, team1, team2, league_name=None):
+        match_results = []
 
-        soup = BeautifulSoup(xml_data, "xml")
+        # If league_name is not provided, iterate through all downloaded files
+        if league_name is None:
+            for file_name in os.listdir("winner/football"):
+                file_path = os.path.join("winner/football", file_name)
+                if file_path.endswith(".xml"):
+                    xml_data = self.load_xml_file(file_path)
+                    if xml_data:
+                        soup = BeautifulSoup(xml_data, "xml")
+                        matches = self.extract_matches(soup, team1, team2, file_name)
+                        if matches:
+                            match_results.extend(matches)
+        else:
+            league_id = [k for k, v in self.league_id_mapping.items() if v == league_name.replace('_', ' ')][0]
+            file_name = f"{league_name.replace('_', ' ')}.xml"
+            file_path = os.path.join("winner/football", file_name)
+            if os.path.exists(file_path):
+                xml_data = self.load_xml_file(file_path)
+                if xml_data:
+                    soup = BeautifulSoup(xml_data, "xml")
+                    match_results.extend(self.extract_matches(soup, team1, team2, file_name))
 
-        team1_score = 0
-        team2_score = 0
-        
-        for week in soup.find_all("week")[:4]:  # Iterate through the first 4 weeks
+        return match_results
+
+    def extract_matches(self, soup, team1, team2, league_name):
+        match_results = []
+
+        last_four_weeks = soup.find_all("week")[:4]
+
+        for week in last_four_weeks:
             matches = week.find_all("match")
             for match in matches:
                 local_team = match.find("localteam").get("name")
                 visitor_team = match.find("visitorteam").get("name")
+                local_score = match.find("localteam").get("score")
+                visitor_score = match.find("visitorteam").get("score")
+
                 if (local_team == team1 and visitor_team == team2) or (local_team == team2 and visitor_team == team1):
-                    local_score = int(match.find("localteam").get("score"))
-                    visitor_score = int(match.find("visitorteam").get("score"))
-                    if local_team == team1:
-                        team1_score += local_score
-                        team2_score += visitor_score
-                    else:
-                        team1_score += visitor_score
-                        team2_score += local_score
-        
-        if team1_score > team2_score:
-            return team1
-        elif team2_score > team1_score:
-            return team2
-        else:
-            return "It was a draw"
+                    match_results.append({
+                        "League": league_name.replace('.xml', ''),
+                        "Local Team": local_team,
+                        "Visitor Team": visitor_team,
+                        "Local Score": local_score,
+                        "Visitor Score": visitor_score,
+                        "Winner": team1 if local_score > visitor_score else team2 if visitor_score > local_score else "Draw"
+                    })
+
+        return match_results
 
 # Example usage:
 analyzer = FootballMatchAnalyzer()
 base_url = "https://www.goalserve.com/getfeed/401117231212497fb27a08db8de47c17/soccerfixtures"
 output_dir = "winner/football"
-analyzer.download_all_leagues(base_url, output_dir)
-winner = analyzer.find_winner("Chelsea", "Luton Town", "Premier_League")
-print("Winner:", winner)
+# analyzer.download_all_leagues(base_url, output_dir)
+matches = analyzer.find_winner("Chelsea", "Luton Town")
+for match in matches:
+    print(json.dumps(match, indent=4))

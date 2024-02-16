@@ -168,7 +168,7 @@ class BaketballMatchAnalyzer():
         for match in soup.find_all("match"):
             match_date_str = match.get("date")
             match_date = datetime.strptime(match_date_str, "%d.%m.%Y").date()
-            if today - match_date <= timedelta(days=60): 
+            if today - match_date <= timedelta(days=30): 
                 local_team = match.find("localteam").get("name")
                 visitor_team = match.find("awayteam").get("name")
                 local_score = match.find("localteam").get("totalscore")

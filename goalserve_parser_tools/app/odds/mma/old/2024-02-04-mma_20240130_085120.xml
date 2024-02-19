@@ -1,0 +1,20 @@
+def data_searcher(self, teams, league):
+    with open('odds_data.json', 'r') as file:
+        content = file.read()
+    best_match_score = 0
+    best_match = None
+    for element in json.loads(content):
+        try:
+            element_teams = list(list(list(element.values())[0].values())[0].keys())
+            element_league = list(element.keys())[0]
+            if league.lower() == element_league.lower():
+                for team in teams:
+                    for element_team in element_teams:
+                        match_score = fuzz.partial_ratio(team.lower(), element_team.lower())
+                        if match_score > best_match_score:
+                            best_match_score = match_score
+                            best_match = element
+            if best_match_score >= 90:  # Adjust the threshold as needed
+                return json.dumps(best_match)
+        except IndexError:
+            continue

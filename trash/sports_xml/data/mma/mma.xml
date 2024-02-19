@@ -1,0 +1,3206 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<scores sport="mma" ts="1705423269">
+  <category name="UFC 297: Strickland vs. Du Plessis" gid="99906" id="99906">
+    <matches>
+      <match date="21.01.2024" time="00:30" status="Not Started" ismain="False" type="Welterweight" id="99912">
+        <localteam name="Sam Patterson" winner="False" id="99150" />
+        <awayteam name="Yohan Lainesse" winner="False" id="98404" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bwin" ts="1705309534" id="2">
+              <odd name="Away" value="1.69" us="-145" id="71802492215681568" />
+              <odd name="Home" value="2.20" us="120" id="71802492215711571" />
+            </bookmaker>
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.62" us="-161" id="718024912215681568" />
+              <odd name="Home" value="2.25" us="125" id="718024912215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705341345" id="14">
+              <odd name="Away" value="1.65" us="-154" id="718024914215681568" />
+              <odd name="Home" value="2.20" us="120" id="718024914215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.66" us="-152" id="718024943215681568" />
+              <odd name="Home" value="2.25" us="125" id="718024943215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705405547" id="17">
+              <odd name="Away" value="1.67" us="-149" id="718024917215681568" />
+              <odd name="Home" value="2.12" us="112" id="718024917215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.68" us="-147" id="718024918215681568" />
+              <odd name="Home" value="2.18" us="118" id="718024918215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.62" us="-161" id="718024951215681568" />
+              <odd name="Home" value="2.25" us="125" id="718024951215711571" />
+            </bookmaker>
+            <bookmaker name="188bet" ts="1705417737" id="56">
+              <odd name="Away" value="1.65" us="-154" id="718024956215681568" />
+              <odd name="Home" value="2.20" us="120" id="718024956215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705394518" id="82">
+              <odd name="Away" value="1.70" us="-143" id="718024982215681568" />
+              <odd name="Home" value="2.24" us="124" id="718024982215711571" />
+            </bookmaker>
+            <bookmaker name="Sportingbet" ts="1705403172" id="113">
+              <odd name="Away" value="1.69" us="-145" id="7180249113215681568" />
+              <odd name="Home" value="2.20" us="120" id="7180249113215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.67" us="-150" id="7180249158215681568" />
+              <odd name="Home" value="2.20" us="120" id="7180249158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.70" us="-143" id="7180249230215681568" />
+              <odd name="Home" value="2.15" us="115" id="7180249230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.68" us="-147" id="7180249231215681568" />
+              <odd name="Home" value="2.18" us="118" id="7180249231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375068" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.73" us="-137" id="718024988415231523" />
+                <odd name="Home" value="2.09" us="109" id="718024988415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705405547" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="2.09" us="109" id="718024917515751575" />
+                <odd name="Under" value="1.63" us="-159" id="718024917515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="21.01.2024" time="00:00" status="Not Started" ismain="False" type="Women's Flyweight" id="99911">
+        <localteam name="Priscila Cachoeira" winner="False" id="84520" />
+        <awayteam name="Jasmine Jasudavicius" winner="False" id="97924" />
+        <odds ts="1705419177">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bwin" ts="1705309534" id="2">
+              <odd name="Away" value="1.24" us="-417" id="72156842215681568" />
+              <odd name="Home" value="4.15" us="315" id="72156842215711571" />
+            </bookmaker>
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.22" us="-455" id="721568412215681568" />
+              <odd name="Home" value="4.10" us="310" id="721568412215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="1.22" us="-450" id="721568414215681568" />
+              <odd name="Home" value="3.95" us="295" id="721568414215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.22" us="-455" id="721568443215681568" />
+              <odd name="Home" value="4.50" us="350" id="721568443215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705402661" id="17">
+              <odd name="Away" value="1.23" us="-435" id="721568417215681568" />
+              <odd name="Home" value="3.90" us="290" id="721568417215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705419098" id="18">
+              <odd name="Away" value="1.27" us="-370" id="721568418215681568" />
+              <odd name="Home" value="3.85" us="285" id="721568418215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.22" us="-455" id="721568451215681568" />
+              <odd name="Home" value="4.10" us="310" id="721568451215711571" />
+            </bookmaker>
+            <bookmaker name="188bet" ts="1705417737" id="56">
+              <odd name="Away" value="1.25" us="-400" id="721568456215681568" />
+              <odd name="Home" value="3.85" us="285" id="721568456215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705394518" id="82">
+              <odd name="Away" value="1.28" us="-361" id="721568482215681568" />
+              <odd name="Home" value="3.85" us="285" id="721568482215711571" />
+            </bookmaker>
+            <bookmaker name="Sportingbet" ts="1705403172" id="113">
+              <odd name="Away" value="1.24" us="-417" id="7215684113215681568" />
+              <odd name="Home" value="4.15" us="315" id="7215684113215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.29" us="-350" id="7215684158215681568" />
+              <odd name="Home" value="3.60" us="260" id="7215684158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.22" us="-455" id="7215684230215681568" />
+              <odd name="Home" value="4.30" us="330" id="7215684230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705419177" id="231">
+              <odd name="Away" value="1.27" us="-370" id="7215684231215681568" />
+              <odd name="Home" value="3.85" us="285" id="7215684231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375068" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.24" us="-417" id="721568488415231523" />
+                <odd name="Home" value="3.38" us="238" id="721568488415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <total name="1.5" stop="True">
+                <odd name="Over" value="1.44" us="-227" id="721568417515751575" />
+                <odd name="Under" value="2.51" us="151" id="721568417515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="1.79" us="-127" id="721568417515811581" />
+                <odd name="Under" value="1.87" us="-115" id="721568417515831583" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="20.01.2024" time="23:30" status="Not Started" ismain="False" type="Flyweight" id="99913">
+        <localteam name="Jimmy Flick" winner="False" id="88043" />
+        <awayteam name="Malcolm Gordon" winner="False" id="87854" />
+        <odds ts="1705423269">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bwin" ts="1705411799" id="2">
+              <odd name="Away" value="1.67" us="-149" id="71802522215681568" />
+              <odd name="Home" value="2.25" us="125" id="71802522215711571" />
+            </bookmaker>
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.70" us="-143" id="718025212215681568" />
+              <odd name="Home" value="2.10" us="110" id="718025212215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705413443" id="14">
+              <odd name="Away" value="1.67" us="-150" id="718025214215681568" />
+              <odd name="Home" value="2.15" us="115" id="718025214215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705421184" id="16">
+              <odd name="Away" value="1.66" us="-152" id="718025243215681568" />
+              <odd name="Home" value="2.25" us="125" id="718025243215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705421856" id="17">
+              <odd name="Away" value="1.66" us="-152" id="718025217215681568" />
+              <odd name="Home" value="2.14" us="114" id="718025217215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705423269" id="18">
+              <odd name="Away" value="1.63" us="-159" id="718025218215681568" />
+              <odd name="Home" value="2.28" us="128" id="718025218215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.70" us="-143" id="718025251215681568" />
+              <odd name="Home" value="2.10" us="110" id="718025251215711571" />
+            </bookmaker>
+            <bookmaker name="188bet" ts="1705417737" id="56">
+              <odd name="Away" value="1.61" us="-164" id="718025256215681568" />
+              <odd name="Home" value="2.42" us="142" id="718025256215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705419113" id="82">
+              <odd name="Away" value="1.61" us="-164" id="718025282215681568" />
+              <odd name="Home" value="2.42" us="142" id="718025282215711571" />
+            </bookmaker>
+            <bookmaker name="Sportingbet" ts="1705411810" id="113">
+              <odd name="Away" value="1.67" us="-149" id="7180252113215681568" />
+              <odd name="Home" value="2.25" us="125" id="7180252113215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.77" us="-130" id="7180252158215681568" />
+              <odd name="Home" value="2.05" us="105" id="7180252158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.75" us="-133" id="7180252230215681568" />
+              <odd name="Home" value="2.10" us="110" id="7180252230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705423269" id="231">
+              <odd name="Away" value="1.63" us="-159" id="7180252231215681568" />
+              <odd name="Home" value="2.28" us="128" id="7180252231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375068" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.70" us="-143" id="718025288415231523" />
+                <odd name="Home" value="2.13" us="113" id="718025288415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705421856" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="2.34" us="134" id="718025217515751575" />
+                <odd name="Under" value="1.50" us="-200" id="718025217515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="21.01.2024" time="01:10" status="Not Started" ismain="False" type="Bantamweight" id="99914">
+        <localteam name="Garrett Armfield" winner="False" id="98735" />
+        <awayteam name="Brad Katona" winner="False" id="84712" />
+        <odds ts="1705422315">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bwin" ts="1705411515" id="2">
+              <odd name="Away" value="1.50" us="-200" id="71592142215681568" />
+              <odd name="Home" value="2.65" us="165" id="71592142215711571" />
+            </bookmaker>
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.51" us="-196" id="715921412215681568" />
+              <odd name="Home" value="2.50" us="150" id="715921412215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="1.50" us="-200" id="715921414215681568" />
+              <odd name="Home" value="2.50" us="150" id="715921414215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.53" us="-189" id="715921443215681568" />
+              <odd name="Home" value="2.62" us="162" id="715921443215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705412667" id="17">
+              <odd name="Away" value="1.46" us="-217" id="715921417215681568" />
+              <odd name="Home" value="2.60" us="160" id="715921417215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.54" us="-185" id="715921418215681568" />
+              <odd name="Home" value="2.50" us="150" id="715921418215711571" />
+            </bookmaker>
+            <bookmaker name="Betfair" ts="1705422315" id="21">
+              <odd name="Away" value="1.58" us="-172" id="715921421215681568" />
+              <odd name="Home" value="2.60" us="160" id="715921421215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.51" us="-196" id="715921451215681568" />
+              <odd name="Home" value="2.50" us="150" id="715921451215711571" />
+            </bookmaker>
+            <bookmaker name="188bet" ts="1705420940" id="56">
+              <odd name="Away" value="1.53" us="-189" id="715921456215681568" />
+              <odd name="Home" value="2.60" us="160" id="715921456215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705417625" id="82">
+              <odd name="Away" value="1.53" us="-188" id="715921482215681568" />
+              <odd name="Home" value="2.60" us="160" id="715921482215711571" />
+            </bookmaker>
+            <bookmaker name="Sportingbet" ts="1705411476" id="113">
+              <odd name="Away" value="1.50" us="-200" id="7159214113215681568" />
+              <odd name="Home" value="2.65" us="165" id="7159214113215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.56" us="-180" id="7159214158215681568" />
+              <odd name="Home" value="2.45" us="145" id="7159214158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.55" us="-182" id="7159214230215681568" />
+              <odd name="Home" value="2.45" us="145" id="7159214230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.54" us="-185" id="7159214231215681568" />
+              <odd name="Home" value="2.50" us="150" id="7159214231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.53" us="-189" id="715921488415231523" />
+                <odd name="Home" value="2.40" us="140" id="715921488415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.31" us="-323" id="715921443515751575" />
+                <odd name="Under" value="3.20" us="220" id="715921443515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="1.52" us="-192" id="715921443515811581" />
+                <odd name="Under" value="2.40" us="140" id="715921443515831583" />
+              </total>
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <total name="1.5" stop="True">
+                <odd name="Over" value="1.33" us="-303" id="715921417515751575" />
+                <odd name="Under" value="2.93" us="193" id="715921417515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="1.65" us="-154" id="715921417515811581" />
+                <odd name="Under" value="2.05" us="105" id="715921417515831583" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="21.01.2024" time="02:00" status="Not Started" ismain="False" type="Featherweight" id="99916">
+        <localteam name="Sean Woodson" winner="False" id="85422" />
+        <awayteam name="Charles Jourdain" winner="False" id="84943" />
+        <odds ts="1705420940">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bwin" ts="1705309534" id="2">
+              <odd name="Away" value="1.54" us="-185" id="71592192215681568" />
+              <odd name="Home" value="2.50" us="150" id="71592192215711571" />
+            </bookmaker>
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.51" us="-196" id="715921912215681568" />
+              <odd name="Home" value="2.50" us="150" id="715921912215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705365577" id="14">
+              <odd name="Away" value="1.50" us="-200" id="715921914215681568" />
+              <odd name="Home" value="2.50" us="150" id="715921914215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.53" us="-189" id="715921943215681568" />
+              <odd name="Home" value="2.62" us="162" id="715921943215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705404444" id="17">
+              <odd name="Away" value="1.52" us="-192" id="715921917215681568" />
+              <odd name="Home" value="2.43" us="143" id="715921917215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705411726" id="18">
+              <odd name="Away" value="1.53" us="-189" id="715921918215681568" />
+              <odd name="Home" value="2.50" us="150" id="715921918215711571" />
+            </bookmaker>
+            <bookmaker name="Betfair" ts="1705309534" id="21">
+              <odd name="Away" value="1.56" us="-179" id="715921921215681568" />
+              <odd name="Home" value="2.62" us="162" id="715921921215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.51" us="-196" id="715921951215681568" />
+              <odd name="Home" value="2.50" us="150" id="715921951215711571" />
+            </bookmaker>
+            <bookmaker name="188bet" ts="1705420940" id="56">
+              <odd name="Away" value="1.57" us="-175" id="715921956215681568" />
+              <odd name="Home" value="2.49" us="149" id="715921956215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705420076" id="82">
+              <odd name="Away" value="1.57" us="-174" id="715921982215681568" />
+              <odd name="Home" value="2.49" us="149" id="715921982215711571" />
+            </bookmaker>
+            <bookmaker name="Sportingbet" ts="1705403172" id="113">
+              <odd name="Away" value="1.54" us="-185" id="7159219113215681568" />
+              <odd name="Home" value="2.50" us="150" id="7159219113215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.53" us="-188" id="7159219158215681568" />
+              <odd name="Home" value="2.50" us="150" id="7159219158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.55" us="-182" id="7159219230215681568" />
+              <odd name="Home" value="2.45" us="145" id="7159219230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705411799" id="231">
+              <odd name="Away" value="1.53" us="-189" id="7159219231215681568" />
+              <odd name="Home" value="2.50" us="150" id="7159219231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.54" us="-185" id="715921988415231523" />
+                <odd name="Home" value="2.38" us="138" id="715921988415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="bet365" ts="1705419074" id="16">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.36" us="-278" id="715921943515751575" />
+                <odd name="Under" value="3.00" us="200" id="715921943515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="1.64" us="-156" id="715921943515811581" />
+                <odd name="Under" value="2.15" us="115" id="715921943515831583" />
+              </total>
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <total name="1.5" stop="True">
+                <odd name="Over" value="1.52" us="-192" id="715921917515751575" />
+                <odd name="Under" value="2.30" us="130" id="715921917515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="1.84" us="-119" id="715921917515811581" />
+                <odd name="Under" value="1.82" us="-122" id="715921917515831583" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="21.01.2024" time="01:30" status="Not Started" ismain="False" type="Bantamweight" id="99907">
+        <localteam name="Ramon Taveras" winner="False" id="99908" />
+        <awayteam name="Serhiy Sidey" winner="False" id="99909" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bwin" ts="1705411799" id="2">
+              <odd name="Away" value="1.57" us="-175" id="71802502215681568" />
+              <odd name="Home" value="2.45" us="145" id="71802502215711571" />
+            </bookmaker>
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.55" us="-182" id="718025012215681568" />
+              <odd name="Home" value="2.35" us="135" id="718025012215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705362986" id="14">
+              <odd name="Away" value="1.55" us="-182" id="718025014215681568" />
+              <odd name="Home" value="2.38" us="138" id="718025014215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.58" us="-172" id="718025043215681568" />
+              <odd name="Home" value="2.40" us="140" id="718025043215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705403398" id="17">
+              <odd name="Away" value="1.55" us="-182" id="718025017215681568" />
+              <odd name="Home" value="2.36" us="136" id="718025017215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.57" us="-175" id="718025018215681568" />
+              <odd name="Home" value="2.43" us="143" id="718025018215711571" />
+            </bookmaker>
+            <bookmaker name="Betfair" ts="1705417478" id="21">
+              <odd name="Away" value="1.62" us="-161" id="718025021215681568" />
+              <odd name="Home" value="2.52" us="152" id="718025021215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.55" us="-182" id="718025051215681568" />
+              <odd name="Home" value="2.35" us="135" id="718025051215711571" />
+            </bookmaker>
+            <bookmaker name="188bet" ts="1705417737" id="56">
+              <odd name="Away" value="1.53" us="-189" id="718025056215681568" />
+              <odd name="Home" value="2.45" us="145" id="718025056215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705380654" id="82">
+              <odd name="Away" value="1.58" us="-171" id="718025082215681568" />
+              <odd name="Home" value="2.47" us="147" id="718025082215711571" />
+            </bookmaker>
+            <bookmaker name="Sportingbet" ts="1705411810" id="113">
+              <odd name="Away" value="1.57" us="-175" id="7180250113215681568" />
+              <odd name="Home" value="2.45" us="145" id="7180250113215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.53" us="-188" id="7180250158215681568" />
+              <odd name="Home" value="2.40" us="140" id="7180250158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.57" us="-175" id="7180250230215681568" />
+              <odd name="Home" value="2.40" us="140" id="7180250230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.57" us="-175" id="7180250231215681568" />
+              <odd name="Home" value="2.43" us="143" id="7180250231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.54" us="-185" id="718025088415231523" />
+                <odd name="Home" value="2.38" us="138" id="718025088415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.80" us="-125" id="718025043515751575" />
+                <odd name="Under" value="1.86" us="-116" id="718025043515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="2.55" us="155" id="718025043515811581" />
+                <odd name="Under" value="1.47" us="-213" id="718025043515831583" />
+              </total>
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705417558" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="2.23" us="123" id="718025017515751575" />
+                <odd name="Under" value="1.55" us="-182" id="718025017515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="21.01.2024" time="01:00" status="Not Started" ismain="False" type="Women's Strawweight" id="99910">
+        <localteam name="Polyana Viana" winner="False" id="84589" />
+        <awayteam name="Gillian Robertson" winner="False" id="84577" />
+        <odds ts="1705421957">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bwin" ts="1705411799" id="2">
+              <odd name="Away" value="1.40" us="-250" id="71802532215681568" />
+              <odd name="Home" value="3.00" us="200" id="71802532215711571" />
+            </bookmaker>
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.46" us="-217" id="718025312215681568" />
+              <odd name="Home" value="2.65" us="165" id="718025312215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705343020" id="14">
+              <odd name="Away" value="1.44" us="-225" id="718025314215681568" />
+              <odd name="Home" value="2.70" us="170" id="718025314215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.40" us="-250" id="718025343215681568" />
+              <odd name="Home" value="3.00" us="200" id="718025343215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705417208" id="17">
+              <odd name="Away" value="1.40" us="-250" id="718025317215681568" />
+              <odd name="Home" value="2.81" us="181" id="718025317215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705337251" id="18">
+              <odd name="Away" value="1.44" us="-227" id="718025318215681568" />
+              <odd name="Home" value="2.80" us="180" id="718025318215711571" />
+            </bookmaker>
+            <bookmaker name="Betfair" ts="1705421957" id="21">
+              <odd name="Away" value="1.45" us="-222" id="718025321215681568" />
+              <odd name="Home" value="3.00" us="200" id="718025321215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.46" us="-217" id="718025351215681568" />
+              <odd name="Home" value="2.65" us="165" id="718025351215711571" />
+            </bookmaker>
+            <bookmaker name="188bet" ts="1705420940" id="56">
+              <odd name="Away" value="1.41" us="-244" id="718025356215681568" />
+              <odd name="Home" value="3.05" us="205" id="718025356215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705419113" id="82">
+              <odd name="Away" value="1.41" us="-243" id="718025382215681568" />
+              <odd name="Home" value="3.03" us="203" id="718025382215711571" />
+            </bookmaker>
+            <bookmaker name="Sportingbet" ts="1705411476" id="113">
+              <odd name="Away" value="1.40" us="-250" id="7180253113215681568" />
+              <odd name="Home" value="3.00" us="200" id="7180253113215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.44" us="-225" id="7180253158215681568" />
+              <odd name="Home" value="2.63" us="162" id="7180253158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.42" us="-238" id="7180253230215681568" />
+              <odd name="Home" value="2.85" us="185" id="7180253230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705337172" id="231">
+              <odd name="Away" value="1.44" us="-227" id="7180253231215681568" />
+              <odd name="Home" value="2.80" us="180" id="7180253231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375068" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.39" us="-256" id="718025388415231523" />
+                <odd name="Home" value="2.75" us="175" id="718025388415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.55" us="-182" id="718025343515751575" />
+                <odd name="Under" value="2.35" us="135" id="718025343515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="2.10" us="110" id="718025343515811581" />
+                <odd name="Under" value="1.66" us="-152" id="718025343515831583" />
+              </total>
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705417208" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.77" us="-130" id="718025317515751575" />
+                <odd name="Under" value="1.90" us="-111" id="718025317515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="21.01.2024" time="05:00" status="Not Started" ismain="True" type="Middleweight" id="99917">
+        <localteam name="Dricus Du Plessis" winner="False" id="88202" />
+        <awayteam name="Sean Strickland" winner="False" id="88263" />
+        <odds ts="1705423269">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bwin" ts="1705323913" id="2">
+              <odd name="Away" value="1.76" us="-132" id="71075822215681568" />
+              <odd name="Home" value="2.10" us="110" id="71075822215711571" />
+            </bookmaker>
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.82" us="-122" id="710758212215681568" />
+              <odd name="Home" value="1.95" us="-105" id="710758212215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705359901" id="14">
+              <odd name="Away" value="1.73" us="-138" id="710758214215681568" />
+              <odd name="Home" value="2.05" us="105" id="710758214215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.72" us="-139" id="710758243215681568" />
+              <odd name="Home" value="2.10" us="110" id="710758243215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705408979" id="17">
+              <odd name="Away" value="1.71" us="-141" id="710758217215681568" />
+              <odd name="Home" value="2.11" us="111" id="710758217215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705406942" id="18">
+              <odd name="Away" value="1.76" us="-132" id="710758218215681568" />
+              <odd name="Home" value="2.07" us="107" id="710758218215711571" />
+            </bookmaker>
+            <bookmaker name="Betfair" ts="1705422467" id="21">
+              <odd name="Away" value="1.81" us="-123" id="710758221215681568" />
+              <odd name="Home" value="2.20" us="120" id="710758221215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.82" us="-122" id="710758251215681568" />
+              <odd name="Home" value="1.95" us="-105" id="710758251215711571" />
+            </bookmaker>
+            <bookmaker name="188bet" ts="1705421953" id="56">
+              <odd name="Away" value="1.74" us="-135" id="710758256215681568" />
+              <odd name="Home" value="2.17" us="117" id="710758256215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705421856" id="82">
+              <odd name="Away" value="1.74" us="-135" id="710758282215681568" />
+              <odd name="Home" value="2.17" us="117" id="710758282215711571" />
+            </bookmaker>
+            <bookmaker name="Sportingbet" ts="1705403172" id="113">
+              <odd name="Away" value="1.76" us="-132" id="7107582113215681568" />
+              <odd name="Home" value="2.10" us="110" id="7107582113215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.73" us="-138" id="7107582158215681568" />
+              <odd name="Home" value="2.10" us="110" id="7107582158215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705423269" id="231">
+              <odd name="Away" value="1.77" us="-130" id="7107582231215681568" />
+              <odd name="Home" value="2.06" us="106" id="7107582231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.75" us="-133" id="710758288415231523" />
+                <odd name="Home" value="2.09" us="109" id="710758288415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="bwin" ts="1705413613" id="2">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.40" us="-250" id="71075822515751575" />
+                <odd name="Under" value="2.85" us="185" id="71075822515771577" />
+              </total>
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705421795" id="16">
+              <total name="3.5" stop="False">
+                <odd name="Over" value="2.15" us="115" id="710758243515721572" />
+                <odd name="Under" value="1.64" us="-156" id="710758243515741574" />
+              </total>
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.36" us="-278" id="710758243515751575" />
+                <odd name="Under" value="3.00" us="200" id="710758243515771577" />
+              </total>
+              <total name="4.5" stop="False">
+                <odd name="Over" value="2.65" us="165" id="710758243515781578" />
+                <odd name="Under" value="1.44" us="-227" id="710758243515801580" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="1.74" us="-135" id="710758243515811581" />
+                <odd name="Under" value="1.95" us="-105" id="710758243515831583" />
+              </total>
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <total name="1.5" stop="True">
+                <odd name="Over" value="1.66" us="-152" id="710758217515751575" />
+                <odd name="Under" value="2.19" us="119" id="710758217515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="2.14" us="114" id="710758217515811581" />
+                <odd name="Under" value="1.69" us="-145" id="710758217515831583" />
+              </total>
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705405337" id="158">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.44" us="-225" id="7107582158515751575" />
+                <odd name="Under" value="2.63" us="162" id="7107582158515771577" />
+              </total>
+            </bookmaker>
+          </type>
+          <type value="Fight Result (5Way)" stop="False" id="22951">
+            <bookmaker name="bwin" ts="1705413347" id="2">
+              <odd name="Draw" value="51.00" us="5000" id="710758222295115701570" />
+              <odd name="1 KTDS" value="2.75" us="175" id="7107582222951928455928455" />
+              <odd name="2 KTDS" value="2.50" us="150" id="7107582222951928456928456" />
+              <odd name="1 DT" value="4.00" us="300" id="7107582222951928457928457" />
+              <odd name="2 DT" value="7.50" us="650" id="7107582222951928458928458" />
+            </bookmaker>
+          </type>
+          <type value="Fight To Go the Distance" stop="False" id="22952">
+            <bookmaker name="bwin" ts="1705414248" id="2">
+              <odd name="Yes" value="2.90" us="190" id="710758222295216291629" />
+              <odd name="No" value="1.37" us="-270" id="710758222295216301630" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705421795" id="16">
+              <odd name="Yes" value="2.90" us="190" id="7107582432295216291629" />
+              <odd name="No" value="1.38" us="-263" id="7107582432295216301630" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705405337" id="158">
+              <odd name="Yes" value="3.00" us="200" id="71075821582295216291629" />
+              <odd name="No" value="1.36" us="-275" id="71075821582295216301630" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705423269" id="231">
+              <odd name="Yes" value="3.10" us="210" id="71075822312295216291629" />
+              <odd name="No" value="1.33" us="-303" id="71075822312295216301630" />
+            </bookmaker>
+          </type>
+          <type value="Round Betting" stop="False" id="23148">
+            <bookmaker name="bwin" ts="1705413613" id="2">
+              <odd name="R1" value="4.00" us="300" id="710758222314814105471410547" />
+              <odd name="R2" value="5.25" us="425" id="710758222314814105481410548" />
+              <odd name="R3" value="6.50" us="550" id="710758222314814105491410549" />
+              <odd name="R4" value="9.50" us="850" id="710758222314814105501410550" />
+              <odd name="R5" value="11.00" us="1000" id="710758222314814105511410551" />
+              <odd name="DT" value="2.95" us="195" id="710758222314814105521410552" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705421795" id="16">
+              <odd name="R1" value="4.00" us="300" id="7107582432314814105471410547" />
+              <odd name="R2" value="4.75" us="375" id="7107582432314814105481410548" />
+              <odd name="R3" value="6.50" us="550" id="7107582432314814105491410549" />
+              <odd name="R4" value="8.50" us="750" id="7107582432314814105501410550" />
+              <odd name="R5" value="12.00" us="1100" id="7107582432314814105511410551" />
+              <odd name="DT" value="2.90" us="190" id="7107582432314814105521410552" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705405614" id="158">
+              <odd name="R1" value="3.60" us="260" id="71075821582314811270171127017" />
+              <odd name="R2" value="5.00" us="400" id="71075821582314811270181127018" />
+              <odd name="R3" value="8.00" us="700" id="71075821582314811270191127019" />
+              <odd name="R5" value="13.00" us="1200" id="71075821582314811270531127053" />
+              <odd name="DT" value="3.00" us="200" id="71075821582314811270611127061" />
+              <odd name="R4" value="10.00" us="900" id="71075821582314811271541127154" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="21.01.2024" time="04:30" status="Not Started" ismain="True" type="Women's Bantamweight" id="99918">
+        <localteam name="Mayra Bueno Silva" winner="False" id="86740" />
+        <awayteam name="Raquel Pennington" winner="False" id="85124" />
+        <odds ts="1705420940">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bwin" ts="1705309534" id="2">
+              <odd name="Away" value="2.45" us="145" id="71464362215681568" />
+              <odd name="Home" value="1.57" us="-175" id="71464362215711571" />
+            </bookmaker>
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="2.45" us="145" id="714643612215681568" />
+              <odd name="Home" value="1.53" us="-189" id="714643612215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="2.35" us="135" id="714643614215681568" />
+              <odd name="Home" value="1.57" us="-175" id="714643614215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705420904" id="16">
+              <odd name="Away" value="2.50" us="150" id="714643643215681568" />
+              <odd name="Home" value="1.57" us="-175" id="714643643215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705404444" id="17">
+              <odd name="Away" value="2.29" us="129" id="714643617215681568" />
+              <odd name="Home" value="1.61" us="-164" id="714643617215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="2.38" us="138" id="714643618215681568" />
+              <odd name="Home" value="1.58" us="-172" id="714643618215711571" />
+            </bookmaker>
+            <bookmaker name="Betfair" ts="1705370658" id="21">
+              <odd name="Away" value="2.50" us="150" id="714643621215681568" />
+              <odd name="Home" value="1.62" us="-161" id="714643621215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="2.45" us="145" id="714643651215681568" />
+              <odd name="Home" value="1.53" us="-189" id="714643651215711571" />
+            </bookmaker>
+            <bookmaker name="188bet" ts="1705420940" id="56">
+              <odd name="Away" value="2.35" us="135" id="714643656215681568" />
+              <odd name="Home" value="1.64" us="-156" id="714643656215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705417956" id="82">
+              <odd name="Away" value="2.35" us="135" id="714643682215681568" />
+              <odd name="Home" value="1.64" us="-156" id="714643682215711571" />
+            </bookmaker>
+            <bookmaker name="Sportingbet" ts="1705403172" id="113">
+              <odd name="Away" value="2.45" us="145" id="7146436113215681568" />
+              <odd name="Home" value="1.57" us="-175" id="7146436113215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.40" us="140" id="7146436158215681568" />
+              <odd name="Home" value="1.59" us="-170" id="7146436158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="2.35" us="135" id="7146436230215681568" />
+              <odd name="Home" value="1.60" us="-167" id="7146436230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="2.38" us="138" id="7146436231215681568" />
+              <odd name="Home" value="1.58" us="-172" id="7146436231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="2.33" us="133" id="714643688415231523" />
+                <odd name="Home" value="1.59" us="-169" id="714643688415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="bet365" ts="1705420904" id="16">
+              <total name="3.5" stop="False">
+                <odd name="Over" value="1.62" us="-161" id="714643643515721572" />
+                <odd name="Under" value="2.20" us="120" id="714643643515741574" />
+              </total>
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.22" us="-455" id="714643643515751575" />
+                <odd name="Under" value="4.00" us="300" id="714643643515771577" />
+              </total>
+              <total name="4.5" stop="False">
+                <odd name="Over" value="1.83" us="-120" id="714643643515781578" />
+                <odd name="Under" value="1.83" us="-120" id="714643643515801580" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="1.41" us="-244" id="714643643515811581" />
+                <odd name="Under" value="2.80" us="180" id="714643643515831583" />
+              </total>
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <total name="1.5" stop="True">
+                <odd name="Over" value="1.26" us="-385" id="714643617515751575" />
+                <odd name="Under" value="3.34" us="234" id="714643617515771577" />
+              </total>
+              <total name="4.5" stop="False">
+                <odd name="Over" value="2.01" us="101" id="714643617515781578" />
+                <odd name="Under" value="1.78" us="-128" id="714643617515801580" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="21.01.2024" time="04:00" status="Not Started" ismain="True" type="Welterweight" id="99919">
+        <localteam name="Mike Malott" winner="False" id="98033" />
+        <awayteam name="Neil Magny" winner="False" id="84905" />
+        <odds ts="1705423269">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bwin" ts="1705411799" id="2">
+              <odd name="Away" value="4.05" us="305" id="71464372215681568" />
+              <odd name="Home" value="1.25" us="-400" id="71464372215711571" />
+            </bookmaker>
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="3.50" us="250" id="714643712215681568" />
+              <odd name="Home" value="1.28" us="-357" id="714643712215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705413443" id="14">
+              <odd name="Away" value="3.65" us="265" id="714643714215681568" />
+              <odd name="Home" value="1.25" us="-400" id="714643714215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="3.75" us="275" id="714643743215681568" />
+              <odd name="Home" value="1.28" us="-357" id="714643743215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <odd name="Away" value="3.56" us="256" id="714643717215681568" />
+              <odd name="Home" value="1.29" us="-351" id="714643717215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705407016" id="18">
+              <odd name="Away" value="4.00" us="300" id="714643718215681568" />
+              <odd name="Home" value="1.25" us="-400" id="714643718215711571" />
+            </bookmaker>
+            <bookmaker name="Betfair" ts="1705423269" id="21">
+              <odd name="Away" value="3.85" us="285" id="714643721215681568" />
+              <odd name="Home" value="1.33" us="-303" id="714643721215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="3.50" us="250" id="714643751215681568" />
+              <odd name="Home" value="1.28" us="-357" id="714643751215711571" />
+            </bookmaker>
+            <bookmaker name="188bet" ts="1705417737" id="56">
+              <odd name="Away" value="3.65" us="265" id="714643756215681568" />
+              <odd name="Home" value="1.27" us="-370" id="714643756215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705394518" id="82">
+              <odd name="Away" value="3.67" us="267" id="714643782215681568" />
+              <odd name="Home" value="1.30" us="-333" id="714643782215711571" />
+            </bookmaker>
+            <bookmaker name="Sportingbet" ts="1705411810" id="113">
+              <odd name="Away" value="4.05" us="305" id="7146437113215681568" />
+              <odd name="Home" value="1.25" us="-400" id="7146437113215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="3.25" us="225" id="7146437158215681568" />
+              <odd name="Home" value="1.30" us="-333" id="7146437158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="3.70" us="270" id="7146437230215681568" />
+              <odd name="Home" value="1.28" us="-357" id="7146437230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705407016" id="231">
+              <odd name="Away" value="4.00" us="300" id="7146437231215681568" />
+              <odd name="Home" value="1.25" us="-400" id="7146437231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="3.27" us="227" id="714643788415231523" />
+                <odd name="Home" value="1.26" us="-385" id="714643788415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.76" us="-132" id="714643743515751575" />
+                <odd name="Under" value="1.90" us="-111" id="714643743515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="2.55" us="155" id="714643743515811581" />
+                <odd name="Under" value="1.47" us="-213" id="714643743515831583" />
+              </total>
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="2.33" us="133" id="714643717515751575" />
+                <odd name="Under" value="1.59" us="-169" id="714643717515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="21.01.2024" time="03:30" status="Not Started" ismain="True" type="Middleweight" id="99915">
+        <localteam name="Marc-Andre Barriault" winner="False" id="84715" />
+        <awayteam name="Chris Curtis" winner="False" id="97050" />
+        <odds ts="1705423269">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bwin" ts="1705411799" id="2">
+              <odd name="Away" value="1.50" us="-200" id="71592182215681568" />
+              <odd name="Home" value="2.65" us="165" id="71592182215711571" />
+            </bookmaker>
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.52" us="-192" id="715921812215681568" />
+              <odd name="Home" value="2.45" us="145" id="715921812215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705375347" id="14">
+              <odd name="Away" value="1.55" us="-182" id="715921814215681568" />
+              <odd name="Home" value="2.38" us="138" id="715921814215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.57" us="-175" id="715921843215681568" />
+              <odd name="Home" value="2.50" us="150" id="715921843215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705415103" id="17">
+              <odd name="Away" value="1.53" us="-188" id="715921817215681568" />
+              <odd name="Home" value="2.46" us="146" id="715921817215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705368871" id="18">
+              <odd name="Away" value="1.53" us="-189" id="715921818215681568" />
+              <odd name="Home" value="2.50" us="150" id="715921818215711571" />
+            </bookmaker>
+            <bookmaker name="Betfair" ts="1705423269" id="21">
+              <odd name="Away" value="1.54" us="-185" id="715921821215681568" />
+              <odd name="Home" value="2.70" us="170" id="715921821215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.52" us="-192" id="715921851215681568" />
+              <odd name="Home" value="2.45" us="145" id="715921851215711571" />
+            </bookmaker>
+            <bookmaker name="188bet" ts="1705417737" id="56">
+              <odd name="Away" value="1.50" us="-200" id="715921856215681568" />
+              <odd name="Home" value="2.55" us="155" id="715921856215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705394518" id="82">
+              <odd name="Away" value="1.54" us="-185" id="715921882215681568" />
+              <odd name="Home" value="2.58" us="158" id="715921882215711571" />
+            </bookmaker>
+            <bookmaker name="Sportingbet" ts="1705411476" id="113">
+              <odd name="Away" value="1.50" us="-200" id="7159218113215681568" />
+              <odd name="Home" value="2.65" us="165" id="7159218113215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.53" us="-188" id="7159218158215681568" />
+              <odd name="Home" value="2.50" us="150" id="7159218158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.55" us="-182" id="7159218230215681568" />
+              <odd name="Home" value="2.45" us="145" id="7159218230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705368805" id="231">
+              <odd name="Away" value="1.53" us="-189" id="7159218231215681568" />
+              <odd name="Home" value="2.50" us="150" id="7159218231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.49" us="-204" id="715921888415231523" />
+                <odd name="Home" value="2.49" us="149" id="715921888415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.36" us="-278" id="715921843515751575" />
+                <odd name="Under" value="3.00" us="200" id="715921843515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="1.64" us="-156" id="715921843515811581" />
+                <odd name="Under" value="2.15" us="115" id="715921843515831583" />
+              </total>
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <total name="1.5" stop="True">
+                <odd name="Over" value="1.51" us="-196" id="715921817515751575" />
+                <odd name="Under" value="2.32" us="132" id="715921817515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="1.87" us="-115" id="715921817515811581" />
+                <odd name="Under" value="1.91" us="-110" id="715921817515831583" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="21.01.2024" time="03:00" status="Not Started" ismain="True" type="Featherweight" id="99921">
+        <localteam name="Movsar Evloev" winner="False" id="84775" />
+        <awayteam name="Arnold Allen" winner="False" id="84610" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bwin" ts="1705349778" id="2">
+              <odd name="Away" value="2.65" us="165" id="71464352215681568" />
+              <odd name="Home" value="1.50" us="-200" id="71464352215711571" />
+            </bookmaker>
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="2.45" us="145" id="714643512215681568" />
+              <odd name="Home" value="1.52" us="-192" id="714643512215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705417237" id="14">
+              <odd name="Away" value="2.50" us="150" id="714643514215681568" />
+              <odd name="Home" value="1.50" us="-200" id="714643514215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="2.62" us="162" id="714643543215681568" />
+              <odd name="Home" value="1.53" us="-189" id="714643543215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705415103" id="17">
+              <odd name="Away" value="2.78" us="178" id="714643517215681568" />
+              <odd name="Home" value="1.43" us="-233" id="714643517215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705407016" id="18">
+              <odd name="Away" value="2.50" us="150" id="714643518215681568" />
+              <odd name="Home" value="1.54" us="-185" id="714643518215711571" />
+            </bookmaker>
+            <bookmaker name="Betfair" ts="1705400532" id="21">
+              <odd name="Away" value="2.60" us="160" id="714643521215681568" />
+              <odd name="Home" value="1.58" us="-172" id="714643521215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="2.45" us="145" id="714643551215681568" />
+              <odd name="Home" value="1.52" us="-192" id="714643551215711571" />
+            </bookmaker>
+            <bookmaker name="188bet" ts="1705417737" id="56">
+              <odd name="Away" value="2.60" us="160" id="714643556215681568" />
+              <odd name="Home" value="1.48" us="-208" id="714643556215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705371344" id="82">
+              <odd name="Away" value="2.65" us="165" id="714643582215681568" />
+              <odd name="Home" value="1.52" us="-194" id="714643582215711571" />
+            </bookmaker>
+            <bookmaker name="Sportingbet" ts="1705403172" id="113">
+              <odd name="Away" value="2.65" us="165" id="7146435113215681568" />
+              <odd name="Home" value="1.50" us="-200" id="7146435113215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.40" us="140" id="7146435158215681568" />
+              <odd name="Home" value="1.57" us="-175" id="7146435158215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705407016" id="231">
+              <odd name="Away" value="2.50" us="150" id="7146435231215681568" />
+              <odd name="Home" value="1.54" us="-185" id="7146435231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="2.42" us="142" id="714643588415231523" />
+                <odd name="Home" value="1.52" us="-192" id="714643588415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.18" us="-556" id="714643543515751575" />
+                <odd name="Under" value="4.50" us="350" id="714643543515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="1.29" us="-345" id="714643543515811581" />
+                <odd name="Under" value="3.40" us="240" id="714643543515831583" />
+              </total>
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <total name="1.5" stop="True">
+                <odd name="Over" value="1.27" us="-370" id="714643517515751575" />
+                <odd name="Under" value="3.28" us="228" id="714643517515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="1.40" us="-250" id="714643517515811581" />
+                <odd name="Under" value="2.90" us="190" id="714643517515831583" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+    </matches>
+  </category>
+  <category name="UFC Fight Night: Dolidze vs. Imavov" gid="99922" id="99922">
+    <matches>
+      <match date="03.02.2024" time="21:10" status="Not Started" ismain="False" type="Women's Strawweight" id="99930">
+        <localteam name="Diana Belbita" winner="False" id="85582" />
+        <awayteam name="Molly McCann" winner="False" id="84519" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.40" us="-250" id="722196412215681568" />
+              <odd name="Home" value="2.85" us="185" id="722196412215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705399005" id="14">
+              <odd name="Away" value="1.40" us="-250" id="722196414215681568" />
+              <odd name="Home" value="2.85" us="185" id="722196414215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.44" us="-227" id="722196443215681568" />
+              <odd name="Home" value="2.87" us="187" id="722196443215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <odd name="Away" value="1.41" us="-244" id="722196417215681568" />
+              <odd name="Home" value="2.77" us="177" id="722196417215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.42" us="-238" id="722196418215681568" />
+              <odd name="Home" value="2.75" us="175" id="722196418215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.40" us="-250" id="722196451215681568" />
+              <odd name="Home" value="2.85" us="185" id="722196451215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="1.44" us="-225" id="722196482215681568" />
+              <odd name="Home" value="2.89" us="189" id="722196482215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.40" us="-250" id="7221964158215681568" />
+              <odd name="Home" value="2.75" us="175" id="7221964158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.42" us="-238" id="7221964230215681568" />
+              <odd name="Home" value="2.90" us="190" id="7221964230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.42" us="-238" id="7221964231215681568" />
+              <odd name="Home" value="2.75" us="175" id="7221964231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.44" us="-227" id="722196488415231523" />
+                <odd name="Home" value="2.61" us="161" id="722196488415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.31" us="-323" id="722196417515751575" />
+                <odd name="Under" value="3.04" us="204" id="722196417515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="03.02.2024" time="21:10" status="Not Started" ismain="False" type="Strawweight" id="100035">
+        <localteam name="Charles Johnson" winner="False" id="98540" />
+        <awayteam name="Azat Maksum" winner="False" id="99547" />
+        <odds ts="1705405161">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <odd name="Home" value="2.54" us="154" id="725889317215681568" />
+              <odd name="Away" value="1.48" us="-208" id="725889317215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Home" value="2.50" us="150" id="725889318215681568" />
+              <odd name="Away" value="1.54" us="-185" id="725889318215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705387200" id="82">
+              <odd name="Home" value="2.65" us="165" id="725889382215681568" />
+              <odd name="Away" value="1.52" us="-194" id="725889382215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Home" value="2.30" us="130" id="7258893158215681568" />
+              <odd name="Away" value="1.57" us="-175" id="7258893158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Home" value="2.47" us="147" id="7258893230215681568" />
+              <odd name="Away" value="1.55" us="-182" id="7258893230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705350790" id="231">
+              <odd name="Home" value="2.50" us="150" id="7258893231215681568" />
+              <odd name="Away" value="1.54" us="-185" id="7258893231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Home" value="2.38" us="138" id="725889388415231523" />
+                <odd name="Away" value="1.54" us="-185" id="725889388415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <total name="2.5" stop="False">
+                <odd name="Over" value="1.57" us="-175" id="725889317515811581" />
+                <odd name="Under" value="2.19" us="119" id="725889317515831583" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="03.02.2024" time="22:00" status="Not Started" ismain="False" type="Welterweight" id="100036">
+        <localteam name="Pete Rodriguez" winner="False" id="98302" />
+        <awayteam name="Themba Gorimbo" winner="False" id="99220" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.34" us="-294" id="7267838230215681568" />
+              <odd name="Home" value="3.30" us="230" id="7267838230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="03.02.2024" time="22:00" status="Not Started" ismain="False" type="Featherweight" id="99934">
+        <localteam name="Blake Bilder" winner="False" id="99099" />
+        <awayteam name="JeongYeong Lee" winner="False" id="98592" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.77" us="-130" id="722196812215681568" />
+              <odd name="Home" value="2.00" us="100" id="722196812215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="1.73" us="-138" id="722196814215681568" />
+              <odd name="Home" value="2.05" us="105" id="722196814215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.72" us="-139" id="722196843215681568" />
+              <odd name="Home" value="2.10" us="110" id="722196843215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <odd name="Away" value="1.72" us="-139" id="722196817215681568" />
+              <odd name="Home" value="2.05" us="105" id="722196817215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.77" us="-130" id="722196818215681568" />
+              <odd name="Home" value="2.00" us="100" id="722196818215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.77" us="-130" id="722196851215681568" />
+              <odd name="Home" value="2.00" us="100" id="722196851215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705348051" id="82">
+              <odd name="Away" value="1.77" us="-130" id="722196882215681568" />
+              <odd name="Home" value="2.13" us="113" id="722196882215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.80" us="-125" id="7221968158215681568" />
+              <odd name="Home" value="1.95" us="-105" id="7221968158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.75" us="-133" id="7221968230215681568" />
+              <odd name="Home" value="2.10" us="110" id="7221968230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.77" us="-130" id="7221968231215681568" />
+              <odd name="Home" value="2.00" us="100" id="7221968231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.73" us="-137" id="722196888415231523" />
+                <odd name="Home" value="2.09" us="109" id="722196888415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.54" us="-185" id="722196817515751575" />
+                <odd name="Under" value="2.25" us="125" id="722196817515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="03.02.2024" time="21:40" status="Not Started" ismain="False" type="Women's Flyweight" id="99937">
+        <localteam name="Natalia Silva" winner="False" id="98530" />
+        <awayteam name="Viviane Araujo" winner="False" id="84941" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="3.10" us="210" id="722195812215681568" />
+              <odd name="Home" value="1.35" us="-286" id="722195812215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="3.10" us="210" id="722195814215681568" />
+              <odd name="Home" value="1.35" us="-286" id="722195814215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="3.00" us="200" id="722195843215681568" />
+              <odd name="Home" value="1.40" us="-250" id="722195843215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <odd name="Away" value="2.99" us="199" id="722195817215681568" />
+              <odd name="Home" value="1.36" us="-278" id="722195817215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="3.10" us="210" id="722195818215681568" />
+              <odd name="Home" value="1.34" us="-294" id="722195818215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="3.10" us="210" id="722195851215681568" />
+              <odd name="Home" value="1.35" us="-286" id="722195851215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="3.15" us="215" id="722195882215681568" />
+              <odd name="Home" value="1.38" us="-260" id="722195882215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="3.00" us="200" id="7221958158215681568" />
+              <odd name="Home" value="1.36" us="-275" id="7221958158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="3.20" us="220" id="7221958230215681568" />
+              <odd name="Home" value="1.35" us="-286" id="7221958230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="3.10" us="210" id="7221958231215681568" />
+              <odd name="Home" value="1.34" us="-294" id="7221958231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="2.88" us="188" id="722195888415231523" />
+                <odd name="Home" value="1.35" us="-286" id="722195888415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.29" us="-351" id="722195817515751575" />
+                <odd name="Under" value="3.18" us="218" id="722195817515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="03.02.2024" time="21:10" status="Not Started" ismain="False" type="Lightweight" id="99928">
+        <localteam name="Marquel Mederos" winner="False" id="99929" />
+        <awayteam name="Landon Quiñones" winner="False" id="88284" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="2.45" us="145" id="722196714215681568" />
+              <odd name="Home" value="1.53" us="-188" id="722196714215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="2.50" us="150" id="722196743215681568" />
+              <odd name="Home" value="1.57" us="-175" id="722196743215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <odd name="Away" value="2.45" us="145" id="722196717215681568" />
+              <odd name="Home" value="1.51" us="-196" id="722196717215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="2.55" us="155" id="722196718215681568" />
+              <odd name="Home" value="1.52" us="-192" id="722196718215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="2.53" us="153" id="722196782215681568" />
+              <odd name="Home" value="1.56" us="-179" id="722196782215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.50" us="150" id="7221967158215681568" />
+              <odd name="Home" value="1.50" us="-200" id="7221967158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="2.50" us="150" id="7221967230215681568" />
+              <odd name="Home" value="1.54" us="-185" id="7221967230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="2.55" us="155" id="7221967231215681568" />
+              <odd name="Home" value="1.52" us="-192" id="7221967231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="2.40" us="140" id="722196788415231523" />
+                <odd name="Home" value="1.53" us="-189" id="722196788415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.77" us="-130" id="722196717515751575" />
+                <odd name="Under" value="1.90" us="-111" id="722196717515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="03.02.2024" time="21:10" status="Not Started" ismain="False" type="Heavyweight" id="99939">
+        <localteam name="Jamal Pogues" winner="False" id="85454" />
+        <awayteam name="Thomas Petersen" winner="False" id="99940" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="10Bet" ts="1705370789" id="14">
+              <odd name="Away" value="1.45" us="-222" id="722196314215681568" />
+              <odd name="Home" value="2.65" us="165" id="722196314215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.50" us="-200" id="722196343215681568" />
+              <odd name="Home" value="2.70" us="170" id="722196343215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <odd name="Away" value="1.43" us="-233" id="722196317215681568" />
+              <odd name="Home" value="2.70" us="170" id="722196317215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.42" us="-238" id="722196318215681568" />
+              <odd name="Home" value="2.75" us="175" id="722196318215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="1.48" us="-207" id="722196382215681568" />
+              <odd name="Home" value="2.75" us="175" id="722196382215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.44" us="-225" id="7221963158215681568" />
+              <odd name="Home" value="2.63" us="162" id="7221963158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.45" us="-222" id="7221963230215681568" />
+              <odd name="Home" value="2.75" us="175" id="7221963230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.42" us="-238" id="7221963231215681568" />
+              <odd name="Home" value="2.75" us="175" id="7221963231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.45" us="-222" id="722196388415231523" />
+                <odd name="Home" value="2.58" us="158" id="722196388415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.67" us="-150" id="722196317515751575" />
+                <odd name="Under" value="2.03" us="103" id="722196317515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="04.02.2024" time="02:45" status="Not Started" ismain="True" type="Middleweight" id="99935">
+        <localteam name="Nassourdine Imavov" winner="False" id="88097" />
+        <awayteam name="Roman Dolidze" winner="False" id="84929" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="2.30" us="130" id="715921612215681568" />
+              <odd name="Home" value="1.59" us="-169" id="715921612215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="2.25" us="125" id="715921614215681568" />
+              <odd name="Home" value="1.62" us="-163" id="715921614215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="2.30" us="130" id="715921643215681568" />
+              <odd name="Home" value="1.62" us="-161" id="715921643215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <odd name="Away" value="2.29" us="129" id="715921617215681568" />
+              <odd name="Home" value="1.61" us="-164" id="715921617215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="2.28" us="128" id="715921618215681568" />
+              <odd name="Home" value="1.63" us="-159" id="715921618215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="2.30" us="130" id="715921651215681568" />
+              <odd name="Home" value="1.59" us="-169" id="715921651215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="2.37" us="137" id="715921682215681568" />
+              <odd name="Home" value="1.63" us="-159" id="715921682215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.20" us="120" id="7159216158215681568" />
+              <odd name="Home" value="1.67" us="-150" id="7159216158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="2.30" us="130" id="7159216230215681568" />
+              <odd name="Home" value="1.62" us="-161" id="7159216230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705404604" id="231">
+              <odd name="Away" value="2.28" us="128" id="7159216231215681568" />
+              <odd name="Home" value="1.63" us="-159" id="7159216231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="2.29" us="129" id="715921688415231523" />
+                <odd name="Home" value="1.61" us="-164" id="715921688415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.35" us="-286" id="715921617515751575" />
+                <odd name="Under" value="3.14" us="214" id="715921617515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="04.02.2024" time="01:30" status="Not Started" ismain="True" type="Lightweight" id="99936">
+        <localteam name="Drew Dober" winner="False" id="84483" />
+        <awayteam name="Renato Moicano" winner="False" id="84319" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.73" us="-137" id="722094712215681568" />
+              <odd name="Home" value="2.00" us="100" id="722094712215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="1.70" us="-143" id="722094714215681568" />
+              <odd name="Home" value="2.10" us="110" id="722094714215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.72" us="-139" id="722094743215681568" />
+              <odd name="Home" value="2.10" us="110" id="722094743215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <odd name="Away" value="1.73" us="-138" id="722094717215681568" />
+              <odd name="Home" value="2.09" us="109" id="722094717215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.73" us="-137" id="722094718215681568" />
+              <odd name="Home" value="2.04" us="104" id="722094718215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.73" us="-137" id="722094751215681568" />
+              <odd name="Home" value="2.00" us="100" id="722094751215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="1.75" us="-133" id="722094782215681568" />
+              <odd name="Home" value="2.16" us="116" id="722094782215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.73" us="-138" id="7220947158215681568" />
+              <odd name="Home" value="2.10" us="110" id="7220947158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.74" us="-135" id="7220947230215681568" />
+              <odd name="Home" value="2.10" us="110" id="7220947230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.73" us="-137" id="7220947231215681568" />
+              <odd name="Home" value="2.04" us="104" id="7220947231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.73" us="-137" id="722094788415231523" />
+                <odd name="Home" value="2.12" us="112" id="722094788415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="2.31" us="131" id="722094717515751575" />
+                <odd name="Under" value="1.60" us="-167" id="722094717515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="04.02.2024" time="00:15" status="Not Started" ismain="True" type="Welterweight" id="100028">
+        <localteam name="Muslim Salikhov" winner="False" id="85385" />
+        <awayteam name="Randy Brown" winner="False" id="85002" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.36" us="-278" id="726345943215681568" />
+              <odd name="Home" value="3.25" us="225" id="726345943215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705348293" id="18">
+              <odd name="Away" value="1.35" us="-286" id="726345918215681568" />
+              <odd name="Home" value="3.20" us="220" id="726345918215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705348294" id="82">
+              <odd name="Away" value="1.36" us="-275" id="726345982215681568" />
+              <odd name="Home" value="3.25" us="225" id="726345982215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.36" us="-275" id="7263459158215681568" />
+              <odd name="Home" value="3.00" us="200" id="7263459158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.35" us="-286" id="7263459230215681568" />
+              <odd name="Home" value="3.20" us="220" id="7263459230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705410801" id="231">
+              <odd name="Away" value="1.35" us="-286" id="7263459231215681568" />
+              <odd name="Home" value="3.20" us="220" id="7263459231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705376214" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.34" us="-294" id="726345988415231523" />
+                <odd name="Home" value="2.92" us="192" id="726345988415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="04.02.2024" time="00:15" status="Not Started" ismain="True" type="Middleweight" id="99938">
+        <localteam name="Makhmud Muradov" winner="False" id="85476" />
+        <awayteam name="Aliaskhab Khizriev" winner="False" id="88096" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.63" us="-159" id="722195912215681568" />
+              <odd name="Home" value="2.20" us="120" id="722195912215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705395440" id="14">
+              <odd name="Away" value="1.62" us="-163" id="722195914215681568" />
+              <odd name="Home" value="2.25" us="125" id="722195914215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.66" us="-152" id="722195943215681568" />
+              <odd name="Home" value="2.25" us="125" id="722195943215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705404444" id="17">
+              <odd name="Away" value="1.61" us="-164" id="722195917215681568" />
+              <odd name="Home" value="2.23" us="123" id="722195917215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.60" us="-167" id="722195918215681568" />
+              <odd name="Home" value="2.25" us="125" id="722195918215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.63" us="-159" id="722195951215681568" />
+              <odd name="Home" value="2.20" us="120" id="722195951215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705353465" id="82">
+              <odd name="Away" value="1.60" us="-168" id="722195982215681568" />
+              <odd name="Home" value="2.45" us="145" id="722195982215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.62" us="-163" id="7221959158215681568" />
+              <odd name="Home" value="2.20" us="120" id="7221959158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.63" us="-159" id="7221959230215681568" />
+              <odd name="Home" value="2.30" us="130" id="7221959230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.60" us="-167" id="7221959231215681568" />
+              <odd name="Home" value="2.25" us="125" id="7221959231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375347" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.58" us="-172" id="722195988415231523" />
+                <odd name="Home" value="2.31" us="131" id="722195988415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+    </matches>
+  </category>
+  <category name="UFC Fight Night: Hermansson vs. Pyfer" gid="99942" id="99942">
+    <matches>
+      <match date="10.02.2024" time="23:00" status="Not Started" ismain="False" type="Welterweight" id="99991">
+        <localteam name="Carlos Prates" winner="False" id="99992" />
+        <awayteam name="Trevin Giles" winner="False" id="84844" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="2.70" us="170" id="726279843215681568" />
+              <odd name="Home" value="1.50" us="-200" id="726279843215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <odd name="Away" value="2.57" us="157" id="726279817215681568" />
+              <odd name="Home" value="1.47" us="-213" id="726279817215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="2.70" us="170" id="726279882215681568" />
+              <odd name="Home" value="1.50" us="-200" id="726279882215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.63" us="162" id="7262798158215681568" />
+              <odd name="Home" value="1.50" us="-200" id="7262798158215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375623" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="2.49" us="149" id="726279888415231523" />
+                <odd name="Home" value="1.49" us="-204" id="726279888415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="10.02.2024" time="22:40" status="Not Started" ismain="False" type="Lightweight" id="100000">
+        <localteam name="Bolaji Oki" winner="False" id="100001" />
+        <awayteam name="Damir Hadzovic" winner="False" id="84435" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="3.25" us="225" id="725161243215681568" />
+              <odd name="Home" value="1.36" us="-278" id="725161243215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <odd name="Away" value="3.10" us="210" id="725161217215681568" />
+              <odd name="Home" value="1.34" us="-294" id="725161217215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="3.20" us="220" id="725161282215681568" />
+              <odd name="Home" value="1.37" us="-267" id="725161282215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="3.00" us="200" id="7251612158215681568" />
+              <odd name="Home" value="1.36" us="-275" id="7251612158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="3.25" us="225" id="7251612230215681568" />
+              <odd name="Home" value="1.35" us="-286" id="7251612230215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375623" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="2.96" us="196" id="725161288415231523" />
+                <odd name="Home" value="1.33" us="-303" id="725161288415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="10.02.2024" time="22:20" status="Not Started" ismain="False" type="Women's Strawweight" id="99943">
+        <localteam name="Bruna Brasil" winner="False" id="99204" />
+        <awayteam name="Loma Lookboonmee" winner="False" id="85592" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="10Bet" ts="1705413443" id="14">
+              <odd name="Away" value="1.42" us="-238" id="724905214215681568" />
+              <odd name="Home" value="2.75" us="175" id="724905214215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.44" us="-227" id="724905243215681568" />
+              <odd name="Home" value="2.87" us="187" id="724905243215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705325114" id="17">
+              <odd name="Away" value="1.41" us="-244" id="724905217215681568" />
+              <odd name="Home" value="2.77" us="177" id="724905217215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705348051" id="82">
+              <odd name="Away" value="1.44" us="-225" id="724905282215681568" />
+              <odd name="Home" value="2.89" us="189" id="724905282215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.44" us="-225" id="7249052158215681568" />
+              <odd name="Home" value="2.63" us="162" id="7249052158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.42" us="-238" id="7249052230215681568" />
+              <odd name="Home" value="2.90" us="190" id="7249052230215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375623" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.42" us="-238" id="724905288415231523" />
+                <odd name="Home" value="2.66" us="166" id="724905288415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="10.02.2024" time="21:40" status="Not Started" ismain="False" type="Welterweight" id="99993">
+        <localteam name="Jeremiah Wells" winner="False" id="97754" />
+        <awayteam name="Max Griffin" winner="False" id="84301" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="2.87" us="187" id="726190143215681568" />
+              <odd name="Home" value="1.44" us="-227" id="726190143215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705404444" id="17">
+              <odd name="Away" value="2.66" us="166" id="726190117215681568" />
+              <odd name="Home" value="1.44" us="-227" id="726190117215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="2.70" us="170" id="726190182215681568" />
+              <odd name="Home" value="1.50" us="-200" id="726190182215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.63" us="162" id="7261901158215681568" />
+              <odd name="Home" value="1.44" us="-225" id="7261901158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="2.75" us="175" id="7261901230215681568" />
+              <odd name="Home" value="1.45" us="-222" id="7261901230215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375623" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="2.49" us="149" id="726190188415231523" />
+                <odd name="Home" value="1.49" us="-204" id="726190188415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="10.02.2024" time="21:20" status="Not Started" ismain="False" type="Light Heavyweight" id="99996">
+        <localteam name="Bogdan Guskov" winner="False" id="99662" />
+        <awayteam name="Zac Pauga" winner="False" id="98763" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="10Bet" ts="1705376685" id="14">
+              <odd name="Away" value="1.62" us="-163" id="726279714215681568" />
+              <odd name="Home" value="2.25" us="125" id="726279714215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.62" us="-161" id="726279743215681568" />
+              <odd name="Home" value="2.30" us="130" id="726279743215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705376827" id="17">
+              <odd name="Away" value="1.61" us="-164" id="726279717215681568" />
+              <odd name="Home" value="2.23" us="123" id="726279717215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705391995" id="82">
+              <odd name="Away" value="1.67" us="-150" id="726279782215681568" />
+              <odd name="Home" value="2.30" us="130" id="726279782215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.62" us="-163" id="7262797158215681568" />
+              <odd name="Home" value="2.20" us="120" id="7262797158215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375623" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.64" us="-156" id="726279788415231523" />
+                <odd name="Home" value="2.21" us="121" id="726279788415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="10.02.2024" time="21:10" status="Not Started" ismain="False" type="Featherweight" id="100037">
+        <localteam name="Hyder Amil" winner="False" id="99945" />
+        <awayteam name="Melsik Baghdasaryan" winner="False" id="88040" />
+        <odds ts="1705393796">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Marathon" ts="1705393796" id="17">
+              <odd name="Away" value="1.43" us="-233" id="726859017215681568" />
+              <odd name="Home" value="2.70" us="170" id="726859017215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705332040" id="82">
+              <odd name="Away" value="1.45" us="-220" id="726859082215681568" />
+              <odd name="Home" value="2.85" us="185" id="726859082215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375623" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.43" us="-233" id="726859088415231523" />
+                <odd name="Home" value="2.63" us="163" id="726859088415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="11.02.2024" time="00:15" status="Not Started" ismain="True" type="Featherweight" id="99999">
+        <localteam name="Lerone Murphy" winner="False" id="85392" />
+        <awayteam name="Dan Ige" winner="False" id="84617" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.90" us="-111" id="725161143215681568" />
+              <odd name="Home" value="1.90" us="-111" id="725161143215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705404444" id="17">
+              <odd name="Away" value="1.91" us="-110" id="725161117215681568" />
+              <odd name="Home" value="1.83" us="-120" id="725161117215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705391995" id="82">
+              <odd name="Away" value="1.99" us="-101" id="725161182215681568" />
+              <odd name="Home" value="1.88" us="-114" id="725161182215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.91" us="-110" id="7251611158215681568" />
+              <odd name="Home" value="1.83" us="-120" id="7251611158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.90" us="-111" id="7251611230215681568" />
+              <odd name="Home" value="1.90" us="-111" id="7251611230215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375623" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.94" us="-106" id="725161188415231523" />
+                <odd name="Home" value="1.88" us="-114" id="725161188415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="11.02.2024" time="01:30" status="Not Started" ismain="True" type="Middleweight" id="99994">
+        <localteam name="Albert Duraev" winner="False" id="97919" />
+        <awayteam name="Robert Bryczek" winner="False" id="99995" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="2.50" us="150" id="726251243215681568" />
+              <odd name="Home" value="1.57" us="-175" id="726251243215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705315822" id="17">
+              <odd name="Away" value="2.33" us="133" id="726251217215681568" />
+              <odd name="Home" value="1.56" us="-179" id="726251217215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705400393" id="82">
+              <odd name="Away" value="2.46" us="146" id="726251282215681568" />
+              <odd name="Home" value="1.59" us="-170" id="726251282215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.40" us="140" id="7262512158215681568" />
+              <odd name="Home" value="1.53" us="-188" id="7262512158215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375623" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="2.36" us="136" id="726251288415231523" />
+                <odd name="Home" value="1.55" us="-182" id="726251288415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="11.02.2024" time="01:00" status="Not Started" ismain="True" type="Middleweight" id="100002">
+        <localteam name="Gregory Rodrigues" winner="False" id="88098" />
+        <awayteam name="Brad Tavares" winner="False" id="85598" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="3.00" us="200" id="725161043215681568" />
+              <odd name="Home" value="1.40" us="-250" id="725161043215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705404444" id="17">
+              <odd name="Away" value="2.85" us="185" id="725161017215681568" />
+              <odd name="Home" value="1.39" us="-256" id="725161017215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="3.01" us="201" id="725161082215681568" />
+              <odd name="Home" value="1.41" us="-242" id="725161082215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.75" us="175" id="7251610158215681568" />
+              <odd name="Home" value="1.40" us="-250" id="7251610158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="3.00" us="200" id="7251610230215681568" />
+              <odd name="Home" value="1.40" us="-250" id="7251610230215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375623" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="2.75" us="175" id="725161088415231523" />
+                <odd name="Home" value="1.39" us="-256" id="725161088415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="11.02.2024" time="00:15" status="Not Started" ismain="True" type="Lightweight" id="100003">
+        <localteam name="Darrius Flowers" winner="False" id="99630" />
+        <awayteam name="Michael Johnson" winner="False" id="84743" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.72" us="-139" id="725160943215681568" />
+              <odd name="Home" value="2.10" us="110" id="725160943215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705404444" id="17">
+              <odd name="Away" value="1.71" us="-141" id="725160917215681568" />
+              <odd name="Home" value="2.06" us="106" id="725160917215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="1.72" us="-138" id="725160982215681568" />
+              <odd name="Home" value="2.20" us="120" id="725160982215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.73" us="-138" id="7251609158215681568" />
+              <odd name="Home" value="2.05" us="105" id="7251609158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.71" us="-141" id="7251609230215681568" />
+              <odd name="Home" value="2.15" us="115" id="7251609230215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375623" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.68" us="-147" id="725160988415231523" />
+                <odd name="Home" value="2.16" us="116" id="725160988415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="11.02.2024" time="00:00" status="Not Started" ismain="True" type="Middleweight" id="99990">
+        <localteam name="Armen Petrosyan" winner="False" id="98357" />
+        <awayteam name="Rodolfo Vieira" winner="False" id="85336" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.80" us="-125" id="725160843215681568" />
+              <odd name="Home" value="2.00" us="100" id="725160843215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705404444" id="17">
+              <odd name="Away" value="1.81" us="-123" id="725160817215681568" />
+              <odd name="Home" value="1.93" us="-107" id="725160817215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705348051" id="82">
+              <odd name="Away" value="1.92" us="-109" id="725160882215681568" />
+              <odd name="Home" value="1.95" us="-105" id="725160882215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.83" us="-120" id="7251608158215681568" />
+              <odd name="Home" value="1.91" us="-110" id="7251608158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.85" us="-118" id="7251608230215681568" />
+              <odd name="Home" value="1.95" us="-105" id="7251608230215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375623" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.89" us="-112" id="725160888415231523" />
+                <odd name="Home" value="1.93" us="-107" id="725160888415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+    </matches>
+  </category>
+  <category name="UFC 298: Volkanovski vs. Topuria" gid="99947" id="99947">
+    <matches>
+      <match date="18.02.2024" time="01:00" status="Not Started" ismain="False" type="Light Heavyweight" id="99950">
+        <localteam name="Brendson Ribeiro" winner="False" id="99951" />
+        <awayteam name="Zhang Mingyang" winner="False" id="99051" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="1.80" us="-125" id="724905414215681568" />
+              <odd name="Home" value="1.95" us="-105" id="724905414215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.85" us="-118" id="7249054230215681568" />
+              <odd name="Home" value="1.95" us="-105" id="7249054230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="17.02.2024" time="23:00" status="Not Started" ismain="False" type="Women's Flyweight" id="99948">
+        <localteam name="Miranda Maverick" winner="False" id="87796" />
+        <awayteam name="Andrea Lee" winner="False" id="84387" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="2.25" us="125" id="724905514215681568" />
+              <odd name="Home" value="1.60" us="-167" id="724905514215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.10" us="110" id="7249055158215681568" />
+              <odd name="Home" value="1.67" us="-150" id="7249055158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="2.30" us="130" id="7249055230215681568" />
+              <odd name="Home" value="1.62" us="-161" id="7249055230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="18.02.2024" time="02:00" status="Not Started" ismain="False" type="Women's Strawweight" id="99957">
+        <localteam name="Amanda Lemos" winner="False" id="86619" />
+        <awayteam name="Tatiana Suarez" winner="False" id="84864" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="10Bet" ts="1705380979" id="14">
+              <odd name="Away" value="1.25" us="-400" id="720292114215681568" />
+              <odd name="Home" value="3.65" us="265" id="720292114215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.28" us="-357" id="720292143215681568" />
+              <odd name="Home" value="3.75" us="275" id="720292143215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.29" us="-350" id="7202921158215681568" />
+              <odd name="Home" value="3.50" us="250" id="7202921158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.25" us="-400" id="7202921230215681568" />
+              <odd name="Home" value="4.00" us="300" id="7202921230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="18.02.2024" time="01:20" status="Not Started" ismain="False" type="Heavyweight" id="99949">
+        <localteam name="Justin Tafa" winner="False" id="85499" />
+        <awayteam name="Marcos Rogerio de Lima" winner="False" id="84427" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="10Bet" ts="1705374012" id="14">
+              <odd name="Away" value="1.50" us="-200" id="724905114215681568" />
+              <odd name="Home" value="2.50" us="150" id="724905114215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.53" us="-188" id="7249051158215681568" />
+              <odd name="Home" value="2.40" us="140" id="7249051158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.55" us="-182" id="7249051230215681568" />
+              <odd name="Home" value="2.45" us="145" id="7249051230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="18.02.2024" time="04:45" status="Not Started" ismain="True" type="Middleweight" id="100004">
+        <localteam name="Paulo Costa" winner="False" id="85206" />
+        <awayteam name="Robert Whittaker" winner="False" id="84355" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.46" us="-217" id="722197012215681568" />
+              <odd name="Home" value="2.60" us="160" id="722197012215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <odd name="Away" value="1.47" us="-213" id="722197017215681568" />
+              <odd name="Home" value="2.64" us="164" id="722197017215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.48" us="-208" id="722197018215681568" />
+              <odd name="Home" value="2.55" us="155" id="722197018215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.46" us="-217" id="722197051215681568" />
+              <odd name="Home" value="2.60" us="160" id="722197051215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="1.54" us="-185" id="722197082215681568" />
+              <odd name="Home" value="2.58" us="158" id="722197082215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.53" us="-188" id="7221970158215681568" />
+              <odd name="Home" value="2.40" us="140" id="7221970158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.48" us="-208" id="7221970230215681568" />
+              <odd name="Home" value="2.65" us="165" id="7221970230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705400013" id="231">
+              <odd name="Away" value="1.48" us="-208" id="7221970231215681568" />
+              <odd name="Home" value="2.55" us="155" id="7221970231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375623" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.39" us="-256" id="722197088415231523" />
+                <odd name="Home" value="2.75" us="175" id="722197088415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.66" us="-152" id="722197017515751575" />
+                <odd name="Under" value="2.19" us="119" id="722197017515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="18.02.2024" time="03:00" status="Not Started" ismain="True" type="Bantamweight" id="99955">
+        <localteam name="Henry Cejudo" winner="False" id="84286" />
+        <awayteam name="Merab Dvalishvili" winner="False" id="84711" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.55" us="-182" id="720290812215681568" />
+              <odd name="Home" value="2.35" us="135" id="720290812215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705312564" id="14">
+              <odd name="Away" value="1.57" us="-175" id="720290814215681568" />
+              <odd name="Home" value="2.35" us="135" id="720290814215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.58" us="-172" id="720290843215681568" />
+              <odd name="Home" value="2.40" us="140" id="720290843215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <odd name="Away" value="1.59" us="-169" id="720290817215681568" />
+              <odd name="Home" value="2.33" us="133" id="720290817215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.58" us="-172" id="720290818215681568" />
+              <odd name="Home" value="2.28" us="128" id="720290818215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.55" us="-182" id="720290851215681568" />
+              <odd name="Home" value="2.35" us="135" id="720290851215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.62" us="-163" id="7202908158215681568" />
+              <odd name="Home" value="2.20" us="120" id="7202908158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.58" us="-172" id="7202908230215681568" />
+              <odd name="Home" value="2.40" us="140" id="7202908230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705400013" id="231">
+              <odd name="Away" value="1.58" us="-172" id="7202908231215681568" />
+              <odd name="Home" value="2.28" us="128" id="7202908231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.26" us="-385" id="720290817515751575" />
+                <odd name="Under" value="3.78" us="278" id="720290817515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="18.02.2024" time="03:00" status="Not Started" ismain="True" type="Welterweight" id="100005">
+        <localteam name="Ian Garry" winner="False" id="98016" />
+        <awayteam name="Geoff Neal" winner="False" id="84256" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="2.80" us="180" id="721568212215681568" />
+              <odd name="Home" value="1.39" us="-256" id="721568212215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705383748" id="14">
+              <odd name="Away" value="2.65" us="165" id="721568214215681568" />
+              <odd name="Home" value="1.45" us="-222" id="721568214215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="2.70" us="170" id="721568243215681568" />
+              <odd name="Home" value="1.50" us="-200" id="721568243215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <odd name="Away" value="2.73" us="173" id="721568217215681568" />
+              <odd name="Home" value="1.42" us="-238" id="721568217215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="2.80" us="180" id="721568251215681568" />
+              <odd name="Home" value="1.39" us="-256" id="721568251215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.63" us="162" id="7215682158215681568" />
+              <odd name="Home" value="1.44" us="-225" id="7215682158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="2.85" us="185" id="7215682230215681568" />
+              <odd name="Home" value="1.43" us="-233" id="7215682230215711571" />
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.83" us="-120" id="721568217515751575" />
+                <odd name="Under" value="1.83" us="-120" id="721568217515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="18.02.2024" time="03:00" status="Not Started" ismain="True" type="Middleweight" id="99958">
+        <localteam name="Ikram Aliskerov" winner="False" id="99343" />
+        <awayteam name="Anthony Hernandez" winner="False" id="84295" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="2.40" us="140" id="721568314215681568" />
+              <odd name="Home" value="1.55" us="-182" id="721568314215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="2.40" us="140" id="721568343215681568" />
+              <odd name="Home" value="1.58" us="-172" id="721568343215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.30" us="130" id="7215683158215681568" />
+              <odd name="Home" value="1.53" us="-188" id="7215683158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="2.45" us="145" id="7215683230215681568" />
+              <odd name="Home" value="1.55" us="-182" id="7215683230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+    </matches>
+  </category>
+  <category name="UFC Fight Night: Moreno vs. Royval 2" gid="99959" id="99959">
+    <matches>
+      <match date="25.02.2024" time="03:00" status="Not Started" ismain="False" type="Flyweight" id="99960">
+        <localteam name="Felipe dos Santos" winner="False" id="99707" />
+        <awayteam name="Victor Altamirano" winner="False" id="97833" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="3.40" us="240" id="7266968158215681568" />
+              <odd name="Home" value="1.29" us="-350" id="7266968158215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="25.02.2024" time="00:20" status="Not Started" ismain="False" type="Flyweight" id="100019">
+        <localteam name="Mateus Mendonca" winner="False" id="99090" />
+        <awayteam name="Jesus Aguilar" winner="False" id="99083" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.95" us="-105" id="7266971158215681568" />
+              <odd name="Home" value="1.80" us="-125" id="7266971158215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="25.02.2024" time="00:00" status="Not Started" ismain="False" type="Lightweight" id="100021">
+        <localteam name="Chris Duncan" winner="False" id="97802" />
+        <awayteam name="Manuel Torres" winner="False" id="98507" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.53" us="-188" id="7266969158215681568" />
+              <odd name="Home" value="2.40" us="140" id="7266969158215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="25.02.2024" time="03:00" status="Not Started" ismain="True" type="Flyweight" id="100034">
+        <localteam name="Brandon Royval" winner="False" id="87716" />
+        <awayteam name="Brandon Moreno" winner="False" id="85417" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Home" value="1.40" us="-250" id="7266967158215681568" />
+              <odd name="Away" value="3.00" us="200" id="7266967158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Home" value="1.38" us="-263" id="7266967230215681568" />
+              <odd name="Away" value="3.05" us="205" id="7266967230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="25.02.2024" time="04:30" status="Not Started" ismain="True" type="Featherweight" id="100006">
+        <localteam name="Yair Rodriguez" winner="False" id="85414" />
+        <awayteam name="Brian Ortega" winner="False" id="88111" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Home" value="1.58" us="-172" id="722195643215681568" />
+              <odd name="Away" value="2.40" us="140" id="722195643215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Home" value="1.62" us="-161" id="722195618215681568" />
+              <odd name="Away" value="2.23" us="123" id="722195618215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Home" value="1.62" us="-163" id="7221956158215681568" />
+              <odd name="Away" value="2.20" us="120" id="7221956158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Home" value="1.65" us="-154" id="7221956230215681568" />
+              <odd name="Away" value="2.25" us="125" id="7221956230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Home" value="1.62" us="-161" id="7221956231215681568" />
+              <odd name="Away" value="2.23" us="123" id="7221956231215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="25.02.2024" time="03:30" status="Not Started" ismain="True" type="Flyweight" id="100010">
+        <localteam name="Daniel Lacerda" winner="False" id="98146" />
+        <awayteam name="Édgar Cháirez" winner="False" id="99585" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.25" us="-400" id="7266965158215681568" />
+              <odd name="Home" value="3.75" us="275" id="7266965158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.23" us="-435" id="7266965230215681568" />
+              <odd name="Home" value="4.20" us="320" id="7266965230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="25.02.2024" time="03:00" status="Not Started" ismain="True" type="Bantamweight" id="100020">
+        <localteam name="Ricky Turcios" winner="False" id="96496" />
+        <awayteam name="Raul Rosas Jr." winner="False" id="98982" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.36" us="-275" id="7251607158215681568" />
+              <odd name="Home" value="3.00" us="200" id="7251607158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.33" us="-303" id="7251607230215681568" />
+              <odd name="Home" value="3.35" us="235" id="7251607230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+    </matches>
+  </category>
+  <category name="UFC 299: O'Malley vs. Vera 2" gid="99966" id="99966">
+    <matches>
+      <match date="10.03.2024" time="04:00" status="Not Started" ismain="False" type="Bantamweight" id="99974">
+        <localteam name="Song Yadong" winner="False" id="84446" />
+        <awayteam name="Petr Yan" winner="False" id="84433" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.63" us="-159" id="721568012215681568" />
+              <odd name="Home" value="2.20" us="120" id="721568012215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="1.65" us="-154" id="721568014215681568" />
+              <odd name="Home" value="2.20" us="120" id="721568014215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.62" us="-161" id="721568043215681568" />
+              <odd name="Home" value="2.30" us="130" id="721568043215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <odd name="Away" value="1.59" us="-169" id="721568017215681568" />
+              <odd name="Home" value="2.27" us="127" id="721568017215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.64" us="-156" id="721568018215681568" />
+              <odd name="Home" value="2.17" us="117" id="721568018215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.63" us="-159" id="721568051215681568" />
+              <odd name="Home" value="2.20" us="120" id="721568051215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="1.69" us="-144" id="721568082215681568" />
+              <odd name="Home" value="2.25" us="125" id="721568082215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.67" us="-150" id="7215680158215681568" />
+              <odd name="Home" value="2.15" us="115" id="7215680158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.65" us="-154" id="7215680230215681568" />
+              <odd name="Home" value="2.25" us="125" id="7215680230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.64" us="-156" id="7215680231215681568" />
+              <odd name="Home" value="2.17" us="117" id="7215680231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375957" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.65" us="-154" id="721568088415231523" />
+                <odd name="Home" value="2.20" us="120" id="721568088415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705320896" id="17">
+              <total name="1.5" stop="True">
+                <odd name="Over" value="1.35" us="-286" id="721568017515751575" />
+                <odd name="Under" value="2.84" us="184" id="721568017515771577" />
+              </total>
+              <total name="2.5" stop="False">
+                <odd name="Over" value="1.61" us="-164" id="721568017515811581" />
+                <odd name="Under" value="2.12" us="112" id="721568017515831583" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="10.03.2024" time="01:20" status="Not Started" ismain="False" type="Lightweight" id="99970">
+        <localteam name="Rafael Dos Anjos" winner="False" id="84838" />
+        <awayteam name="Mateusz Gamrot" winner="False" id="88223" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="10Bet" ts="1705380109" id="14">
+              <odd name="Away" value="1.38" us="-263" id="720291614215681568" />
+              <odd name="Home" value="2.95" us="195" id="720291614215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <odd name="Away" value="1.37" us="-270" id="720291617215681568" />
+              <odd name="Home" value="2.94" us="194" id="720291617215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.36" us="-278" id="720291618215681568" />
+              <odd name="Home" value="3.00" us="200" id="720291618215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.44" us="-225" id="7202916158215681568" />
+              <odd name="Home" value="2.63" us="162" id="7202916158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.42" us="-238" id="7202916230215681568" />
+              <odd name="Home" value="2.85" us="185" id="7202916230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.36" us="-278" id="7202916231215681568" />
+              <odd name="Home" value="3.00" us="200" id="7202916231215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="10.03.2024" time="02:00" status="Not Started" ismain="False" type="Women's Flyweight" id="99971">
+        <localteam name="Maycee Barber" winner="False" id="84541" />
+        <awayteam name="Katlyn Cerminara" winner="False" id="84866" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="10Bet" ts="1705312564" id="14">
+              <odd name="Away" value="2.35" us="135" id="725585214215681568" />
+              <odd name="Home" value="1.57" us="-175" id="725585214215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <odd name="Away" value="2.33" us="133" id="725585217215681568" />
+              <odd name="Home" value="1.56" us="-179" id="725585217215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.30" us="130" id="7255852158215681568" />
+              <odd name="Home" value="1.57" us="-175" id="7255852158215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="10.03.2024" time="01:00" status="Not Started" ismain="False" type="Bantamweight" id="99972">
+        <localteam name="Kyler Phillips" winner="False" id="86716" />
+        <awayteam name="Pedro Munhoz" winner="False" id="84458" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="2.50" us="150" id="725585314215681568" />
+              <odd name="Home" value="1.50" us="-200" id="725585314215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <odd name="Away" value="2.54" us="154" id="725585317215681568" />
+              <odd name="Home" value="1.48" us="-208" id="725585317215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.50" us="150" id="7255853158215681568" />
+              <odd name="Home" value="1.50" us="-200" id="7255853158215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="10.03.2024" time="05:00" status="Not Started" ismain="True" type="Bantamweight" id="99973">
+        <localteam name="Marlon Vera" winner="False" id="84443" />
+        <awayteam name="Sean O'Malley" winner="False" id="85045" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.47" us="-213" id="711176312215681568" />
+              <odd name="Home" value="2.55" us="155" id="711176312215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705384620" id="14">
+              <odd name="Away" value="1.48" us="-208" id="711176314215681568" />
+              <odd name="Home" value="2.55" us="155" id="711176314215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.53" us="-189" id="711176343215681568" />
+              <odd name="Home" value="2.62" us="162" id="711176343215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <odd name="Away" value="1.47" us="-213" id="711176317215681568" />
+              <odd name="Home" value="2.64" us="164" id="711176317215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.49" us="-204" id="711176318215681568" />
+              <odd name="Home" value="2.63" us="163" id="711176318215711571" />
+            </bookmaker>
+            <bookmaker name="Betfair" ts="1705417478" id="21">
+              <odd name="Away" value="1.34" us="-294" id="711176321215681568" />
+              <odd name="Home" value="2.72" us="172" id="711176321215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.47" us="-213" id="711176351215681568" />
+              <odd name="Home" value="2.55" us="155" id="711176351215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705348294" id="82">
+              <odd name="Away" value="1.48" us="-207" id="711176382215681568" />
+              <odd name="Home" value="2.75" us="175" id="711176382215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.50" us="-200" id="7111763158215681568" />
+              <odd name="Home" value="2.63" us="162" id="7111763158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.50" us="-200" id="7111763230215681568" />
+              <odd name="Home" value="2.60" us="160" id="7111763230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.49" us="-204" id="7111763231215681568" />
+              <odd name="Home" value="2.63" us="163" id="7111763231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375957" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.40" us="-250" id="711176388415231523" />
+                <odd name="Home" value="2.78" us="178" id="711176388415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.62" us="-161" id="711176317515751575" />
+                <odd name="Under" value="2.27" us="127" id="711176317515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="10.03.2024" time="04:30" status="Not Started" ismain="True" type="Lightweight" id="100022">
+        <localteam name="Benoit Saint Denis" winner="False" id="98134" />
+        <awayteam name="Dustin Poirier" winner="False" id="84656" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="2.25" us="125" id="725160643215681568" />
+              <odd name="Home" value="1.66" us="-152" id="725160643215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <odd name="Away" value="2.18" us="118" id="725160617215681568" />
+              <odd name="Home" value="1.67" us="-150" id="725160617215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="2.20" us="120" id="725160618215681568" />
+              <odd name="Home" value="1.67" us="-149" id="725160618215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705309569" id="82">
+              <odd name="Away" value="2.28" us="128" id="725160682215681568" />
+              <odd name="Home" value="1.68" us="-148" id="725160682215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.20" us="120" id="7251606158215681568" />
+              <odd name="Home" value="1.67" us="-150" id="7251606158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="2.25" us="125" id="7251606230215681568" />
+              <odd name="Home" value="1.65" us="-154" id="7251606230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="2.20" us="120" id="7251606231215681568" />
+              <odd name="Home" value="1.67" us="-149" id="7251606231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375957" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="2.20" us="120" id="725160688415231523" />
+                <odd name="Home" value="1.67" us="-149" id="725160688415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="2.07" us="107" id="725160617515751575" />
+                <odd name="Under" value="1.74" us="-135" id="725160617515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="10.03.2024" time="02:30" status="Not Started" ismain="True" type="Heavyweight" id="99969">
+        <localteam name="Jailton Almeida" winner="False" id="97799" />
+        <awayteam name="Curtis Blaydes" winner="False" id="84535" />
+        <odds ts="1705420940">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.93" us="-107" id="720291512215681568" />
+              <odd name="Home" value="1.83" us="-120" id="720291512215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705399005" id="14">
+              <odd name="Away" value="1.93" us="-107" id="720291514215681568" />
+              <odd name="Home" value="1.83" us="-120" id="720291514215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="2.00" us="100" id="720291543215681568" />
+              <odd name="Home" value="1.80" us="-125" id="720291543215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705403398" id="17">
+              <odd name="Away" value="1.90" us="-111" id="720291517215681568" />
+              <odd name="Home" value="1.84" us="-119" id="720291517215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.91" us="-110" id="720291518215681568" />
+              <odd name="Home" value="1.84" us="-119" id="720291518215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705420940" id="51">
+              <odd name="Away" value="1.93" us="-107" id="720291551215681568" />
+              <odd name="Home" value="1.83" us="-120" id="720291551215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705348294" id="82">
+              <odd name="Away" value="1.96" us="-104" id="720291582215681568" />
+              <odd name="Home" value="1.91" us="-110" id="720291582215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.91" us="-110" id="7202915158215681568" />
+              <odd name="Home" value="1.83" us="-120" id="7202915158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.95" us="-105" id="7202915230215681568" />
+              <odd name="Home" value="1.85" us="-118" id="7202915230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705376020" id="231">
+              <odd name="Away" value="1.91" us="-110" id="7202915231215681568" />
+              <odd name="Home" value="1.84" us="-119" id="7202915231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375957" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.93" us="-107" id="720291588415231523" />
+                <odd name="Home" value="1.89" us="-112" id="720291588415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705403398" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="2.19" us="119" id="720291517515751575" />
+                <odd name="Under" value="1.57" us="-175" id="720291517515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="10.03.2024" time="03:30" status="Not Started" ismain="True" type="Welterweight" id="99975">
+        <localteam name="Jack Della Maddalena" winner="False" id="97921" />
+        <awayteam name="Gilbert Burns" winner="False" id="84888" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.70" us="-143" id="721568112215681568" />
+              <odd name="Home" value="2.05" us="105" id="721568112215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705389108" id="14">
+              <odd name="Away" value="1.77" us="-130" id="721568114215681568" />
+              <odd name="Home" value="2.00" us="100" id="721568114215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.72" us="-139" id="721568143215681568" />
+              <odd name="Home" value="2.10" us="110" id="721568143215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705380617" id="17">
+              <odd name="Away" value="1.79" us="-127" id="721568117215681568" />
+              <odd name="Home" value="2.00" us="100" id="721568117215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.75" us="-133" id="721568118215681568" />
+              <odd name="Home" value="2.02" us="102" id="721568118215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.70" us="-143" id="721568151215681568" />
+              <odd name="Home" value="2.05" us="105" id="721568151215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705391995" id="82">
+              <odd name="Away" value="1.91" us="-110" id="721568182215681568" />
+              <odd name="Home" value="1.96" us="-104" id="721568182215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.73" us="-138" id="7215681158215681568" />
+              <odd name="Home" value="2.05" us="105" id="7215681158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.71" us="-141" id="7215681230215681568" />
+              <odd name="Home" value="2.15" us="115" id="7215681230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.75" us="-133" id="7215681231215681568" />
+              <odd name="Home" value="2.02" us="102" id="7215681231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375957" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Away" value="1.83" us="-120" id="721568188415231523" />
+                <odd name="Home" value="1.99" us="-101" id="721568188415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705380617" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.69" us="-145" id="721568117515751575" />
+                <odd name="Under" value="2.14" us="114" id="721568117515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="10.03.2024" time="04:30" status="Not Started" ismain="True" type="Welterweight" id="99976">
+        <localteam name="Michael Page" winner="False" id="99977" />
+        <awayteam name="Kevin Holland" winner="False" id="84759" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Home" value="2.15" us="115" id="721568512215681568" />
+              <odd name="Away" value="1.67" us="-149" id="721568512215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705413443" id="14">
+              <odd name="Home" value="2.15" us="115" id="721568514215681568" />
+              <odd name="Away" value="1.67" us="-150" id="721568514215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Home" value="2.25" us="125" id="721568543215681568" />
+              <odd name="Away" value="1.66" us="-152" id="721568543215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705404444" id="17">
+              <odd name="Home" value="2.11" us="111" id="721568517215681568" />
+              <odd name="Away" value="1.68" us="-147" id="721568517215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Home" value="2.08" us="108" id="721568518215681568" />
+              <odd name="Away" value="1.70" us="-143" id="721568518215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Home" value="2.15" us="115" id="721568551215681568" />
+              <odd name="Away" value="1.67" us="-149" id="721568551215711571" />
+            </bookmaker>
+            <bookmaker name="Pncl" ts="1705406379" id="82">
+              <odd name="Home" value="2.12" us="112" id="721568582215681568" />
+              <odd name="Away" value="1.78" us="-129" id="721568582215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Home" value="2.20" us="120" id="7215685158215681568" />
+              <odd name="Away" value="1.62" us="-163" id="7215685158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Home" value="2.20" us="120" id="7215685230215681568" />
+              <odd name="Away" value="1.68" us="-147" id="7215685230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705335164" id="231">
+              <odd name="Home" value="2.08" us="108" id="7215685231215681568" />
+              <odd name="Away" value="1.70" us="-143" id="7215685231215711571" />
+            </bookmaker>
+          </type>
+          <type value="Asian Handicap" stop="False" id="4">
+            <bookmaker name="Sbo" ts="1705375957" id="88">
+              <handicap name="+0" stop="False">
+                <odd name="Home" value="2.06" us="106" id="721568588415231523" />
+                <odd name="Away" value="1.76" us="-132" id="721568588415251525" />
+              </handicap>
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705405161" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="1.81" us="-123" id="721568517515751575" />
+                <odd name="Under" value="1.85" us="-118" id="721568517515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+    </matches>
+  </category>
+  <category name="UFC Fight Night: Tuivasa vs. Tybura" gid="100041" id="100041">
+    <matches>
+      <match date="17.03.2024" time="03:00" status="Not Started" ismain="True" type="Heavyweight" id="100043">
+        <localteam name="Marcin Tybura" winner="False" id="84678" />
+        <awayteam name="Tai Tuivasa" winner="False" id="84861" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.78" us="-128" id="720291312215681568" />
+              <odd name="Home" value="1.95" us="-105" id="720291312215711571" />
+            </bookmaker>
+            <bookmaker name="10Bet" ts="1705309534" id="14">
+              <odd name="Away" value="1.77" us="-130" id="720291314215681568" />
+              <odd name="Home" value="2.00" us="100" id="720291314215711571" />
+            </bookmaker>
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="1.80" us="-125" id="720291343215681568" />
+              <odd name="Home" value="2.00" us="100" id="720291343215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705318318" id="17">
+              <odd name="Away" value="1.76" us="-132" id="720291317215681568" />
+              <odd name="Home" value="2.00" us="100" id="720291317215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.78" us="-128" id="720291351215681568" />
+              <odd name="Home" value="1.95" us="-105" id="720291351215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.80" us="-125" id="7202913158215681568" />
+              <odd name="Home" value="1.95" us="-105" id="7202913158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.82" us="-122" id="7202913230215681568" />
+              <odd name="Home" value="2.00" us="100" id="7202913230215711571" />
+            </bookmaker>
+          </type>
+          <type value="Over/Under" stop="False" id="5">
+            <bookmaker name="Marathon" ts="1705318318" id="17">
+              <total name="1.5" stop="False">
+                <odd name="Over" value="2.42" us="142" id="720291317515751575" />
+                <odd name="Under" value="1.47" us="-213" id="720291317515771577" />
+              </total>
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+    </matches>
+  </category>
+  <category name="UFC Fight Night: Ribas vs. Namajunas" gid="100044" id="100044">
+    <matches>
+      <match date="24.03.2024" time="03:00" status="Not Started" ismain="True" type="Women's Flyweight" id="100046">
+        <localteam name="Rose Namajunas" winner="False" id="84827" />
+        <awayteam name="Amanda Ribas" winner="False" id="85032" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.95" us="-105" id="7263458230215681568" />
+              <odd name="Home" value="1.85" us="-118" id="7263458230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+    </matches>
+  </category>
+  <category name="UFC Fight Night: Brady vs. Luque" gid="99979" id="99979">
+    <matches>
+      <match date="31.03.2024" time="03:30" status="Not Started" ismain="True" type="Welterweight" id="99981">
+        <localteam name="Vicente Luque" winner="False" id="84404" />
+        <awayteam name="Sean Brady" winner="False" id="85586" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.50" us="-200" id="7263460230215681568" />
+              <odd name="Home" value="2.60" us="160" id="7263460230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="31.03.2024" time="03:00" status="Not Started" ismain="True" type="Women's Flyweight" id="100007">
+        <localteam name="Manon Fiorot" winner="False" id="88439" />
+        <awayteam name="Erin Blanchfield" winner="False" id="91518" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="2.25" us="125" id="7221972230215681568" />
+              <odd name="Home" value="1.65" us="-154" id="7221972230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+    </matches>
+  </category>
+  <category name="UFC 300" gid="99982" id="99982">
+    <matches>
+      <match date="14.04.2024" time="01:00" status="Not Started" ismain="False" type="Middleweight" id="99984">
+        <localteam name="Cody Brundage" winner="False" id="88048" />
+        <awayteam name="Bo Nickal" winner="False" id="99136" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.07" us="-1429" id="722196618215681568" />
+              <odd name="Home" value="9.00" us="800" id="722196618215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.07" us="-1408" id="7221966158215681568" />
+              <odd name="Home" value="7.00" us="600" id="7221966158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.07" us="-1429" id="7221966230215681568" />
+              <odd name="Home" value="8.50" us="750" id="7221966230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.07" us="-1429" id="7221966231215681568" />
+              <odd name="Home" value="9.00" us="800" id="7221966231215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="14.04.2024" time="03:00" status="Not Started" ismain="False" type="Featherweight" id="100009">
+        <localteam name="Aljamain Sterling" winner="False" id="84381" />
+        <awayteam name="Calvin Kattar" winner="False" id="84921" />
+        <odds ts="1705417737">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="NordicBet" ts="1705417737" id="12">
+              <odd name="Away" value="1.85" us="-118" id="722197112215681568" />
+              <odd name="Home" value="1.85" us="-118" id="722197112215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <odd name="Away" value="1.91" us="-110" id="722197117215681568" />
+              <odd name="Home" value="1.83" us="-120" id="722197117215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="1.93" us="-107" id="722197118215681568" />
+              <odd name="Home" value="1.82" us="-122" id="722197118215711571" />
+            </bookmaker>
+            <bookmaker name="Betsson" ts="1705417737" id="51">
+              <odd name="Away" value="1.85" us="-118" id="722197151215681568" />
+              <odd name="Home" value="1.85" us="-118" id="722197151215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.91" us="-110" id="7221971158215681568" />
+              <odd name="Home" value="1.80" us="-125" id="7221971158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.86" us="-116" id="7221971230215681568" />
+              <odd name="Home" value="1.93" us="-107" id="7221971230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="1.93" us="-107" id="7221971231215681568" />
+              <odd name="Home" value="1.82" us="-122" id="7221971231215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="14.04.2024" time="02:00" status="Not Started" ismain="False" type="Bantamweight" id="100047">
+        <localteam name="Cody Garbrandt" winner="False" id="84457" />
+        <awayteam name="Deiveson Figueiredo" winner="False" id="84530" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.30" us="-333" id="7263461158215681568" />
+              <odd name="Home" value="3.50" us="250" id="7263461158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.30" us="-333" id="7263461230215681568" />
+              <odd name="Home" value="3.50" us="250" id="7263461230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="13.04.2024" time="05:00" status="Not Started" ismain="True" type="Women's Strawweight" id="100033">
+        <localteam name="Yan Xiaonan" winner="False" id="84855" />
+        <awayteam name="Zhang Weili" winner="False" id="84470" />
+        <odds ts="1705403172">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="1.30" us="-333" id="7266964158215681568" />
+              <odd name="Home" value="3.50" us="250" id="7266964158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="1.28" us="-357" id="7266964230215681568" />
+              <odd name="Home" value="3.70" us="270" id="7266964230215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="14.04.2024" time="02:00" status="Not Started" ismain="True" type="Light Heavyweight" id="100008">
+        <localteam name="Aleksandar Rakic" winner="False" id="84907" />
+        <awayteam name="Jirí Procházka" winner="False" id="87804" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="2.10" us="110" id="722196143215681568" />
+              <odd name="Home" value="1.72" us="-139" id="722196143215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705309569" id="17">
+              <odd name="Away" value="2.04" us="104" id="722196117215681568" />
+              <odd name="Home" value="1.76" us="-132" id="722196117215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705309534" id="18">
+              <odd name="Away" value="2.00" us="100" id="722196118215681568" />
+              <odd name="Home" value="1.77" us="-130" id="722196118215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.05" us="105" id="7221961158215681568" />
+              <odd name="Home" value="1.73" us="-138" id="7221961158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="2.10" us="110" id="7221961230215681568" />
+              <odd name="Home" value="1.74" us="-135" id="7221961230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705309534" id="231">
+              <odd name="Away" value="2.00" us="100" id="7221961231215681568" />
+              <odd name="Home" value="1.77" us="-130" id="7221961231215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+      <match date="14.04.2024" time="02:00" status="Not Started" ismain="True" type="Lightweight" id="100023">
+        <localteam name="Arman Tsarukyan" winner="False" id="84785" />
+        <awayteam name="Charles Oliveira" winner="False" id="84324" />
+        <odds ts="1705417433">
+          <type value="Home/Away" stop="False" id="2">
+            <bookmaker name="bet365" ts="1705417433" id="16">
+              <odd name="Away" value="2.40" us="140" id="725160543215681568" />
+              <odd name="Home" value="1.58" us="-172" id="725160543215711571" />
+            </bookmaker>
+            <bookmaker name="Marathon" ts="1705393371" id="17">
+              <odd name="Away" value="2.38" us="138" id="725160517215681568" />
+              <odd name="Home" value="1.57" us="-175" id="725160517215711571" />
+            </bookmaker>
+            <bookmaker name="Unibet" ts="1705416825" id="18">
+              <odd name="Away" value="2.45" us="145" id="725160518215681568" />
+              <odd name="Home" value="1.55" us="-182" id="725160518215711571" />
+            </bookmaker>
+            <bookmaker name="Betway" ts="1705403172" id="158">
+              <odd name="Away" value="2.30" us="130" id="7251605158215681568" />
+              <odd name="Home" value="1.57" us="-175" id="7251605158215711571" />
+            </bookmaker>
+            <bookmaker name="Betcris" ts="1705403172" id="230">
+              <odd name="Away" value="2.40" us="140" id="7251605230215681568" />
+              <odd name="Home" value="1.58" us="-172" id="7251605230215711571" />
+            </bookmaker>
+            <bookmaker name="888Sport" ts="1705416544" id="231">
+              <odd name="Away" value="2.45" us="145" id="7251605231215681568" />
+              <odd name="Home" value="1.55" us="-182" id="7251605231215711571" />
+            </bookmaker>
+          </type>
+        </odds>
+      </match>
+    </matches>
+  </category>
+</scores>

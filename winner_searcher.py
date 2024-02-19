@@ -3,6 +3,9 @@ import json
 import subprocess
 from bs4 import BeautifulSoup
 
+
+
+
 class FootballMatchAnalyzer:
     def __init__(self):
         self.league_id_mapping = {
@@ -19,9 +22,7 @@ class FootballMatchAnalyzer:
 
     def download_xml_file(self, url, file_path):
         try:
-            # Create directories if they don't exist
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
-            # Use subprocess to call curl command to download the XML file
             result = subprocess.run(["curl", "-s", "-o", file_path, url], capture_output=True, text=True)
             if result.returncode == 0:
                 print(f"XML file downloaded successfully: {file_path}")
@@ -33,7 +34,8 @@ class FootballMatchAnalyzer:
             print(f"Error downloading XML file from {url}: {e}")
             return False
 
-    def download_all_leagues(self, base_url, output_dir):
+    def download_all(self, output_dir):
+        base_url = "https://www.goalserve.com/getfeed/401117231212497fb27a08db8de47c17/soccerfixtures"
         for league_id, league_name in self.league_id_mapping.items():
             url = f"{base_url}/leagueid/{league_id}"
             file_path = os.path.join(output_dir, f"{league_name.replace(' ', '_')}.xml")
@@ -76,7 +78,7 @@ class FootballMatchAnalyzer:
     def extract_matches(self, soup, team1, team2, league_name):
         match_results = []
 
-        last_four_weeks = soup.find_all("week")[:4]
+        last_four_weeks = soup.find_all("week")[:8]
 
         for week in last_four_weeks:
             matches = week.find_all("match")
@@ -101,15 +103,13 @@ class FootballMatchAnalyzer:
 
 from datetime import datetime, timedelta
 
-class BaketballMatchAnalyzer():
+class BaketballMatchAnalyzer:
     def __init__(self):
         self.league_id_mapping = {"1046": 'nba', "1278": 'euro_league', "1291": 'euro_cup', "2691": 'ncaa'}
 
     def download_xml_file(self, url, file_path):
         try:
-            # Create directories if they don't exist
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
-            # Use subprocess to call curl command to download the XML file
             result = subprocess.run(["curl", "-s", "-o", file_path, url], capture_output=True, text=True)
             if result.returncode == 0:
                 print(f"XML file downloaded successfully: {file_path}")
@@ -121,7 +121,8 @@ class BaketballMatchAnalyzer():
             print(f"Error downloading XML file from {url}: {e}")
             return False
 
-    def download_all_leagues(self, base_url, output_dir):
+    def download_all(self, output_dir):
+        base_url = "https://www.goalserve.com/getfeed/401117231212497fb27a08db8de47c17/bsktbl"
         for league_id, league_name in self.league_id_mapping.items():
             url = f"{base_url}/{league_id}"
             file_path = os.path.join(output_dir, f"{league_name.replace(' ', '_')}.xml")
@@ -168,7 +169,7 @@ class BaketballMatchAnalyzer():
         for match in soup.find_all("match"):
             match_date_str = match.get("date")
             match_date = datetime.strptime(match_date_str, "%d.%m.%Y").date()
-            if today - match_date <= timedelta(days=30): 
+            if today - match_date <= timedelta(days=60): 
                 local_team = match.find("localteam").get("name")
                 visitor_team = match.find("awayteam").get("name")
                 local_score = match.find("localteam").get("totalscore")
@@ -184,15 +185,14 @@ class BaketballMatchAnalyzer():
 	                })
 
         return match_results
-class MMAMatchAnalyzer():
+
+class MMAMatchAnalyzer:
     def __init__(self):
         self.league_id_mapping = {"1046": 'nba', "1278": 'euro_league', "1291": 'euro_cup', "2691": 'ncaa'}
 
     def download_xml_file(self, url, file_path):
         try:
-            # Create directories if they don't exist
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
-            # Use subprocess to call curl command to download the XML file
             result = subprocess.run(["curl", "-s", "-o", file_path, url], capture_output=True, text=True)
             if result.returncode == 0:
                 print(f"XML file downloaded successfully: {file_path}")
@@ -204,8 +204,11 @@ class MMAMatchAnalyzer():
             print(f"Error downloading XML file from {url}: {e}")
             return False
 
-    def download_all_leagues(self, base_url, output_dir):
-            self.download_xml_file(base_url, f'{output_dir}/mma.xml')
+    def download_all(self, output_dir):
+        base_url = "https://www.goalserve.com/getfeed/401117231212497fb27a08db8de47c17/mma/live"
+        url = base_url
+        file_path = os.path.join(output_dir, "mma.xml")
+        self.download_xml_file(url, file_path)
 
     def load_xml_file(self, file_path):
         try:
@@ -265,28 +268,32 @@ class MMAMatchAnalyzer():
 
         return match_results
 
-# Example usage:
-analyzer = BaketballMatchAnalyzer()
-base_url = "https://www.goalserve.com/getfeed/401117231212497fb27a08db8de47c17/mma/live"
-output_dir = "winner/mma"
-analyzer.download_all_leagues(base_url, output_dir)
-matches = analyzer.find_winner("Timmy Cuamba", "Bolaji Oki")
-for match in matches:
-    print(json.dumps(match, indent=4))
+class MatchAnalyzer:
+    def __init__(self):
+        self.football_analyzer = FootballMatchAnalyzer()
+        self.basketball_analyzer = BaketballMatchAnalyzer()
+        self.mma_analyzer = MMAMatchAnalyzer()
 
-# Example usage:
-analyzer = BaketballMatchAnalyzer()
-base_url = "https://www.goalserve.com/getfeed/401117231212497fb27a08db8de47c17/bsktbl"
-output_dir = "winner/basketball"
-# analyzer.download_all_leagues(base_url, output_dir)
-matches = analyzer.find_winner("Oklahoma City Thunder", "San Antonio Spurs")
-for match in matches:
-    print(json.dumps(match, indent=4))
+    def find_winner(self, team1, team2, league_name=None):
+        all_results = []
+        all_results.extend(self.football_analyzer.find_winner(team1, team2))
+        all_results.extend(self.basketball_analyzer.find_winner(team1, team2))
+        all_results.extend(self.mma_analyzer.find_winner(team1, team2))
+        return all_results
 
-analyzer = FootballMatchAnalyzer()
-base_url = "https://www.goalserve.com/getfeed/401117231212497fb27a08db8de47c17/bsktbl"
-output_dir = "winner/football"
-# analyzer.download_all_leagues(base_url, output_dir)
-matches = analyzer.find_winner()
-for match in matches:
-    print(json.dumps(match, indent=4))
+
+
+# Usage
+analyzer = MatchAnalyzer()
+
+# Example usage for finding winner of matches between two teams
+
+# Val Woodburn
+# Oban Elliott
+# Danny Barlow
+# Josh Quinlan
+
+# Los Angeles
+# Seattle Sounders
+all_results = analyzer.find_winner('Los Angeles', 'Seattle Sounders')
+print(all_results)

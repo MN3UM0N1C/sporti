@@ -1,0 +1,7 @@
+beautifulsoup4==4.10.0
+fake-useragent==0.1.11
+fuzzywuzzy==0.18.0
+random-user-agent==1.0.1
+requests==2.26.0
+urllib3==1.26.7
+zenrows==0.1.2

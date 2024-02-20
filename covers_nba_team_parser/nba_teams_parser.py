@@ -26,6 +26,7 @@ class NBA():
         return json.dumps(data)
 
     def statistics_parser(self):
+        player_statistics = {}
         # Extracting header row to get keys
         table = self.nba_request(self.statistics_url).find("table", {"class" : True})
         header_row = table.find('thead').find_all('tr')[0]
@@ -40,9 +41,11 @@ class NBA():
                 for i in range(len(keys)):
                     row_data[keys[i]] = cells[i].text.strip().replace("\n", "").replace("  ", "")
                 data.append(row_data)
-        return json.dumps(data)
+        player_statistics["Player statistics"] = data
+        return json.dumps(player_statistics)
 
     def injuries(self):
+        injuries_statistics = {}
         soup = self.nba_request(self.injuries_url).find("div", {"class" : "covers-CoversMatchups-responsiveTableContainer"})
         # Find all rows in the table body
         rows = soup.find('tbody').find_all('tr')[::2]  # Select every second row starting from the first row
@@ -70,9 +73,11 @@ class NBA():
                 'player_position': player_position.replace("\n", "").replace(" ", ""),
                 'player_status': player_status
             })
-        return players_info
+        injuries_statistics["Injuries statistics"] = players_info
+        return json.dumps(injuries_statistics)
 
     def team_stats(self):
+        team_stats = {}
         # Extracting header row to get keys
         table = self.nba_request(self.statistics_url).find("table", {"class" : "covers-CoversResults-Table"})
         header_row = table.find('thead').find_all('tr')[0]
@@ -87,7 +92,8 @@ class NBA():
                 for i in range(len(keys)):
                     row_data[keys[i]] = cells[i].text.strip().replace("\n", "").replace("  ", "")
                 data.append(row_data)
-        return json.dumps(data)
+        team_stats["Team statistics"] = data
+        return json.dumps(team_stats)
 
     def team_offensive_stats(self):
         offensive = {}
@@ -115,7 +121,7 @@ class NBA():
                 "Season Stats": row[1],
                 "Rank": row[2]}
 
-        offensive["offensive"] = result
+        offensive["offensive statistics"] = result
         return json.dumps(offensive)
 
     def team_defensive_stats(self):
@@ -144,10 +150,11 @@ class NBA():
                 "Season Stats": row[1],
                 "Rank": row[2]
             }
-        defensive["defensive"] = result
+        defensive["defensive statistics"] = result
         return json.dumps(defensive)
 
     def team_leader_stats(self):
+        team_leader = {}
         divs = self.nba_request(self.statistics_url).find_all("div", {"class" : "covers-CoversMatchups-responsiveTableContainer"})
         for blocks in divs:
             if "Team Leaders" in str(blocks):
@@ -172,7 +179,8 @@ class NBA():
                 "Season Stats": row[1],
                 "Rank": row[2]
             }
-        return result
+        team_leader["team leader statistics"] = result
+        return json.dumps(team_leader)
 
 
 nba_teams = [

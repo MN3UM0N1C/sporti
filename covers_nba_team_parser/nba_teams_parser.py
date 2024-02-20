@@ -44,6 +44,29 @@ class NBA():
         player_statistics["Player statistics"] = data
         return json.dumps(player_statistics)
 
+    def last_10(self):
+        player_statistics = {}
+        # Extracting header row to get keys
+        table = self.nba_request(self.statistics_url).find_all("div", {"class" : "covers-CoversTeamPage-lastN"})
+        for blocks in table:
+            if "Last 10" in str(blocks):
+                table = blocks.find("table")
+        # Find the table body
+        table_body = table.find('tbody')
+        player_statistics = []
+        # Loop through each row in the table body
+        for row in table_body.find_all('tr'):
+            # Extract data from each cell in the row
+            cells = row.find_all('td')
+            player_data = {
+                "Date": cells[0].get_text().split("\n")[2],
+                "VS": cells[0].get_text().split("\n")[6].replace("@", "").replace(" ", ""),
+                "Scores": cells[0].get_text().split("\n")[10]
+            }
+            player_statistics.append(player_data)
+        result = {"Last 10 Matches" : player_statistics}
+        return json.dumps(result)
+
     def injuries(self):
         injuries_statistics = {}
         soup = self.nba_request(self.injuries_url).find("div", {"class" : "covers-CoversMatchups-responsiveTableContainer"})
@@ -176,8 +199,8 @@ class NBA():
         result = {}
         for row in data:
             result[row[0]] = {
-                "Season Stats": row[1],
-                "Rank": row[2]
+                "Player Name": row[1],
+                row[0] : row[2]
             }
         team_leader["team leader statistics"] = result
         return json.dumps(team_leader)
@@ -222,7 +245,7 @@ class all_in_one():
         pass 
     def search(self):
         scraper = NBA(self.team)
-        return [scraper.statistics_parser(),scraper.injuries(),scraper.parser(),scraper.team_offensive_stats(),scraper.team_defensive_stats(),scraper.team_leader_stats()]
+        return [scraper.last_10(), scraper.statistics_parser(),scraper.injuries(),scraper.parser(),scraper.team_offensive_stats(),scraper.team_defensive_stats(),scraper.team_leader_stats()]
 
 if __name__ == "__main__":
     for team in nba_teams:

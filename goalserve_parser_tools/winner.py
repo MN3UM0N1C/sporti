@@ -4,8 +4,6 @@ import subprocess
 from bs4 import BeautifulSoup
 
 
-
-
 class FootballMatchAnalyzer:
     def __init__(self):
         self.league_id_mapping = {
@@ -78,7 +76,7 @@ class FootballMatchAnalyzer:
     def extract_matches(self, soup, team1, team2, league_name):
         match_results = []
 
-        last_four_weeks = soup.find_all("week")[:8]
+        last_four_weeks = soup.find_all("week")[:12]
 
         for week in last_four_weeks:
             matches = week.find_all("match")
@@ -169,7 +167,7 @@ class BaketballMatchAnalyzer:
         for match in soup.find_all("match"):
             match_date_str = match.get("date")
             match_date = datetime.strptime(match_date_str, "%d.%m.%Y").date()
-            if today - match_date <= timedelta(days=60): 
+            if today - match_date <= timedelta(days=90): 
                 local_team = match.find("localteam").get("name")
                 visitor_team = match.find("awayteam").get("name")
                 local_score = match.find("localteam").get("totalscore")
@@ -251,7 +249,7 @@ class MMAMatchAnalyzer:
         for match in soup.find_all("match"):
             match_date_str = match.get("date")
             match_date = datetime.strptime(match_date_str, "%d.%m.%Y").date()
-            if today - match_date <= timedelta(days=60): 
+            if today - match_date <= timedelta(days=90): 
                 local_team = match.find("localteam").get("name")
                 visitor_team = match.find("awayteam").get("name")
                 local_score = match.find("localteam").get("winner")
@@ -282,9 +280,47 @@ class MatchAnalyzer:
         return all_results
 
 
+import csv
 
+class Csvinputer:
+    def __init__(self):
+        self.analyzer = MatchAnalyzer()
+
+    def read_csv_and_analyze(self, input_file, output_file):
+        with open(input_file, 'r') as csvfile:
+            reader = csv.DictReader(csvfile)
+            results = []
+            for row in reader:
+                local_team = row['localteamname']
+                if 'awayteamname' in row:
+                    away_team = row['awayteamname']
+                else:
+                    away_team = row["visitorteam"]
+                if len(self.analyzer.find_winner(local_team, away_team)) != 0:
+                    analyzed_results = self.analyzer.find_winner(local_team, away_team)[0]
+                else:
+                    analyzed_results = []
+                results.append(analyzed_results)
+                print(local_team, away_team)
+
+        self.write_results_to_csv(output_file, results)
+
+    def write_results_to_csv(self, output_file, results):
+        print(results)
+        with open(output_file, 'w', newline='') as csvfile:
+            fieldnames = ['Local Team', 'Visitor Team', 'Winner']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            for result in results:
+                writer.writerow({'Local Team': result['Local Team'], 'Visitor Team': result['Visitor Team'], 'Winner': result['Winner']})
+
+input_file = 'combined_data.csv'
+output_file = 'generated_data.csv'
+
+csv_inputter = Csvinputer()
+csv_inputter.read_csv_and_analyze(input_file, output_file)
 # Usage
-analyzer = MatchAnalyzer()
+# analyzer = MatchAnalyzer()
 
 # Example usage for finding winner of matches between two teams
 
@@ -295,5 +331,5 @@ analyzer = MatchAnalyzer()
 
 # Los Angeles
 # Seattle Sounders
-all_results = analyzer.find_winner('Los Angeles', 'Seattle Sounders')
-print(all_results)
+# all_results = analyzer.find_winner('Los Angeles', 'Seattle Sounders')
+# print(all_results)

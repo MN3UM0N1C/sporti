@@ -2,10 +2,11 @@ from bs4 import BeautifulSoup
 import os
 import json
 
+
 class BasketballMatchAnalyzer:
     def __init__(self, sport):
         self.sport = sport
-        self.xml_folder = f"app/odds/{sport}/"
+        self.xml_folder = f'app/odds/{sport}'
         self.matches = []
 
     def load_data(self):
@@ -22,6 +23,7 @@ class BasketballMatchAnalyzer:
                     versus_team = "awayteam"
                 for match in matches:
                     match_data = {
+                        "type_value": match.find('type')['value'],
                         "local_team": match.find('localteam')['name'],
                         "away_team": match.find(versus_team)['name'],
                         "odds_home": float(match.find('odd', {'name': 'Home'})['value']),
@@ -30,34 +32,40 @@ class BasketballMatchAnalyzer:
                     self.matches.append(match_data)
 
     def analyze_matches(self):
-        sorted_matches = sorted(self.matches, key=lambda x: x['odds_home'])
-        small_odds = sorted_matches[0]
-        medium_odds = sorted_matches[len(sorted_matches) // 2]
-        high_odds = sorted_matches[-1]
-        output = {
-            "small_odds": {
-                "local_team_name": small_odds["local_team"],
-                "away_team_name": small_odds["away_team"],
-                "odds": min(small_odds["odds_home"], small_odds["odds_away"])
-            },
-            "medium_odds": {
-                "local_team_name": medium_odds["local_team"],
-                "away_team_name": medium_odds["away_team"],
-                "odds": (medium_odds["odds_home"] + medium_odds["odds_away"]) / 2
-            },
-            "high_odds": {
-                "local_team_name": high_odds["local_team"],
-                "away_team_name": high_odds["away_team"],
-                "odds": max(high_odds["odds_home"], high_odds["odds_away"])
+        output = {}
+        types = set(match['type_value'] for match in self.matches)
+        for type_value in types:
+            type_matches = [match for match in self.matches if match['type_value'] == type_value]
+            sorted_matches = sorted(type_matches, key=lambda x: x['odds_home'])
+            small_odds = sorted_matches[0]
+            medium_odds = sorted_matches[len(sorted_matches) // 2]
+            high_odds = sorted_matches[-1]
+            output[type_value] = {
+                "small_odds": {
+                    "local_team_name": small_odds["local_team"],
+                    "away_team_name": small_odds["away_team"],
+                    "odds": min(small_odds["odds_home"], small_odds["odds_away"])
+                },
+                "medium_odds": {
+                    "local_team_name": medium_odds["local_team"],
+                    "away_team_name": medium_odds["away_team"],
+                    "odds": (medium_odds["odds_home"] + medium_odds["odds_away"]) / 2
+                },
+                "high_odds": {
+                    "local_team_name": high_odds["local_team"],
+                    "away_team_name": high_odds["away_team"],
+                    "odds": max(high_odds["odds_home"], high_odds["odds_away"])
+                }
             }
-        }
         return output
 
 def main():
-    analyzer = BasketballMatchAnalyzer("football")
+    analyzer = BasketballMatchAnalyzer("mma")
     analyzer.load_data()
     analysis_result = analyzer.analyze_matches()
     print(json.dumps(analysis_result))
 
 if __name__ == "__main__":
     main()
+
+

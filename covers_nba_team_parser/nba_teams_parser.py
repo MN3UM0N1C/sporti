@@ -92,12 +92,12 @@ class NBA():
             
             # Append player information to the list
             players_info.append({
-                'player_name': player_name.replace("\n", "").replace(" ", ""),
-                'player_position': player_position.replace("\n", "").replace(" ", ""),
-                'player_status': player_status
+                'player_name': player_name.replace("\n", "").replace(" ", "").replace("\\n", "").replace("\\r", ""),
+                'player_position': player_position.replace("\n", "").replace(" ", "").replace("\\n", "").replace("\\r", ""),
+                'player_status': player_status.replace("\n", "").replace(" ", "").replace("\r", "")
             })
         injuries_statistics["Injuries statistics"] = players_info
-        return json.dumps(injuries_statistics)
+        return json.dumps(players_info)
 
     def team_stats(self):
         team_stats = {}
@@ -245,7 +245,7 @@ class all_in_one():
         pass 
     def search(self):
         scraper = NBA(self.team)
-        return [scraper.last_10(), scraper.statistics_parser(),scraper.injuries(),scraper.parser(),scraper.team_offensive_stats(),scraper.team_defensive_stats(),scraper.team_leader_stats()]
+        return [scraper.injuries(), scraper.statistics_parser(),scraper.injuries(),scraper.team_stats(),scraper.team_offensive_stats(),scraper.team_defensive_stats(),scraper.team_leader_stats(), scraper.parser()]
 
 if __name__ == "__main__":
     for team in nba_teams:

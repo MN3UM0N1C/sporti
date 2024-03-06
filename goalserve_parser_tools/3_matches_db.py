@@ -83,8 +83,17 @@ class Odds_counter:
                                             "odds_away": float(type_element.find('odd', {'name': 'Away'})['value'])
                                         }
                                     except:
-                                        pass
+                                        pass 
                                     self.matches.append(match_data)
+        seen = set()
+        uniq_list_of_dicts = []
+        for d in self.matches:
+            # Convert each dictionary to a hashable type (e.g., tuple of sorted items) to check for uniqueness
+            hashable_d = tuple(sorted(d.items()))
+            if hashable_d not in seen:
+                uniq_list_of_dicts.append(d)
+                seen.add(hashable_d)
+        self.matches = uniq_list_of_dicts
 
     def is_cached(self, output):
         if not os.path.exists(self.cache_file):
@@ -125,6 +134,7 @@ class Odds_counter:
 
 
     def analyze_matches(self):
+        good_out = {}
         counter = 0
         output = {}
         types = set(match['type_value'] for match in self.matches)
@@ -132,9 +142,11 @@ class Odds_counter:
             type_matches = [match for match in self.matches if match['type_value'] == type_value]
             sorted_matches = sorted(type_matches, key=lambda x: x['odds_home'])
             home_sorted_matches = sorted(type_matches, key=lambda x: x['odds_away'])
-            small_odds = sorted_matches[:5]
-            medium_odds = sorted_matches[len(sorted_matches) // 5:2 * (len(sorted_matches) // 5)]
-            high_odds = sorted_matches[-5:]
+            small_odds = sorted_matches[:3]
+            medium_odds = sorted_matches[len(sorted_matches) // 3:2 * (len(sorted_matches) // 3)]
+            if medium_odds == []:
+                medium_odds = sorted_matches[-3:]
+            high_odds = sorted_matches[-3:]
             seen_matches = set()  # To keep track of seen matches
             output[type_value] = {
                 "small_odds": [
@@ -149,7 +161,7 @@ class Odds_counter:
                         "local_team_name": medium["local_team"],
                         "away_team_name": medium["away_team"],
                         "odds": "{:.2f}".format((medium["odds_home"] + medium["odds_away"]) / 2)
-                    } for medium in medium_odds[:5] if (medium["local_team"], medium["away_team"]) not in seen_matches and not seen_matches.add((medium["local_team"], medium["away_team"]))
+                    } for medium in medium_odds[:3] if (medium["local_team"], medium["away_team"]) not in seen_matches and not seen_matches.add((medium["local_team"], medium["away_team"]))
                 ],
                 "high_odds": [
                     {
@@ -172,21 +184,30 @@ class Odds_counter:
                     self.cache_output(output)  # Cache the output if unique
                 else:
                     continue  # If not unique, continue to the next type value
-            else:
-                self.cache_output(output)  # Cache the output if not unique
+  # Cache the output if not unique
+
         if output == {}:
             return self.random_from_cache()
 
-        return output
+        for market, out in output.items():
+            if len(out["small_odds"]) == 3 and len(out["medium_odds"])  == 3 and len(out["high_odds"]) == 3:
+                good_out[market] = out
+
+        return [output, good_out]
 
 
 
 def main():
+    good_out = {}
     unique = True
     analyzer = Odds_counter("football", unique=unique, days=90)
     analyzer.load_data()
     analysis_result = analyzer.analyze_matches()
-    print(json.dumps(analysis_result, indent=4))
+    if len(analysis_result) > 1:
+        print(json.dumps(analysis_result[1], indent=4)) 
+    else:
+        print(json.dumps(analysis_result, indent=4))
+
 
 if __name__ == "__main__":
     main()

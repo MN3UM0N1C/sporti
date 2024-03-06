@@ -4,6 +4,7 @@ import json
 import random
 from datetime import datetime, timedelta
 import re
+import mysql.connector
 
 class Odds_counter:
     def __init__(self, sport, unique=False, cache_file='cache.json', days=1000, sql_file="prediction.sql"):
@@ -14,18 +15,36 @@ class Odds_counter:
         self.sql_file = sql_file
         self.unique = unique
         self.cache_file = cache_file
-
+        self.db_connection = None
 
     def parse_sql_file(self):
-        with open(self.sql_file, 'r') as file:
-            sql_content = file.read()
+        try:
+            self.db_connection = mysql.connector.connect(
+                host="localhost",
+                user="kali",
+                password="chatftw",
+                database="chatftw_pred"
+            )
+            print("Connected to the database")
 
-        # Use regular expression to extract fighter pairs
-        pattern = r"\(\d+, '(.{1,100}?)', '(.{1,100}?)'"
+            matches = []
+            cursor = self.db_connection.cursor()
+            query = "SELECT fighter_1, fighter_2 FROM prediction WHERE id > %s"
+            cursor.execute(query, (self.sport,))
+            matches = cursor.fetchall()
+            cursor.close()
 
-        # Find all matches
-        matches = re.findall(pattern, sql_content)
-        return matches
+            return matches
+
+        except mysql.connector.Error as e:
+            print("Error connecting to MySQL database:", e)
+            return []
+
+        finally:
+            if self.db_connection:
+                self.db_connection.close()
+                print("Database connection closed.")
+
 
     def load_data(self):
         names = self.parse_sql_file()

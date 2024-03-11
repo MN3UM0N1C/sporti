@@ -185,16 +185,18 @@ class Odds_counter:
                     {
                         "local_team_name": small_home["local_team"] if small_home["prediction_team"] == small_home["local_team"] else small_away["local_team"],
                         "away_team_name": small_home["away_team"] if small_home["prediction_team"] == small_home["local_team"] else small_away["away_team"],
-                        "odds": small_home["odds_home"] if small_home["prediction_team"] == small_home["local_team"] else small_away["odds_away"],
+                        "odds": {"predicted_odd" : small_home["odds_home"] if small_home["prediction_team"] == small_home["local_team"] else small_away["odds_away"], "home_odds": small_home["odds_home"], "away_odds": small_away["odds_away"]},
+                        "winner" : small_home["prediction_team"] if small_home["prediction_team"] == small_home["local_team"] else small_away["prediction_team"],
                         "date": small_home["date"] if small_home["prediction_team"] == small_home["local_team"] else small_away["date"]
-                    } for small_home, small_away  in zip(home_small_odds, away_small_odds)
+                    } for small_home, small_away in zip(home_small_odds, away_small_odds)
                     if (small_home["local_team"], small_home["away_team"]) not in seen_matches and not seen_matches.add((small_home["local_team"], small_home["away_team"]))
                 ],
                 "medium_odds": [
                     {
                         "local_team_name": medium_home["local_team"] if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["local_team"],
                         "away_team_name": medium_home["away_team"] if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["away_team"],
-                        "odds": "{:.2f}".format(medium_home["odds_home"] if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["odds_away"]),
+                        "odds": {"predicted_odd" : medium_home["odds_home"] if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["odds_away"], "home_odds": medium_home["odds_home"], "away_odds": medium_away["odds_away"]},
+                        "winner" : medium_home["prediction_team"] if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["prediction_team"],
                         "date": medium_home["date"] if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["date"]
                     } for medium_home, medium_away in zip(home_medium_odds, away_medium_odds)
                     if (medium_home["local_team"], medium_home["away_team"]) not in seen_matches and not seen_matches.add((medium_home["local_team"], medium_home["away_team"]))
@@ -203,7 +205,8 @@ class Odds_counter:
                     {
                         "local_team_name": high_home["local_team"] if high_home["prediction_team"] == high_home["local_team"] else high_away["local_team"],
                         "away_team_name": high_home["away_team"] if high_home["prediction_team"] == high_home["local_team"] else high_away["away_team"],
-                        "odds": max(high_home["odds_home"], high_away["odds_away"]),
+                        "odds": {"predicted_odd" : high_home["odds_home"] if high_home["prediction_team"] == high_home["local_team"] else high_away["odds_away"], "home_odds": high_home["odds_home"], "away_odds": high_away["odds_away"]},
+                        "winner" : high_home["prediction_team"] if high_home["prediction_team"] == high_home["local_team"] else high_away["prediction_team"],
                         "date": high_home["date"] if high_home["prediction_team"] == high_home["local_team"] else high_away["date"]
                     } for high_home, high_away in zip(home_high_odds, away_high_odds)
                     if (high_home["local_team"], high_home["away_team"]) not in seen_matches and not seen_matches.add((high_home["local_team"], high_home["away_team"]))
@@ -236,7 +239,7 @@ class Odds_counter:
 def main():
     good_out = {}
     unique = False
-    analyzer = Odds_counter("basketball", unique=unique, days=90)
+    analyzer = Odds_counter("football", unique=unique, days=90)
     analyzer.load_data()
     analysis_result = analyzer.analyze_matches()
     print(json.dumps(analysis_result, indent=4)) 

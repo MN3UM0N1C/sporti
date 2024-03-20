@@ -175,6 +175,7 @@ class Odds_counter:
             home_small_odds = home_sorted_matches[:part_length]
             home_medium_odds = home_sorted_matches[part_length:2*part_length]
             home_high_odds = home_sorted_matches[2*part_length:]
+            home_high_odds.reverse()
 
             # Sort away_type_matches based on 'odds_away'
             away_sorted_matches = sorted(type_matches, key=lambda x: float(x['odds_away']))
@@ -191,38 +192,38 @@ class Odds_counter:
             away_small_odds = away_sorted_matches[:part_length]
             away_medium_odds = away_sorted_matches[part_length:2*part_length]
             away_high_odds = away_sorted_matches[2*part_length:]
-
+            print(home_high_odds)
             seen_matches = set()  # To keep track of seen matches 
             output[type_value] = {
                 "small_odds": [
                     {
-                        "local_team_name": small_home["local_team"] if small_home["prediction_team"] == small_home["local_team"] else small_away["local_team"],
-                        "away_team_name": small_home["away_team"] if small_home["prediction_team"] == small_home["local_team"] else small_away["away_team"],
-                        "odds": {"predicted_odd" : small_home["odds_home"] if small_home["prediction_team"] == small_home["local_team"] else small_away["odds_away"], "home_odds": small_home["odds_home"], "away_odds": small_away["odds_away"]},
-                        "winner" : small_home["prediction_team"] if small_home["prediction_team"] == small_home["local_team"] else small_away["away_team"],
-                        "date": small_home["date"] if small_home["prediction_team"] == small_home["local_team"] else small_away["date"],
+                        "local_team_name": small_home["local_team"],# if small_home["prediction_team"] == small_home["local_team"] else small_away["local_team"],
+                        "away_team_name": small_home["away_team"], #if small_home["prediction_team"] == small_home["local_team"] else small_away["away_team"],
+                        "odds": {"predicted_odd" : small_home["odds_away"] if small_home["prediction_team"] == small_away["local_team"] else small_home["odds_home"], "home_odds": small_home["odds_home"], "away_odds": small_home["odds_away"]},
+                        "winner" : small_home["local_team"] if small_home["prediction_team"] == small_home["local_team"] else small_home["away_team"],
+                        "date": small_home["date"], #if small_home["prediction_team"] == small_home["local_team"] else sma["date"],
                         "sport" : self.sport
                     } for small_home, small_away in zip(home_small_odds, away_small_odds)
                     if (small_home["local_team"], small_home["away_team"]) not in seen_matches and not seen_matches.add((small_home["local_team"], small_home["away_team"]))
                 ],
                 "medium_odds": [
                     {
-                        "local_team_name": medium_home["local_team"] if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["local_team"],
-                        "away_team_name": medium_home["away_team"] if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["away_team"],
-                        "odds": {"predicted_odd" : medium_home["odds_home"] if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["odds_away"], "home_odds": medium_home["odds_home"], "away_odds": medium_away["odds_away"]},
-                        "winner" : medium_home["prediction_team"] if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["away_team"],
-                        "date": medium_home["date"] if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["date"],
+                        "local_team_name": medium_home["local_team"],# if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["local_team"],
+                        "away_team_name": medium_home["away_team"],# if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["away_team"],
+                        "odds": {"predicted_odd" : medium_home["odds_away"] if medium_home["prediction_team"] == medium_home["local_team"] else medium_home["odds_home"], "home_odds": medium_home["odds_home"], "away_odds": medium_home["odds_away"]},
+                        "winner" : medium_home["local_team"] if medium_home["prediction_team"] == medium_home["local_team"] else medium_home["away_team"],
+                        "date": medium_home["date"],# if medium_home["prediction_team"] == medium_home["local_team"] else medium_away["date"],
                         "sport" : self.sport
                     } for medium_home, medium_away in zip(home_medium_odds, away_medium_odds)
                     if (medium_home["local_team"], medium_home["away_team"]) not in seen_matches and not seen_matches.add((medium_home["local_team"], medium_home["away_team"]))
                 ],
                 "high_odds": [
                     {
-                        "local_team_name": high_home["local_team"] if high_home["prediction_team"] == high_home["local_team"] else high_away["local_team"],
-                        "away_team_name": high_home["away_team"] if high_home["prediction_team"] == high_home["local_team"] else high_away["away_team"],
-                        "odds": {"predicted_odd" : high_home["odds_home"] if high_home["prediction_team"] == high_home["local_team"] else high_away["odds_away"], "home_odds": high_home["odds_home"], "away_odds": high_away["odds_away"]},
-                        "winner" : high_home["prediction_team"] if high_home["prediction_team"] == high_home["local_team"] else high_away["away_team"],
-                        "date": high_home["date"] if high_home["prediction_team"] == high_home["local_team"] else high_away["date"],
+                        "local_team_name": high_home["local_team"],# if high_home["prediction_team"] == high_home["local_team"] else high_away["local_team"],
+                        "away_team_name": high_home["away_team"], #if high_home["prediction_team"] == high_home["local_team"] else high_away["away_team"],
+                        "odds": {"predicted_odd" : high_home["odds_home"] if high_home["prediction_team"] == high_home["local_team"] else high_home["odds_away"], "home_odds": high_home["odds_home"], "away_odds": high_home["odds_away"]},
+                        "winner" : high_home["local_team"] if high_home["prediction_team"] == high_home["local_team"] else high_home["away_team"],
+                        "date": high_home["date"],# if high_home["prediction_team"] == high_home["local_team"] else high_away["date"],
                         "sport" : self.sport
                     } for high_home, high_away in zip(home_high_odds, away_high_odds)
                     if (high_home["local_team"], high_home["away_team"]) not in seen_matches and not seen_matches.add((high_home["local_team"], high_home["away_team"]))
@@ -255,15 +256,15 @@ class Combiner:
         self.sports = ["football", "basketball", "mma"]
         self.days = days
         self.combined = None
-        self.redis_client = redis.Redis(host='localhost', port=6379, db=0)
+        # self.redis_client = redis.Redis(host='localhost', port=6379, db=0)
 
     def combine(self):
         combined = {}
         cache_key = 'combine_bet_result'
 
-        cached_result = self.redis_client.get(cache_key)
-        if cached_result:
-            return json.loads(cached_result)
+        # cached_result = self.redis_client.get(cache_key)
+        # if cached_result:
+        #     return json.loads(cached_result)
             
         for sport in self.sports:
             analyzer = Odds_counter(sport, unique=self.unique, days=self.days)
@@ -307,7 +308,7 @@ class Combiner:
                 except:
                     pass
 
-        self.redis_client.set(cache_key, json.dumps(combined), ex=10)
+        # self.redis_client.set(cache_key, json.dumps(combined), ex=10)
 
         self.combined = combined
         return combined
@@ -337,10 +338,10 @@ class Combiner:
                 team1 = odd_item['local_team_name']
                 team2 = odd_item['away_team_name']
                 winner_team = odd_item['winner']
-                winner_odds = odd_item['odds']["predicted_odd"]
+                winner_odds = odd_item['odds']
 
                 # Calculate total odds for the bet
-                total_odds *= float(winner_odds)
+                total_odds *= float(winner_odds['predicted_odd'])
 
                 # Construct match data
                 match = {
@@ -374,15 +375,15 @@ class Combiner:
     def express_bet(self):
         cache_key = 'express_bet_result'
 
-        cached_result = self.redis_client.get(cache_key)
-        if cached_result:
-            return json.loads(cached_result)
+        # cached_result = self.redis_client.get(cache_key)
+        # if cached_result:
+        #     return json.loads(cached_result)
         
         final_express = {}
         for difficulty in ["small_odds", "medium_odds", "high_odds"]:
             final_express[difficulty] = self.convert_to_dummy_bets(difficulty)
 
-        self.redis_client.set(cache_key, json.dumps(final_express), ex=3600)
+        # self.redis_client.set(cache_key, json.dumps(final_express), ex=3600)
 
         return final_express
 
@@ -414,7 +415,8 @@ def main():
     unique = False
     good_out = {}
     combiner = Combiner(90, unique)
-    combiner.combine()
+    # combiner.combine()
+    print(json.dumps(combiner.combine(), indent=4))
     print(json.dumps(combiner.express_bet(), indent=4))
 
 if __name__ == "__main__":

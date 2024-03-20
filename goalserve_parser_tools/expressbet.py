@@ -192,7 +192,6 @@ class Odds_counter:
             away_small_odds = away_sorted_matches[:part_length]
             away_medium_odds = away_sorted_matches[part_length:2*part_length]
             away_high_odds = away_sorted_matches[2*part_length:]
-            print(home_high_odds)
             seen_matches = set()  # To keep track of seen matches 
             output[type_value] = {
                 "small_odds": [
@@ -313,7 +312,39 @@ class Combiner:
         self.combined = combined
         return combined
 
+    def sort_and_split_matches(self):
+        json_data = self.combined
+        # Extract all matches from the JSON data
+        all_matches = json_data["Home/Away"]["small_odds"] + \
+                      json_data["Home/Away"]["medium_odds"] + \
+                      json_data["Home/Away"]["high_odds"]
+
+        # Sort all matches based on the predicted_odd
+        all_matches_sorted = sorted(all_matches, key=lambda x: float(x["odds"]["predicted_odd"]))
+
+        # Calculate the split points
+        num_matches = len(all_matches_sorted)
+        split_point1 = num_matches // 3
+        split_point2 = split_point1 * 2
+
+        # Split matches into three groups based on their odds
+        small_odds = all_matches_sorted[:split_point1]
+        medium_odds = all_matches_sorted[split_point1:split_point2]
+        high_odds = all_matches_sorted[split_point2:]
+
+        # Construct the sorted and split JSON data
+        sorted_and_split_data = {
+            "Home/Away": {
+                "small_odds": small_odds,
+                "medium_odds": medium_odds,
+                "high_odds": high_odds
+            }
+        }
+        self.combined = sorted_and_split_data
+        return sorted_and_split_data
+
     def convert_to_dummy_bets(self, difficulty):
+        self.sort_and_split_matches()
         dummy_bets = []
         one_interval = []
         # Group the small_odds by their sports
@@ -387,6 +418,7 @@ class Combiner:
 
         return final_express
 
+
     def transform_odds_data(self, odds_data):
         difficulty_mapping = {
             'small_odds': 'Small - Low risk',
@@ -415,9 +447,8 @@ def main():
     unique = False
     good_out = {}
     combiner = Combiner(90, unique)
-    # combiner.combine()
-    print(json.dumps(combiner.combine(), indent=4))
-    print(json.dumps(combiner.express_bet(), indent=4))
+    combiner.combine()
+    print(json.dumps(combiner.transform_odds_data(combiner.express_bet()),indent=4))
 
 if __name__ == "__main__":
     main()

@@ -70,6 +70,7 @@ class FootballDataParser:
         """
         Search for match data within the XML file for a specific league ID.
         """
+        traki = {}
         result = {}
         all_casino = []
         try:
@@ -80,7 +81,7 @@ class FootballDataParser:
                         if "Handicap" not in bookmakers["value"]:
                             for one_casino in bookmakers.find_all("bookmaker"):
                                 if one_casino["name"] == casino:
-                                    result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino  
+                                     result[f'{one_casino["name"]} {bookmakers["value"]}'] = {bookmakers["value"]: one_casino}
                     if result == {}:
                         alternate_casino = random.choice(alternate_casino_list)
                         return self.search(league_id, match, alternate_casino)                                      
@@ -88,7 +89,11 @@ class FootballDataParser:
                     for bookmakers in k.find_all('type'):
                         if "Handicap" not in bookmakers["value"]:
                             for one_casino in bookmakers.find_all("bookmaker"):
-                                result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino  
+                                casino_name = one_casino["name"]
+                                bookmaker_value = bookmakers["value"]
+                                if casino_name not in result:
+                                    result[casino_name] = {}
+                                result[casino_name][bookmaker_value] = one_casino
             return result
         except AttributeError:
             print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
@@ -125,13 +130,14 @@ class FootballDataParser:
             data = {}
             second_dict = {}
             for p, i in file.items():
-                for k in i.find_all('odd'):
-                    second_dict[k.get('name')] = k.get('value')
-                data[p] = second_dict
-                second_dict = {}
+                for market in i.values():
+                    for k in market.find_all('odd'):
+                        second_dict[k.get('name').replace(".", ",")] = k.get('value').replace('.', ",")
+                    data[p.replace(".", ",")] = second_dict
+                    second_dict = {}
             return json.dumps(data)
         except (TypeError, AttributeError):
-            print("Coefficients not found.")
+            print("Coefficients not found.2")
 
     def download_all_files(self):
         """
@@ -147,7 +153,7 @@ class BasketballDataParser:
     def __init__(self):
         # Initialize class variables
         self.base_url = "http://www.goalserve.com/getfeed/401117231212497fb27a08db8de47c17/getodds/soccer?cat=basket_10&League="
-        self.league_id_mapping = {"1046": 'nba', "1278": 'euro_league', "1291": 'euro_cup', "2691": 'ncaa'}
+        self.league_id_mapping = {"1046": 'nba', "1287": 'euro_league', "1291": 'euro_cup', "2691": 'ncaa'}
         self.output_folder = "app/odds/basketball/"
         self.old_folder = os.path.join(self.output_folder, "old")
 
@@ -202,15 +208,23 @@ class BasketballDataParser:
                         if "Handicap" not in bookmakers["value"]:
                             for one_casino in bookmakers.find_all("bookmaker"):
                                 if one_casino["name"] == casino:
-                                    result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino 
+                                    if f'{one_casino["name"]}' not in result:
+                                        result[f'{one_casino["name"]}']= {bookmakers["value"]: one_casino}
+                                    else:
+                                        result[f'{one_casino["name"]}'].update({bookmakers["value"]: one_casino})
+
                     if result == {}:
                         alternate_casino = random.choice(alternate_casino_list)
                         return self.search(league_id, match, alternate_casino)                                       
-                else:   
+                else: 
                     for bookmakers in k.find_all('type'):
                         if "Handicap" not in bookmakers["value"]:
                             for one_casino in bookmakers.find_all("bookmaker"):
-                                result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino 
+                                casino_name = one_casino["name"]
+                                bookmaker_value = bookmakers["value"]
+                                if casino_name not in result:
+                                    result[casino_name] = {}
+                                result[casino_name][bookmaker_value] = one_casino
             return result
         except AttributeError:
             print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
@@ -243,13 +257,14 @@ class BasketballDataParser:
             data = {}
             second_dict = {}
             for p, i in file.items():
-                for k in i.find_all('odd'):
-                    second_dict[k.get('name')] = k.get('value')
-                data[p] = second_dict
-                second_dict = {}
+                for market in i.values():
+                    for k in market.find_all('odd'):
+                        second_dict[k.get('name').replace(".", ",")] = k.get('value').replace('.', ",")
+                    data[p.replace(".", ",")] = second_dict
+                    second_dict = {}
             return json.dumps(data)
         except (TypeError, AttributeError):
-            print("Coefficients not found.")
+            print("Coefficients not found.2")
 
     def download_all_files(self):
         """
@@ -328,7 +343,7 @@ class TennisDataScraper:
                         if "Handicap" not in bookmakers["value"]:
                             for one_casino in bookmakers.find_all("bookmaker"):
                                 if one_casino["name"] == casino:
-                                    result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino
+                                    result[f'{one_casino["name"]} {bookmakers["value"]}']= {bookmakers["value"]: one_casino}
                     if result == {}:
                         alternate_casino = random.choice(alternate_casino_list)
                         return self.search(match, alternate_casino)                                      
@@ -336,7 +351,11 @@ class TennisDataScraper:
                     for bookmakers in k.find_all('type'):
                         if "Handicap" not in bookmakers["value"]:
                             for one_casino in bookmakers.find_all("bookmaker"):
-                                result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino  
+                                casino_name = one_casino["name"]
+                                bookmaker_value = bookmakers["value"]
+                                if casino_name not in result:
+                                    result[casino_name] = {}
+                                result[casino_name][bookmaker_value] = one_casino
             return result
         except AttributeError:
             print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
@@ -368,13 +387,14 @@ class TennisDataScraper:
             data = {}
             second_dict = {}
             for p, i in file.items():
-                for k in i.find_all('odd'):
-                    second_dict[k.get('name')] = k.get('value')
-                data[p] = second_dict
-                second_dict = {}
+                for market in i.values():
+                    for k in market.find_all('odd'):
+                        second_dict[k.get('name').replace(".", ",")] = k.get('value').replace('.', ",")
+                    data[p.replace(".", ",")] = second_dict
+                    second_dict = {}
             return json.dumps(data)
         except (TypeError, AttributeError):
-            print("Coefficients not found.")
+            print("Coefficients not found.2")
 
     def download_all_files(self):
         """
@@ -447,7 +467,7 @@ class MMADataParser:
                         if "Handicap" not in bookmakers["value"]:
                             for one_casino in bookmakers.find_all("bookmaker"):
                                 if one_casino["name"] == casino:
-                                    result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino
+                                    result[f'{one_casino["name"]} {bookmakers["value"]}'] = {f'{one_casino["name"]} {bookmakers["value"]}':one_casino} 
                     if result == {}:
                         alternate_casino = random.choice(alternate_casino_list)
                         return self.search(match, alternate_casino)
@@ -455,7 +475,11 @@ class MMADataParser:
                     for bookmakers in k.find_all('type'):
                         if "Handicap" not in bookmakers["value"]:
                             for one_casino in bookmakers.find_all("bookmaker"):
-                                result[f'{one_casino["name"]}_{bookmakers["value"]}'] = one_casino    
+                                casino_name = one_casino["name"]
+                                bookmaker_value = bookmakers["value"]
+                                if casino_name not in result:
+                                    result[casino_name] = {}
+                                result[casino_name][bookmaker_value] = one_casino
 
             return result
         except AttributeError:
@@ -489,19 +513,152 @@ class MMADataParser:
             data = {}
             second_dict = {}
             for p, i in file.items():
-                for k in i.find_all('odd'):
-                    second_dict[k.get('name')] = k.get('value')
-                data[p] = second_dict
-                second_dict = {}
+                for market in i.values():
+                    for k in market.find_all('odd'):
+                        second_dict[k.get('name').replace(".", ",")] = k.get('value').replace('.', ",")
+                    data[p.replace(".", ",")] = second_dict
+                    second_dict = {}
             return json.dumps(data)
         except (TypeError, AttributeError):
-            print("Coefficients not found.")
+            print("Coefficients not found.2")
 
     def download_all_files(self):
         """
         Download the MMA XML file.
         """
         self.download_file("mma.xml")
+
+class CricketDataParser:
+    def __init__(self):
+        # Initialize class variables
+        self.base_url = "https://www.goalserve.com/getfeed/401117231212497fb27a08db8de47c17/getodds/soccer?cat=cricket_10"
+        self.output_folder = "app/odds/cricket/"
+        self.old_folder = os.path.join(self.output_folder, "old")
+
+    def backup_existing_files(self):
+        """
+        Backup existing XML files to the 'old' folder with a timestamp.
+        """
+        try:
+            current_time = datetime.now().strftime("%Y-%m-%d")
+            if not os.path.exists(self.old_folder):
+                os.makedirs(self.old_folder)
+            files = os.listdir(self.output_folder)
+            xml_files = [f for f in files if f.endswith('.xml')]
+            for xml_file in xml_files:
+                if os.path.exists(os.path.join(self.old_folder, current_time + "-" + xml_file)):
+                    print("No need for backing up yet.")
+                else:
+                    shutil.move(os.path.join(self.output_folder, xml_file), os.path.join(self.old_folder, current_time + "-" + xml_file))
+                    print(f"Moved {xml_file} to old folder.")
+        except Exception as e:
+            print(f"Error backing up existing files: {e}")
+
+    def download_file(self, output_file):
+        """
+        Download XML file for tennis matches.
+        """
+        try:
+            self.backup_existing_files()
+            url = self.base_url
+            current_time = datetime.now().strftime("%Y-%m-%d")
+            filename = f"cricket.xml"
+            subprocess.run(['curl', '-o', os.path.join(self.output_folder, filename), url], check=True)
+            print(f"File downloaded successfully: {filename}")
+        except subprocess.CalledProcessError as e:
+            print(f"Error downloading file: {e}")
+
+    def load_data(self):
+        """
+        Load XML data from the tennis XML file.
+        """
+        try:
+            with open(f'app/odds/cricket/cricket.xml', 'r') as file:
+                xml_content = file.read()
+                return BeautifulSoup(xml_content, 'xml')
+        except FileNotFoundError:
+            print(f"Error: File not found for cricket matches. Make sure to download the file first.")
+
+
+
+    def search(self, match, casino=None):
+        """
+        Search for match data within the XML file for a specific league ID.
+        """
+        result = {}
+        all_casino = []
+        try:
+            soup = self.load_data()
+            for k in soup.find_all("match", {"id": match}):
+                if casino is not None:
+                    for bookmakers in k.find_all('type'):
+                        if "Handicap" not in bookmakers["value"]:
+                            for one_casino in bookmakers.find_all("bookmaker"):
+                                if one_casino["name"] == casino:
+                                    casino_name = one_casino["name"]
+                                    bookmaker_value = bookmakers["value"]
+                                    if casino_name not in result:
+                                        result[casino_name] = {}
+                                    result[casino_name][bookmaker_value] = one_casino
+                    if result == {}:
+                        alternate_casino = random.choice(alternate_casino_list)
+                        return self.search(match, alternate_casino)
+                else:   
+                    for bookmakers in k.find_all('type'):
+                        if "Handicap" not in bookmakers["value"]:
+                            for one_casino in bookmakers.find_all("bookmaker"):
+                                casino_name = one_casino["name"]
+                                bookmaker_value = bookmakers["value"]
+                                if casino_name not in result:
+                                    result[casino_name] = {}
+                                result[casino_name][bookmaker_value] = one_casino
+
+            return result
+        except AttributeError:
+            print("Error: Data structure is not as expected. Check if the XML file has the correct structure.")
+
+    def is_match(self, team_name, match_name):
+        """
+        Check if a team name matches the match name.
+        """
+        team_words = team_name.lower().split()
+        match_words = match_name.lower().split()
+        return any(word in match_words for word in team_words)        
+
+    def team(self, teams, casino=None):
+        """
+        Find match data for a specific tennis match.
+        """
+        soup = self.load_data()
+        matches = soup.find_all("match")
+        for match in matches:
+            local_team = match.find("localteam")
+            visitor_team = match.find("visitorteam")
+            if self.is_match(teams[0], local_team.get("name")) and self.is_match(teams[1], visitor_team.get("name")):
+                return self.search(match.get("id"), casino=casino)
+
+    def koef(self, file):
+        """
+        Extract odds data from the XML file and return as JSON.
+        """
+        try:
+            data = {}
+            second_dict = {}
+            for p, i in file.items():
+                for market in i.values():
+                    for k in market.find_all('odd'):
+                        second_dict[k.get('name').replace(".", ",")] = k.get('value').replace('.', ",")
+                    data[p.replace(".", ",")] = second_dict
+                    second_dict = {}
+            return json.dumps(data)
+        except (TypeError, AttributeError):
+            print("Coefficients not found.2")
+
+    def download_all_files(self):
+        """
+        Download the tennis XML file.
+        """
+        self.download_file("cricket.xml")
 
 class Searcher():
     def __init__(self, sport, team1, team2, casino=None, league=None):
@@ -527,6 +684,9 @@ class Searcher():
             return scraper.koef(scraper.team([self.team1, self.team2], self.casino))
         if self.sport == "mma":
             scraper = MMADataParser()
+            return scraper.koef(scraper.team([self.team1, self.team2], self.casino))
+        if self.sport == "cricket":
+            scraper = CricketDataParser()
             return scraper.koef(scraper.team([self.team1, self.team2], self.casino))
 
 
@@ -579,6 +739,10 @@ class Searcher():
 
 
 if __name__ == "__main__":
-    # downloader = FootballDataParser().download_all_files()
-    searcher = Searcher("mma", 'Diana Belbita', 'Molly McCann', "asdasd")
+    # downloader = CricketDataParser().download_all_files()
+    # FootballDataParser().download_all_files()
+    # BasketballDataParser().download_all_files()
+    # MMADataParser().download_all_files()
+    # CricketDataParser().download_all_files()
+    searcher = Searcher("cricket", 'Titans', 'Dolphins')
     print(searcher.search())

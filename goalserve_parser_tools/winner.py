@@ -266,18 +266,106 @@ class MMAMatchAnalyzer:
 
         return match_results
 
+
+class CricketMatchAnalyzer:
+    def __init__(self):
+        self.league_id_mapping = {"1046": 'nba', "1278": 'euro_league', "1291": 'euro_cup', "2691": 'ncaa'}
+
+    def download_xml_file(self, url, file_path):
+        try:
+            os.makedirs(os.path.dirname(file_path), exist_ok=True)
+            result = subprocess.run(["curl", "-s", "-o", file_path, url], capture_output=True, text=True)
+            if result.returncode == 0:
+                print(f"XML file downloaded successfully: {file_path}")
+                return True
+            else:
+                print(f"Error downloading XML file from {url}: {result.stderr}")
+                return False
+        except subprocess.CalledProcessError as e:
+            print(f"Error downloading XML file from {url}: {e}")
+            return False
+
+    def download_all(self, output_dir):
+        base_url = "https://www.goalserve.com/getfeed/401117231212497fb27a08db8de47c17/cricket/livescore"
+        url = base_url
+        file_path = os.path.join(output_dir, "cricket.xml")
+        self.download_xml_file(url, file_path)
+
+    def load_xml_file(self, file_path):
+        try:
+            with open(file_path, "r") as file:
+                return file.read()
+        except FileNotFoundError:
+            print(f"File {file_path} not found.")
+            return None
+
+    def find_winner(self, team1, team2, league_name=None):
+        match_results = []
+        # If league_name is not provided, iterate through all downloaded files
+        if league_name is None:
+            for file_name in os.listdir("winner/cricket"):
+                file_path = os.path.join("winner/cricket", file_name)
+                if file_path.endswith(".xml"):
+                    xml_data = self.load_xml_file(file_path)
+                    if xml_data:
+                        soup = BeautifulSoup(xml_data, "xml")
+                        matches = self.extract_matches(soup, team1, team2, file_name)
+                        if matches:
+                            match_results.extend(matches)
+        else:
+            league_id = [k for k, v in self.league_id_mapping.items() if v == league_name.replace('_', ' ')][0]
+            file_name = f"{league_name.replace('_', ' ')}.xml"
+            file_path = os.path.join("winner/cricket", file_name)
+            if os.path.exists(file_path):
+                xml_data = self.load_xml_file(file_path)
+                if xml_data:
+                    soup = BeautifulSoup(xml_data, "xml")
+                    match_results.extend(self.extract_matches(soup, team1, team2, file_name))
+
+        return match_results
+
+    def extract_matches(self, soup, team1, team2, league_name):
+        match_results = []
+        today = datetime.today().date()
+
+        for match in soup.find_all("match"):
+            match_date_str = match.get("date")
+            match_date = datetime.strptime(match_date_str, "%d.%m.%Y").date()
+            if today - match_date <= timedelta(days=90): 
+                local_team = match.find("localteam").get("name")
+                visitor_team = match.find("awayteam").get("name")
+                local_score = match.find("localteam").get("winner")
+                visitor_score = match.find("awayteam").get("winner")
+                if (local_team == team1 and visitor_team == team2) or (local_team == team2 and visitor_team == team1):
+                    match_results.append({
+                        "League": league_name.replace('.xml', ''),
+                        "Local Team": local_team,
+                        "Visitor Team": visitor_team,
+                        "Local Winner": local_score,
+                        "Visitor Winner": visitor_score,
+                        "Winner": team1 if local_score > visitor_score else team2 if visitor_score > local_score else "Draw"
+                    })
+
+        return match_results
+
+
 class MatchAnalyzer:
     def __init__(self):
         self.football_analyzer = FootballMatchAnalyzer()
         self.basketball_analyzer = BaketballMatchAnalyzer()
         self.mma_analyzer = MMAMatchAnalyzer()
+        self.cricket_analyzer = CricketMatchAnalyzer()
 
     def find_winner(self, team1, team2, league_name=None):
         all_results = []
         all_results.extend(self.football_analyzer.find_winner(team1, team2))
         all_results.extend(self.basketball_analyzer.find_winner(team1, team2))
         all_results.extend(self.mma_analyzer.find_winner(team1, team2))
+        all_results.extend(self.cricket_analyzer.find_winner(team1,team2))
         return all_results
+
+
+
 
 
 import csv
@@ -319,7 +407,8 @@ output_file = 'generated_data.csv'
 
 csv_inputter = Csvinputer()
 csv_inputter.read_csv_and_analyze(input_file, output_file)
-# Usage
+# Usagef
+
 # analyzer = MatchAnalyzer()
 
 # Example usage for finding winner of matches between two teams
